@@ -34,7 +34,7 @@
             txtUsuario = new TextBox();
             txtPass = new TextBox();
             btnHashPass = new Button();
-            button2 = new Button();
+            btnIngresar = new Button();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             SuspendLayout();
             // 
@@ -91,22 +91,25 @@
             btnHashPass.Size = new Size(36, 28);
             btnHashPass.TabIndex = 4;
             btnHashPass.UseVisualStyleBackColor = true;
+            btnHashPass.Click += btnHashPass_Click;
             // 
-            // button2
+            // btnIngresar
             // 
-            button2.Location = new Point(404, 259);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 5;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            btnIngresar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnIngresar.Location = new Point(404, 255);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new Size(75, 32);
+            btnIngresar.TabIndex = 5;
+            btnIngresar.Text = "Ingresar";
+            btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.Click += btnIngresar_Click;
             // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(609, 369);
-            Controls.Add(button2);
+            Controls.Add(btnIngresar);
             Controls.Add(btnHashPass);
             Controls.Add(txtPass);
             Controls.Add(txtUsuario);
@@ -126,6 +129,6 @@
         private TextBox txtUsuario;
         private TextBox txtPass;
         private Button btnHashPass;
-        private Button button2;
+        private Button btnIngresar;
     }
 }

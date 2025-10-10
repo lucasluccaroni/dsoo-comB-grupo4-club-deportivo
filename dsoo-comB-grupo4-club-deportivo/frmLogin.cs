@@ -1,3 +1,5 @@
+using System.Data;
+
 namespace dsoo_comB_grupo4_club_deportivo
 {
     public partial class frmLogin : Form
@@ -49,5 +51,41 @@ namespace dsoo_comB_grupo4_club_deportivo
                 txtPass.UseSystemPasswordChar = false;
             }
         }
+
+        // Boton para ver / ocultar contraseña
+        private void btnHashPass_Click(object sender, EventArgs e)
+        {
+            if(txtPass.Text != "Contraseña")
+            {
+                if (txtPass.UseSystemPasswordChar)
+                {
+                    txtPass.UseSystemPasswordChar = false;
+                }
+                else
+                {
+                    txtPass.UseSystemPasswordChar = true;
+                }
+            }
+        }
+
+        // Boton ingresar + login
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            DataTable tablaLogin = new DataTable(); // es la que recibe los datos desde el formulario
+            
+            Datos.Usuarios dato = new Datos.Usuarios(); // variable que contiene todas las caracteristicas de la clase Usuarios
+
+            tablaLogin = dato.Log_Usu(txtUsuario.Text, txtPass.Text);
+            if(tablaLogin.Rows.Count > 0)
+            {
+                // quiere decir que el resultado tiene 1 fila por lo que el usuario existe
+                MessageBox.Show("Ingreso exitoso", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Usuario y/o contraseña incorrecto.", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
