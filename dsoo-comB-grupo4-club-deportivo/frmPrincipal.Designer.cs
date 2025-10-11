@@ -53,6 +53,7 @@
             btnRegistrarSocio.TabIndex = 0;
             btnRegistrarSocio.Text = "Registrar Socio";
             btnRegistrarSocio.UseVisualStyleBackColor = true;
+            btnRegistrarSocio.Click += btnRegistrarSocio_Click;
             // 
             // btnCobrarCuota
             // 

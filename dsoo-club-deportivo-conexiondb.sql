@@ -58,3 +58,58 @@ CALL IngresoLogin("ivan.faigenbom", "ivan123");
 SELECT * FROM Usuario;
 
 DELIMITER //
+
+
+-- Creacion de tabla Socios
+CREATE TABLE Socio(
+IdSocio INT AUTO_INCREMENT,
+Nombre VARCHAR(30),
+Apellido VARCHAR(30),
+Email VARCHAR(30),
+Dni VARCHAR(20),
+Direccion VARCHAR(30),
+FechaNac DATETIME,
+Telefono INT,
+FichaMedica BOOL,
+FechaInscripcion DATETIME,
+CONSTRAINT pk_socio PRIMARY KEY (Id_Socio)
+);
+
+
+-- Stored procedured para cargar un nuevo postulante
+DELIMITER //
+CREATE PROCEDURE NuevoSocio(
+	IN nombre VARCHAR(30),
+    IN apellido VARCHAR(30),
+    IN email VARCHAR(30),
+    IN dni VARCHAR(20),
+    in direccion VARCHAR(30),
+    in fechaNac DATETIME,
+    in telefono INT,
+    in fichaMedica BOOL,
+    in fechaInscripcion DATETIME)
+BEGIN
+	DECLARE filas INT DEFAULT 0;
+		DECLARE existe INT DEFAULT 0;
+        
+	SET filas = (SELECT COUNT(*) FROM Socio);
+    
+    IF filas = 0 THEN
+		SET filas = 001; -- Numero del primer socio
+	ELSE
+    		-- buscamos el ultimo numero de socio almacenado para sumarle una unidad y considerarla como primary key de la tabla
+		SET filas = (SELECT max(IdSocio) + 1 FROM Socio);
+        
+        -- para saber si ya esta almacenado el postulante
+        SET existe = (SELECT COUNT(*) FROM Socio WHERE dni = Dni);
+	END IF;
+    
+    IF existe = 0 THEN
+		INSERT INTO Socio VALUES (filas, nombre, apellido, email, dni, direcion, fechaNac, telefono, fichaMedica, fechaInscripcion);
+        SET rta = filas;
+	ELSE
+		SET rta = existe;
+	END IF;
+END//
+    
+    

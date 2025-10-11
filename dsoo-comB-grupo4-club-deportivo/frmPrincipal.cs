@@ -35,12 +35,12 @@ namespace dsoo_comB_grupo4_club_deportivo
             lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
 
-        /* btnRegistrarSocio_Click(object sender, EventArgs e)
+        private void btnRegistrarSocio_Click(object sender, EventArgs e)
         {
-            frmInscripcionSocio  inscripcionSocio = new frmInscripcionSocio();
+            frmInscripcionSocio inscripcionSocio = new frmInscripcionSocio();
             inscripcionSocio.Show();
             this.Hide();
-        }*/
+        }
 
         // boton para "cerrar sesion" o salir del sistema
         private void btnSalir_Click(object sender, EventArgs e)

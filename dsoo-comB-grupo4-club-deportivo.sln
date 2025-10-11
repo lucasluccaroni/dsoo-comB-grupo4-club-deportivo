@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36408.4 d17.14
+VisualStudioVersion = 17.14.36408.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dsoo-comB-grupo4-club-deportivo", "dsoo-comB-grupo4-club-deportivo\dsoo-comB-grupo4-club-deportivo.csproj", "{5DAA90C2-5B8A-458F-883B-28F2B2021A32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dsoo_comB_grupo4_club_deportivo", "dsoo-comB-grupo4-club-deportivo\dsoo_comB_grupo4_club_deportivo.csproj", "{5DAA90C2-5B8A-458F-883B-28F2B2021A32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
