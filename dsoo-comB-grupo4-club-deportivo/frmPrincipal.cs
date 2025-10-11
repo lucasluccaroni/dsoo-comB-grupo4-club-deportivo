@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace dsoo_comB_grupo4_club_deportivo
+{
+    public partial class frmPrincipal : Form
+    {
+        internal string rol, usuario;
+
+        public frmPrincipal()
+        {
+            InitializeComponent();
+        }
+
+
+        // el frmLogin le pasa el usuario + rol de la persona que se logueó al sistema
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            timer1.Start();
+            lblUsuario.Text = "Usuario: " + usuario;
+            lblRol.Text = "Rol: " + rol;
+        }
+
+
+        // timer para actualizar la hora
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        }
+
+        /* btnRegistrarSocio_Click(object sender, EventArgs e)
+        {
+            frmInscripcionSocio  inscripcionSocio = new frmInscripcionSocio();
+            inscripcionSocio.Show();
+            this.Hide();
+        }*/
+
+        // boton para "cerrar sesion" o salir del sistema
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+
+    }
+}

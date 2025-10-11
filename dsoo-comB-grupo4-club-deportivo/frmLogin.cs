@@ -80,6 +80,13 @@ namespace dsoo_comB_grupo4_club_deportivo
             {
                 // quiere decir que el resultado tiene 1 fila por lo que el usuario existe
                 MessageBox.Show("Ingreso exitoso", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // ahora tenemos la conexion establecida y pasamos a mostrar el form principal
+                frmPrincipal Principal = new frmPrincipal();
+                Principal.rol = Convert.ToString(tablaLogin.Rows[0][0]);
+                Principal.usuario = Convert.ToString(txtUsuario.Text);
+                Principal.Show(); // llamamos al form principal
+                this.Hide(); // escondemos el form de login (este form)
             }
             else
             {
