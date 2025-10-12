@@ -77,7 +77,7 @@ SELECT * FROM Usuario;
 
 
 
--- Stored procedured para cargar un nuevo postulante
+-- Stored procedured para cargar un nuevo socio
 DELIMITER //
 CREATE PROCEDURE NuevoSocio(
 	IN nombre VARCHAR(30),
