@@ -72,7 +72,7 @@ FechaNac DATETIME,
 Telefono INT,
 FichaMedica BOOL,
 FechaInscripcion DATETIME,
-CONSTRAINT pk_socio PRIMARY KEY (Id_Socio)
+CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
 );
 
 
@@ -83,24 +83,25 @@ CREATE PROCEDURE NuevoSocio(
     IN apellido VARCHAR(30),
     IN email VARCHAR(30),
     IN dni VARCHAR(20),
-    in direccion VARCHAR(30),
-    in fechaNac DATETIME,
-    in telefono INT,
-    in fichaMedica BOOL,
-    in fechaInscripcion DATETIME)
+    IN direccion VARCHAR(30),
+    IN fechaNac DATETIME,
+    IN telefono INT,
+    IN fichaMedica BOOL,
+    IN fechaInscripcion DATETIME,
+    OUT rta INT)
 BEGIN
 	DECLARE filas INT DEFAULT 0;
-		DECLARE existe INT DEFAULT 0;
+	DECLARE existe INT DEFAULT 0;
         
 	SET filas = (SELECT COUNT(*) FROM Socio);
     
     IF filas = 0 THEN
-		SET filas = 001; -- Numero del primer socio
+		SET filas = 100; -- Numero del primer socio
 	ELSE
     		-- buscamos el ultimo numero de socio almacenado para sumarle una unidad y considerarla como primary key de la tabla
 		SET filas = (SELECT max(IdSocio) + 1 FROM Socio);
         
-        -- para saber si ya esta almacenado el postulante
+        -- para saber si ya esta almacenado el socio
         SET existe = (SELECT COUNT(*) FROM Socio WHERE dni = Dni);
 	END IF;
     
@@ -111,5 +112,8 @@ BEGIN
 		SET rta = existe;
 	END IF;
 END//
-    
+
+DELIMITER //
+
+SELECT * FROM Socio;
     

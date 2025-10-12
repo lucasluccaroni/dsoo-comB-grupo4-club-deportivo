@@ -22,8 +22,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades
             DateTime FechaNac,
             int Telefono,
             bool FichaMedica,
-            int id_Socio,
-            DateTime FechaInscripcion
+            int id_Socio
             ): base( 
                 Nombre,
                 Apellido,
@@ -35,20 +34,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades
                 FichaMedica)
         {
             Id_Socio = id_Socio;
-            FechaInscripcion = fechaInscripcion;
-        }
-
-
-        // get/set para la fecha
-        private DateTime FechaInscripcion
-        {
-            get { return FechaInscripcion; }
-            set { fechaArgentina(value); }
-        }
-        // funcion para modificar el formato de la fecha
-        private DateTime fechaArgentina(DateTime fecha)
-        {
-            return fecha = DateTime.Parse("dd/MM/yyyy");
+            fechaInscripcion = DateTime.Today;
         }
     }
 }

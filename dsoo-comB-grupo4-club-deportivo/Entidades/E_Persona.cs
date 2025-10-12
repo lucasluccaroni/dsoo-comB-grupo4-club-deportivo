@@ -14,7 +14,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades
         public string? Apellido { get; set; }
         public string? Email { get; set; }
         public string? Dni { get; set; }
-        public DateTime fechaNac;
+        public DateTime FechaNac { get; set; }
         public string? Direccion { get; set; }
         public int Telefono { get; set; }
         public bool FichaMedica { get; set; }
@@ -41,7 +41,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades
         }
 
 
-
+        /*
         // get/set para la fecha
        private DateTime FechaNac
         {
@@ -51,9 +51,9 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades
         // funcion para modificar el formato de la fecha
         private DateTime FechaArgentina(DateTime fecha)
         {
-           return fecha = DateTime.Parse("dd/MM/yyyy");
+            DateTime fechaNueva;
+           return fechaNueva = fecha.Parse("dd/MM/yyyy");
         }
-
-
+        */
     }
 }
