@@ -12,7 +12,7 @@ namespace dsoo_comB_grupo4_club_deportivo
 {
     public partial class frmPrincipal : Form
     {
-        internal string rol, usuario;
+        internal string? rol, usuario;
 
         public frmPrincipal()
         {
@@ -41,6 +41,8 @@ namespace dsoo_comB_grupo4_club_deportivo
         private void btnRegistrarSocio_Click(object sender, EventArgs e)
         {
             frmInscripcionSocio inscripcionSocio = new frmInscripcionSocio();
+            inscripcionSocio.rol = rol;
+            inscripcionSocio.usuario = usuario;
             inscripcionSocio.Show();
             this.Hide();
         }
@@ -50,7 +52,5 @@ namespace dsoo_comB_grupo4_club_deportivo
         {
             Application.Exit();
         }
-
-
     }
 }

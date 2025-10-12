@@ -13,19 +13,24 @@ namespace dsoo_comB_grupo4_club_deportivo
 {
     public partial class frmInscripcionSocio : Form
     {
+        internal string? usuario, rol;
         public frmInscripcionSocio()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+
         // Boton para volver al  formulario principal
         private void btnVolver_Click(object sender ,EventArgs e)
         {
             frmPrincipal principal = new frmPrincipal();
+            principal.rol = rol;
+            principal.usuario = usuario;
             principal.Show();
             this.Hide();
         }
+
 
         // Boton para ingresar y regsitrar un socio
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -49,13 +54,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                 // instanciamos esta variable que tiene el metodo de nuevo_Socio
                 Datos.Socio socios = new Datos.Socio();
                 respuesta = socios.Nuevo_Socio(socio);
-
-                System.Diagnostics.Debug.WriteLine("RESPUESTA ↓");
-                System.Diagnostics.Debug.WriteLine(respuesta);
-
-                System.Diagnostics.Debug.WriteLine("ES NUMERO ↓");
                 bool esNumero = int.TryParse(respuesta, out int codigo);
-                System.Diagnostics.Debug.WriteLine(esNumero);
 
                 if (esNumero)
                 {
@@ -75,6 +74,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
+        // Boton para limpiar todos los campos del formulario
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtNombre.Text = "";
@@ -85,7 +85,6 @@ namespace dsoo_comB_grupo4_club_deportivo
             txtDireccion.Text = "";
             chkFichaMedica.Checked = false;
             dtpFechaNac.Value = DateTime.Today;
-
         }
     }
 }
