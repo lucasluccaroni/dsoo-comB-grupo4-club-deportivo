@@ -39,21 +39,5 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades
             Telefono = telefono;
             FichaMedica = fichaMedica;
         }
-
-
-        /*
-        // get/set para la fecha
-       private DateTime FechaNac
-        {
-            get { return FechaNac; }
-            set { FechaArgentina(value); }
-        }
-        // funcion para modificar el formato de la fecha
-        private DateTime FechaArgentina(DateTime fecha)
-        {
-            DateTime fechaNueva;
-           return fechaNueva = fecha.Parse("dd/MM/yyyy");
-        }
-        */
     }
 }
