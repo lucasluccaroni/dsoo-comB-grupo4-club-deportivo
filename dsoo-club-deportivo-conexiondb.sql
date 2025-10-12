@@ -23,11 +23,12 @@ CONSTRAINT pk_roles PRIMARY KEY (RolUsu)
 INSERT INTO ROLES VALUES
 (999, "Administrador");
 
+
 -- Usuarios que usan el sistema
 CREATE TABLE Usuario(
 CodUsu INT AUTO_INCREMENT,
-NombreUsu VARCHAR(20),
-PassUsu VARCHAR(15),
+NombreUsu VARCHAR(20) NOT NULL,
+PassUsu VARCHAR(15) NOT NULL,
 RolUsu INT,
 Activo BOOLEAN DEFAULT TRUE,
 CONSTRAINT pk_usuario PRIMARY KEY (CodUsu),
@@ -106,7 +107,7 @@ BEGIN
 	END IF;
     
     IF existe = 0 THEN
-		INSERT INTO Socio VALUES (filas, nombre, apellido, email, dni, direccion, fechaNac, telefono, fichaMedica, fechaInscripcion);
+		INSERT INTO Socio VALUES (filas, nombre, apellido, email, dniSoc, direccion, fechaNac, telefono, fichaMedica, fechaInscripcion);
         SET respuesta = filas;
 	ELSE
 		SET respuesta = existe;

@@ -16,6 +16,7 @@ namespace dsoo_comB_grupo4_club_deportivo
         public frmInscripcionSocio()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         // Boton para volver al  formulario principal
@@ -42,7 +43,6 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
             else
             {
-                MessageBox.Show("boton apretado", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 string respuesta;
                 E_Socio socio = new E_Socio(txtNombre.Text, txtApellido.Text, txtMail.Text, txtDni.Text, txtDireccion.Text, dtpFechaNac.Value, int.Parse(txtTelefono.Text), chkFichaMedica.Checked, int.Parse(txtDni.Text));
 
@@ -65,7 +65,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                     }
                     else
                     {
-                        MessageBox.Show("Socio nro." + respuesta + "registrado con exito.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("Socio nro." + respuesta + " registrado con exito.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                 }
                 else

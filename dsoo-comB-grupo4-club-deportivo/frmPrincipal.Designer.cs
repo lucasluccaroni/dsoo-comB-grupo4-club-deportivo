@@ -37,11 +37,11 @@
             btnRegistrarNoSocio = new Button();
             btnEmitirCarnet = new Button();
             btnListadoSocios = new Button();
+            btnSalir = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
+            lblDate = new Label();
             lblUsuario = new Label();
             lblRol = new Label();
-            btnSalir = new Button();
-            lblDate = new Label();
-            timer1 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // btnRegistrarSocio
@@ -131,6 +131,31 @@
             btnListadoSocios.Text = "Listado de Socios";
             btnListadoSocios.UseVisualStyleBackColor = true;
             // 
+            // btnSalir
+            // 
+            btnSalir.Location = new Point(755, 15);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(87, 45);
+            btnSalir.TabIndex = 10;
+            btnSalir.Text = "Cerrar sesión";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
+            // 
+            // lblDate
+            // 
+            lblDate.AutoSize = true;
+            lblDate.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic);
+            lblDate.Location = new Point(12, 9);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(0, 17);
+            lblDate.TabIndex = 11;
+            // 
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
@@ -150,31 +175,6 @@
             lblRol.Size = new Size(15, 17);
             lblRol.TabIndex = 9;
             lblRol.Text = "a";
-            // 
-            // btnSalir
-            // 
-            btnSalir.Location = new Point(755, 15);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(87, 45);
-            btnSalir.TabIndex = 10;
-            btnSalir.Text = "Cerrar sesión";
-            btnSalir.UseVisualStyleBackColor = true;
-            btnSalir.Click += btnSalir_Click;
-            // 
-            // lblDate
-            // 
-            lblDate.AutoSize = true;
-            lblDate.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic);
-            lblDate.Location = new Point(12, 9);
-            lblDate.Name = "lblDate";
-            lblDate.Size = new Size(0, 17);
-            lblDate.TabIndex = 11;
-            // 
-            // timer1
-            // 
-            timer1.Enabled = true;
-            timer1.Interval = 1000;
-            timer1.Tick += timer1_Tick;
             // 
             // frmPrincipal
             // 
@@ -211,10 +211,10 @@
         private Button btnRegistrarNoSocio;
         private Button btnEmitirCarnet;
         private Button btnListadoSocios;
+        private Button btnSalir;
+        private System.Windows.Forms.Timer timer1;
+        private Label lblDate;
         private Label lblUsuario;
         private Label lblRol;
-        private Button btnSalir;
-        private Label lblDate;
-        private System.Windows.Forms.Timer timer1;
     }
 }

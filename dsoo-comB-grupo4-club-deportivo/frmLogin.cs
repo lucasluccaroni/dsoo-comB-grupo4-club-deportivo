@@ -7,6 +7,7 @@ namespace dsoo_comB_grupo4_club_deportivo
         public frmLogin()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         // Evento de foco en txtUsuario -> Enter
