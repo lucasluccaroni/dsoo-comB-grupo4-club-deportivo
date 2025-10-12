@@ -9,7 +9,7 @@ Integrantes:
 	- Luccaroni, Lucas
 */
 
-DROP DATABASE IF EXISTS Dsoo_club_deportivo;
+-- DROP DATABASE IF EXISTS Dsoo_club_deportivo;
 CREATE DATABASE Dsoo_club_deportivo;
 USE Dsoo_club_deportivo;
 
@@ -41,6 +41,21 @@ INSERT INTO Usuario (CodUsu, NombreUsu, PassUsu, RolUsu) VALUES
 (004, "matias.jara", "matias123", 999),
 (005, "lucas.luccaroni", "lucas123", 999);
 
+-- Creacion de tabla Socios
+CREATE TABLE Socio(
+IdSocio INT,
+Nombre VARCHAR(30),
+Apellido VARCHAR(30),
+Email VARCHAR(30),
+Dni VARCHAR(20),
+Direccion VARCHAR(30),
+FechaNac DATETIME,
+Telefono INT,
+FichaMedica TINYINT,
+FechaInscripcion DATETIME,
+CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
+);
+
 
 -- StoredProcedure para hacer el Login
 DELIMITER //
@@ -51,29 +66,14 @@ BEGIN
 			WHERE NombreUsu = Usu and PassUsu = Pass
 				AND Activo = 1;
 END//
-
+DELIMITER //
 -- Test de que funciona el StoredProcedure ↓ 
 CALL IngresoLogin("lucas.luccaroni", "lucas123");
 CALL IngresoLogin("ivan.faigenbom", "ivan123");
 SELECT * FROM Usuario;
 
-DELIMITER //
 
 
--- Creacion de tabla Socios
-CREATE TABLE Socio(
-IdSocio INT AUTO_INCREMENT,
-Nombre VARCHAR(30),
-Apellido VARCHAR(30),
-Email VARCHAR(30),
-Dni VARCHAR(20),
-Direccion VARCHAR(30),
-FechaNac DATETIME,
-Telefono INT,
-FichaMedica BOOL,
-FechaInscripcion DATETIME,
-CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
-);
 
 
 -- Stored procedured para cargar un nuevo postulante
@@ -82,13 +82,13 @@ CREATE PROCEDURE NuevoSocio(
 	IN nombre VARCHAR(30),
     IN apellido VARCHAR(30),
     IN email VARCHAR(30),
-    IN dni VARCHAR(20),
+    IN dniSoc VARCHAR(20),
     IN direccion VARCHAR(30),
     IN fechaNac DATETIME,
     IN telefono INT,
-    IN fichaMedica BOOL,
+    IN fichaMedica TINYINT,
     IN fechaInscripcion DATETIME,
-    OUT rta INT)
+    OUT respuesta INT)
 BEGIN
 	DECLARE filas INT DEFAULT 0;
 	DECLARE existe INT DEFAULT 0;
@@ -98,22 +98,20 @@ BEGIN
     IF filas = 0 THEN
 		SET filas = 100; -- Numero del primer socio
 	ELSE
-    		-- buscamos el ultimo numero de socio almacenado para sumarle una unidad y considerarla como primary key de la tabla
+    		-- buscamos el ultimo numero de socio almacenado para sumarle una unidad y considerarla como primary key de la tabla (idSocio)
 		SET filas = (SELECT max(IdSocio) + 1 FROM Socio);
         
         -- para saber si ya esta almacenado el socio
-        SET existe = (SELECT COUNT(*) FROM Socio WHERE dni = Dni);
+        SET existe = (SELECT COUNT(*) FROM Socio WHERE Dni = dniSoc);
 	END IF;
     
     IF existe = 0 THEN
-		INSERT INTO Socio VALUES (filas, nombre, apellido, email, dni, direcion, fechaNac, telefono, fichaMedica, fechaInscripcion);
-        SET rta = filas;
+		INSERT INTO Socio VALUES (filas, nombre, apellido, email, dni, direccion, fechaNac, telefono, fichaMedica, fechaInscripcion);
+        SET respuesta = filas;
 	ELSE
-		SET rta = existe;
+		SET respuesta = existe;
 	END IF;
 END//
-
 DELIMITER //
 
-SELECT * FROM Socio;
-    
+-- SELECT * FROM Socio;

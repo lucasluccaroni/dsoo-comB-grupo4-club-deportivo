@@ -41,11 +41,18 @@
             chkFichaMedica = new CheckBox();
             lblFechaNac = new Label();
             btnLimpiar = new Button();
+            lblNombre = new Label();
+            lblApellido = new Label();
+            lblDni = new Label();
+            lblTelefono = new Label();
+            lblMail = new Label();
+            lblDireccion = new Label();
             SuspendLayout();
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(688, 26);
+            btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVolver.Location = new Point(12, 12);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(83, 32);
             btnVolver.TabIndex = 0;
@@ -56,9 +63,11 @@
             // btnIngresar
             // 
             btnIngresar.BackColor = Color.PaleGreen;
-            btnIngresar.Location = new Point(688, 397);
+            btnIngresar.Cursor = Cursors.Hand;
+            btnIngresar.Font = new Font("Segoe UI", 12F);
+            btnIngresar.Location = new Point(675, 408);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(83, 32);
+            btnIngresar.Size = new Size(96, 43);
             btnIngresar.TabIndex = 1;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = false;
@@ -67,75 +76,84 @@
             // lblTituloInscripcion
             // 
             lblTituloInscripcion.AutoSize = true;
-            lblTituloInscripcion.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblTituloInscripcion.Location = new Point(125, 23);
+            lblTituloInscripcion.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblTituloInscripcion.Location = new Point(254, 12);
             lblTituloInscripcion.Name = "lblTituloInscripcion";
-            lblTituloInscripcion.Size = new Size(224, 30);
+            lblTituloInscripcion.Size = new Size(262, 32);
             lblTituloInscripcion.TabIndex = 2;
             lblTituloInscripcion.Text = "Registrar nuevo socio";
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(33, 101);
+            txtNombre.Font = new Font("Segoe UI", 12F);
+            txtNombre.Location = new Point(119, 105);
             txtNombre.Name = "txtNombre";
-            txtNombre.PlaceholderText = "Nombre";
-            txtNombre.Size = new Size(100, 23);
+            txtNombre.PlaceholderText = "Ingrese su nombre";
+            txtNombre.Size = new Size(168, 29);
             txtNombre.TabIndex = 3;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(192, 101);
+            txtApellido.Font = new Font("Segoe UI", 12F);
+            txtApellido.Location = new Point(328, 105);
             txtApellido.Name = "txtApellido";
-            txtApellido.PlaceholderText = "Apellido";
-            txtApellido.Size = new Size(100, 23);
+            txtApellido.PlaceholderText = "Ingrese su apellido";
+            txtApellido.Size = new Size(168, 29);
             txtApellido.TabIndex = 4;
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(350, 101);
+            txtDni.Font = new Font("Segoe UI", 12F);
+            txtDni.Location = new Point(522, 105);
             txtDni.Name = "txtDni";
-            txtDni.PlaceholderText = "DNI";
-            txtDni.Size = new Size(100, 23);
+            txtDni.PlaceholderText = "Ingrese su DNI";
+            txtDni.Size = new Size(168, 29);
             txtDni.TabIndex = 5;
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(33, 160);
+            txtTelefono.Font = new Font("Segoe UI", 12F);
+            txtTelefono.Location = new Point(119, 176);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.PlaceholderText = "Teléfono";
-            txtTelefono.Size = new Size(100, 23);
+            txtTelefono.PlaceholderText = "Ingrese su teléfono";
+            txtTelefono.Size = new Size(168, 29);
             txtTelefono.TabIndex = 6;
             // 
             // txtMail
             // 
-            txtMail.Location = new Point(192, 160);
+            txtMail.Font = new Font("Segoe UI", 12F);
+            txtMail.Location = new Point(328, 176);
             txtMail.Name = "txtMail";
-            txtMail.PlaceholderText = "Mail";
-            txtMail.Size = new Size(100, 23);
+            txtMail.PlaceholderText = "Ingrese su mail";
+            txtMail.Size = new Size(168, 29);
             txtMail.TabIndex = 7;
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(33, 221);
+            txtDireccion.Font = new Font("Segoe UI", 12F);
+            txtDireccion.Location = new Point(119, 248);
             txtDireccion.Name = "txtDireccion";
-            txtDireccion.PlaceholderText = "Dirección";
-            txtDireccion.Size = new Size(259, 23);
+            txtDireccion.PlaceholderText = "Ingrese su dirección";
+            txtDireccion.Size = new Size(377, 29);
             txtDireccion.TabIndex = 8;
             // 
             // dtpFechaNac
             // 
+            dtpFechaNac.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dtpFechaNac.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpFechaNac.Format = DateTimePickerFormat.Short;
-            dtpFechaNac.Location = new Point(33, 291);
+            dtpFechaNac.Location = new Point(119, 335);
             dtpFechaNac.Name = "dtpFechaNac";
-            dtpFechaNac.Size = new Size(117, 23);
-            dtpFechaNac.TabIndex = 9;
+            dtpFechaNac.Size = new Size(172, 29);
+            dtpFechaNac.TabIndex = 10;
             // 
             // chkFichaMedica
             // 
             chkFichaMedica.AutoSize = true;
-            chkFichaMedica.Location = new Point(196, 282);
+            chkFichaMedica.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkFichaMedica.Location = new Point(315, 333);
             chkFichaMedica.Name = "chkFichaMedica";
-            chkFichaMedica.Size = new Size(96, 19);
+            chkFichaMedica.Size = new Size(119, 25);
             chkFichaMedica.TabIndex = 10;
             chkFichaMedica.Text = "Ficha Médica";
             chkFichaMedica.UseVisualStyleBackColor = true;
@@ -143,9 +161,10 @@
             // lblFechaNac
             // 
             lblFechaNac.AutoSize = true;
-            lblFechaNac.Location = new Point(33, 273);
+            lblFechaNac.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblFechaNac.Location = new Point(115, 312);
             lblFechaNac.Name = "lblFechaNac";
-            lblFechaNac.Size = new Size(117, 15);
+            lblFechaNac.Size = new Size(152, 21);
             lblFechaNac.TabIndex = 11;
             lblFechaNac.Text = "Fecha de nacimiento";
             lblFechaNac.TextAlign = ContentAlignment.TopCenter;
@@ -153,19 +172,87 @@
             // btnLimpiar
             // 
             btnLimpiar.BackColor = Color.FromArgb(255, 128, 128);
-            btnLimpiar.Location = new Point(688, 330);
+            btnLimpiar.Cursor = Cursors.Hand;
+            btnLimpiar.Font = new Font("Segoe UI", 12F);
+            btnLimpiar.Location = new Point(564, 408);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(83, 32);
+            btnLimpiar.Size = new Size(96, 43);
             btnLimpiar.TabIndex = 12;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
             // 
+            // lblNombre
+            // 
+            lblNombre.AutoSize = true;
+            lblNombre.Font = new Font("Segoe UI", 12F);
+            lblNombre.Location = new Point(119, 82);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(68, 21);
+            lblNombre.TabIndex = 13;
+            lblNombre.Text = "Nombre";
+            // 
+            // lblApellido
+            // 
+            lblApellido.AutoSize = true;
+            lblApellido.Font = new Font("Segoe UI", 12F);
+            lblApellido.Location = new Point(328, 82);
+            lblApellido.Name = "lblApellido";
+            lblApellido.Size = new Size(67, 21);
+            lblApellido.TabIndex = 14;
+            lblApellido.Text = "Apellido";
+            // 
+            // lblDni
+            // 
+            lblDni.AutoSize = true;
+            lblDni.Font = new Font("Segoe UI", 12F);
+            lblDni.Location = new Point(522, 82);
+            lblDni.Name = "lblDni";
+            lblDni.Size = new Size(37, 21);
+            lblDni.TabIndex = 15;
+            lblDni.Text = "DNI";
+            // 
+            // lblTelefono
+            // 
+            lblTelefono.AutoSize = true;
+            lblTelefono.Font = new Font("Segoe UI", 12F);
+            lblTelefono.Location = new Point(119, 153);
+            lblTelefono.Name = "lblTelefono";
+            lblTelefono.Size = new Size(68, 21);
+            lblTelefono.TabIndex = 16;
+            lblTelefono.Text = "Teléfono";
+            // 
+            // lblMail
+            // 
+            lblMail.AutoSize = true;
+            lblMail.Font = new Font("Segoe UI", 12F);
+            lblMail.Location = new Point(328, 153);
+            lblMail.Name = "lblMail";
+            lblMail.Size = new Size(40, 21);
+            lblMail.TabIndex = 17;
+            lblMail.Text = "Mail";
+            // 
+            // lblDireccion
+            // 
+            lblDireccion.AutoSize = true;
+            lblDireccion.Font = new Font("Segoe UI", 12F);
+            lblDireccion.Location = new Point(119, 225);
+            lblDireccion.Name = "lblDireccion";
+            lblDireccion.Size = new Size(75, 21);
+            lblDireccion.TabIndex = 18;
+            lblDireccion.Text = "Dirección";
+            // 
             // frmInscripcionSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 483);
+            Controls.Add(lblDireccion);
+            Controls.Add(lblMail);
+            Controls.Add(lblTelefono);
+            Controls.Add(lblDni);
+            Controls.Add(lblApellido);
+            Controls.Add(lblNombre);
             Controls.Add(btnLimpiar);
             Controls.Add(lblFechaNac);
             Controls.Add(chkFichaMedica);
@@ -200,5 +287,11 @@
         private CheckBox chkFichaMedica;
         private Label lblFechaNac;
         private Button btnLimpiar;
+        private Label lblNombre;
+        private Label lblApellido;
+        private Label lblDni;
+        private Label lblTelefono;
+        private Label lblMail;
+        private Label lblDireccion;
     }
 }

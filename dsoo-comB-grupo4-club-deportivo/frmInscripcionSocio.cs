@@ -49,12 +49,14 @@ namespace dsoo_comB_grupo4_club_deportivo
                 // instanciamos esta variable que tiene el metodo de nuevo_Socio
                 Datos.Socio socios = new Datos.Socio();
                 respuesta = socios.Nuevo_Socio(socio);
-                
-                System.Diagnostics.Debug.WriteLine("AHORA FUNCIONA2");
-                
 
-                
+                System.Diagnostics.Debug.WriteLine("RESPUESTA ↓");
+                System.Diagnostics.Debug.WriteLine(respuesta);
+
+                System.Diagnostics.Debug.WriteLine("ES NUMERO ↓");
                 bool esNumero = int.TryParse(respuesta, out int codigo);
+                System.Diagnostics.Debug.WriteLine(esNumero);
+
                 if (esNumero)
                 {
                     if(codigo == 1)
@@ -65,6 +67,10 @@ namespace dsoo_comB_grupo4_club_deportivo
                     {
                         MessageBox.Show("Socio nro." + respuesta + "registrado con exito.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("");
                 }
             }
         }
