@@ -46,20 +46,21 @@
             // 
             // btnRegistrarSocio
             // 
+            btnRegistrarSocio.BackColor = Color.FromArgb(255, 224, 192);
             btnRegistrarSocio.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnRegistrarSocio.Location = new Point(129, 118);
+            btnRegistrarSocio.Location = new Point(246, 118);
             btnRegistrarSocio.Name = "btnRegistrarSocio";
             btnRegistrarSocio.Size = new Size(150, 100);
             btnRegistrarSocio.TabIndex = 0;
             btnRegistrarSocio.Text = "Registrar Socio";
-            btnRegistrarSocio.UseVisualStyleBackColor = true;
+            btnRegistrarSocio.UseVisualStyleBackColor = false;
             btnRegistrarSocio.Click += btnRegistrarSocio_Click;
             // 
             // btnCobrarCuota
             // 
             btnCobrarCuota.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnCobrarCuota.ForeColor = SystemColors.AppWorkspace;
-            btnCobrarCuota.Location = new Point(129, 268);
+            btnCobrarCuota.Location = new Point(129, 278);
             btnCobrarCuota.Name = "btnCobrarCuota";
             btnCobrarCuota.Size = new Size(150, 100);
             btnCobrarCuota.TabIndex = 1;
@@ -102,7 +103,8 @@
             // btnRegistrarNoSocio
             // 
             btnRegistrarNoSocio.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnRegistrarNoSocio.Location = new Point(349, 118);
+            btnRegistrarNoSocio.ForeColor = SystemColors.AppWorkspace;
+            btnRegistrarNoSocio.Location = new Point(467, 118);
             btnRegistrarNoSocio.Name = "btnRegistrarNoSocio";
             btnRegistrarNoSocio.Size = new Size(150, 100);
             btnRegistrarNoSocio.TabIndex = 5;
@@ -113,7 +115,7 @@
             // 
             btnEmitirCarnet.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnEmitirCarnet.ForeColor = SystemColors.AppWorkspace;
-            btnEmitirCarnet.Location = new Point(583, 206);
+            btnEmitirCarnet.Location = new Point(574, 278);
             btnEmitirCarnet.Name = "btnEmitirCarnet";
             btnEmitirCarnet.Size = new Size(150, 100);
             btnEmitirCarnet.TabIndex = 6;
@@ -124,7 +126,7 @@
             // 
             btnListadoSocios.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnListadoSocios.ForeColor = SystemColors.AppWorkspace;
-            btnListadoSocios.Location = new Point(583, 334);
+            btnListadoSocios.Location = new Point(574, 425);
             btnListadoSocios.Name = "btnListadoSocios";
             btnListadoSocios.Size = new Size(150, 100);
             btnListadoSocios.TabIndex = 7;
@@ -133,12 +135,14 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(755, 15);
+            btnSalir.BackColor = Color.FromArgb(255, 192, 192);
+            btnSalir.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalir.Location = new Point(734, 15);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(87, 45);
+            btnSalir.Size = new Size(108, 50);
             btnSalir.TabIndex = 10;
             btnSalir.Text = "Cerrar sesión";
-            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
             // timer1
