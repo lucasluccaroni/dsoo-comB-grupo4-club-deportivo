@@ -20,7 +20,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             try
             {
                 sqlCon = Conexion.getInstancia().CrearConexion();
-                // ↓ elemento que almacena el nombre del  procedimiento almacenado y la referencia a la conexion
+                // ↓ elemento que almacena el nombre del  procedimiento almacenado y la referencia a la conexion.
                 MySqlCommand comando = new MySqlCommand("IngresoLogin", sqlCon);
                 comando.CommandType = CommandType.StoredProcedure;
 
