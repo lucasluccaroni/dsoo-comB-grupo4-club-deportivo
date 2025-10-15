@@ -57,6 +57,20 @@ FechaInscripcion DATETIME,
 CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
 );
 
+-- Creacion de tabla NoSocios
+CREATE TABLE NoSocio(
+IdNoSocio INT,
+Nombre VARCHAR(30),
+Apellido VARCHAR(30),
+Email VARCHAR (30),
+Dni VARCHAR(20),
+Direccion VARCHAR(30),
+FechaNac DATETIME,
+Telefono INT,
+FichaMedica TINYINT,
+FechaInscripcion DATETIME,
+CONSTRAINT pk_nosocio PRIMARY KEY (IdNoSocio)
+);
 
 -- StoredProcedure para hacer el Login
 DELIMITER //
@@ -72,8 +86,6 @@ DELIMITER //
 CALL IngresoLogin("lucas.luccaroni", "lucas123");
 CALL IngresoLogin("ivan.faigenbom", "ivan123");
 SELECT * FROM Usuario;
-
-
 
 
 
@@ -114,5 +126,41 @@ BEGIN
 	END IF;
 END//
 DELIMITER //
-
 -- SELECT * FROM Socio;
+
+
+DELIMITER //
+CREATE PROCEDURE NuevoNoSocio(
+	IN nombre VARCHAR(30),
+    IN apellido VARCHAR(30),
+    IN email VARCHAR(30),
+    IN dniNoSoc VARCHAR(20),
+    IN direccion VARCHAR(30),
+    IN fechaNac DATETIME,
+    IN telefono INT,
+    IN fichaMedica TINYINT,   
+    OUT respuesta INT)
+BEGIN
+	DECLARE filas INT DEFAULT 0;
+	DECLARE existe INT DEFAULT 0;
+        
+	SET filas = (SELECT COUNT(*) FROM NoSocio);
+    
+    IF filas = 0 THEN
+		SET filas = 500; -- Numero del primer NO Socio
+	ELSE
+    		-- buscamos el ultimo numero de NO Socio almacenado para sumarle una unidad y considerarla como primary key de la tabla (idNoSocio)
+		SET filas = (SELECT max(IdNoSocio) + 1 FROM NoSocio);
+        
+        -- para saber si ya esta almacenado el No Socio
+        SET existe = (SELECT COUNT(*) FROM NoSocio WHERE Dni = dniNoSoc);
+	END IF;
+    
+    IF existe = 0 THEN
+		INSERT INTO NoSocio VALUES (filas, nombre, apellido, email, dniNoSoc, direccion, fechaNac, telefono, fichaMedica);
+        SET respuesta = filas;
+	ELSE
+		SET respuesta = existe;
+	END IF;
+END//
+DELIMITER //
