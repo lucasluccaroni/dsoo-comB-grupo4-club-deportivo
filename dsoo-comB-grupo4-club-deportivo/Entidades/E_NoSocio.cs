@@ -31,7 +31,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades
                 FichaMedica
                 )
         {
-            idNoSocio = IdNoSocio;
+            IdNoSocio = idNoSocio;
         }
     }
 }

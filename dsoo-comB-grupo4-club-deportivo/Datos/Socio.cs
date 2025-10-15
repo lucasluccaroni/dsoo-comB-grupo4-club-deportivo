@@ -7,7 +7,6 @@ using dsoo_comB_grupo4_club_deportivo.Entidades;
 using MySql.Data.MySqlClient;
 using System.Data;
 
-
 namespace dsoo_comB_grupo4_club_deportivo.Datos
 {
     internal class Socio
@@ -43,7 +42,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 sqlCon.Open();
                 comando.ExecuteNonQuery();
                 salida = Convert.ToString(ParCodigo.Value);
-                System.Diagnostics.Debug.WriteLine("PAR CODIGO QUE ES => " + salida);
+                //System.Diagnostics.Debug.WriteLine("PAR CODIGO QUE ES => " + salida);
 
             }
             catch (Exception ex)

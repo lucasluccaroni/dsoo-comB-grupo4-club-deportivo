@@ -47,6 +47,15 @@ namespace dsoo_comB_grupo4_club_deportivo
             this.Hide();
         }
 
+        private void btnRegistrarNoSocio_Click(object sender, EventArgs e)
+        {
+            frmInscripcionNoSocio inscripcionNoSocio = new frmInscripcionNoSocio();
+            inscripcionNoSocio.rol = rol;
+            inscripcionNoSocio.usuario = usuario;
+            inscripcionNoSocio.Show();
+            this.Hide();
+        }
+
         // boton para "cerrar sesion" o salir del sistema
         private void btnSalir_Click(object sender, EventArgs e)
         {

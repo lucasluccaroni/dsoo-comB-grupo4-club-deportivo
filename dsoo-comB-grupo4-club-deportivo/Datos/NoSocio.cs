@@ -14,11 +14,13 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
         public string Nuevo_No_Socio(E_NoSocio noSocio)
         {
             string? salida;
+
             MySqlConnection sqlCon = new MySqlConnection();
             try
             {
                 sqlCon = Conexion.getInstancia().CrearConexion();
                 MySqlCommand comando = new MySqlCommand("NuevoNoSocio", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
 
                 // agregamos parametros
                 comando.Parameters.Add("nombre", MySqlDbType.VarChar).Value = noSocio.Nombre;
@@ -34,13 +36,25 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 ParCodigo.ParameterName = "respuesta";
                 ParCodigo.MySqlDbType = MySqlDbType.Int32;
                 ParCodigo.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(ParCodigo);
                 sqlCon.Open();
+                comando.ExecuteNonQuery();
+                salida = Convert.ToString(ParCodigo.Value);
+                //System.Diagnostics.Debug.WriteLine("PAR CODIGO QUE ES => " + salida);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
+                salida = ex.Message;  
             }
-
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+            return salida;
+        }
     }
 }

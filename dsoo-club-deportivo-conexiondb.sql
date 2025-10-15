@@ -68,7 +68,6 @@ Direccion VARCHAR(30),
 FechaNac DATETIME,
 Telefono INT,
 FichaMedica TINYINT,
-FechaInscripcion DATETIME,
 CONSTRAINT pk_nosocio PRIMARY KEY (IdNoSocio)
 );
 
@@ -164,3 +163,5 @@ BEGIN
 	END IF;
 END//
 DELIMITER //
+
+-- SELECT * FROM NoSocio;

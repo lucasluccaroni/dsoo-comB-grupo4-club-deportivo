@@ -102,14 +102,16 @@
             // 
             // btnRegistrarNoSocio
             // 
+            btnRegistrarNoSocio.BackColor = Color.FromArgb(255, 224, 192);
             btnRegistrarNoSocio.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnRegistrarNoSocio.ForeColor = SystemColors.AppWorkspace;
+            btnRegistrarNoSocio.ForeColor = SystemColors.ControlText;
             btnRegistrarNoSocio.Location = new Point(467, 118);
             btnRegistrarNoSocio.Name = "btnRegistrarNoSocio";
             btnRegistrarNoSocio.Size = new Size(150, 100);
             btnRegistrarNoSocio.TabIndex = 5;
             btnRegistrarNoSocio.Text = "Registrar \r\nNo Socio";
-            btnRegistrarNoSocio.UseVisualStyleBackColor = true;
+            btnRegistrarNoSocio.UseVisualStyleBackColor = false;
+            btnRegistrarNoSocio.Click += btnRegistrarNoSocio_Click;
             // 
             // btnEmitirCarnet
             // 
