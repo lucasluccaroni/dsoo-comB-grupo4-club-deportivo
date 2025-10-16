@@ -42,6 +42,7 @@ INSERT INTO Usuario (CodUsu, NombreUsu, PassUsu, RolUsu) VALUES
 (004, "matias.jara", "matias123", 999),
 (005, "lucas.luccaroni", "lucas123", 999);
 
+-- DROP TABLE Socio;
 -- Creacion de tabla Socios
 CREATE TABLE Socio(
 IdSocio INT,
@@ -50,13 +51,14 @@ Apellido VARCHAR(30),
 Email VARCHAR(30),
 Dni VARCHAR(20),
 Direccion VARCHAR(30),
-FechaNac DATETIME,
+FechaNac DATE,
 Telefono INT,
 FichaMedica TINYINT,
-FechaInscripcion DATETIME,
+FechaInscripcion DATE,
 CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
 );
 
+-- DROP TABLE NoSocio;
 -- Creacion de tabla NoSocios
 CREATE TABLE NoSocio(
 IdNoSocio INT,
@@ -65,7 +67,7 @@ Apellido VARCHAR(30),
 Email VARCHAR (30),
 Dni VARCHAR(20),
 Direccion VARCHAR(30),
-FechaNac DATETIME,
+FechaNac DATE,
 Telefono INT,
 FichaMedica TINYINT,
 CONSTRAINT pk_nosocio PRIMARY KEY (IdNoSocio)
@@ -96,10 +98,10 @@ CREATE PROCEDURE NuevoSocio(
     IN email VARCHAR(30),
     IN dniSoc VARCHAR(20),
     IN direccion VARCHAR(30),
-    IN fechaNac DATETIME,
+    IN fechaNac DATE,
     IN telefono INT,
     IN fichaMedica TINYINT,
-    IN fechaInscripcion DATETIME,
+    IN fechaInscripcion DATE,
     OUT respuesta INT)
 BEGIN
 	DECLARE filas INT DEFAULT 0;
@@ -135,7 +137,7 @@ CREATE PROCEDURE NuevoNoSocio(
     IN email VARCHAR(30),
     IN dniNoSoc VARCHAR(20),
     IN direccion VARCHAR(30),
-    IN fechaNac DATETIME,
+    IN fechaNac DATE,
     IN telefono INT,
     IN fichaMedica TINYINT,   
     OUT respuesta INT)

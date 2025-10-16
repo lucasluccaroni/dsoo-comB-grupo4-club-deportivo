@@ -28,7 +28,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 comando.Parameters.Add("email", MySqlDbType.VarChar).Value = noSocio.Email;
                 comando.Parameters.Add("dniNoSoc", MySqlDbType.VarChar).Value = noSocio.Dni;
                 comando.Parameters.Add("direccion", MySqlDbType.VarChar).Value = noSocio.Direccion;
-                comando.Parameters.Add("fechaNac", MySqlDbType.DateTime).Value = noSocio.FechaNac;
+                comando.Parameters.Add("fechaNac", MySqlDbType.Date).Value = noSocio.FechaNac;
                 comando.Parameters.Add("telefono", MySqlDbType.Int32).Value = noSocio.Telefono;
                 comando.Parameters.Add("fichaMedica", MySqlDbType.Byte).Value = noSocio.FichaMedica ? (byte)1 : (byte)0;
 
