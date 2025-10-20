@@ -245,6 +245,7 @@
             btnListarNoSocios.TabIndex = 15;
             btnListarNoSocios.Text = "Listar No Socios";
             btnListarNoSocios.UseVisualStyleBackColor = false;
+            btnListarNoSocios.Click += btnListarNoSocios_Click;
             // 
             // panel1
             // 

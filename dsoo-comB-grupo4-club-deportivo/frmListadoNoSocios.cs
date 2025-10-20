@@ -10,23 +10,24 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using dsoo_comB_grupo4_club_deportivo.Datos;
 
-
 namespace dsoo_comB_grupo4_club_deportivo
 {
-    public partial class frmListadoSocios : Form
+    public partial class frmListadoNoSocios : Form
     {
         internal string? rol, usuario;
-        public frmListadoSocios()
+
+        public frmListadoNoSocios()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         // Metodo para que cuand se cargue el formulario automaticamente se implemente el metodo "CargarGrilla"
-        private void frmListadoSocios_Load(object sender, EventArgs e)
+        private void frmListadoNoSocios_Load(object sender, EventArgs e)
         {
             CargarGrilla();
         }
+
         // Metodo para buscar la consulta SQL en la base de datos y traer los datos para cargarlos en la grilla
         public void CargarGrilla()
         {
@@ -35,7 +36,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             {
                 string query;
                 sqlCon = Conexion.getInstancia().CrearConexion();
-                query = "SELECT * FROM Socio;";
+                query = "SELECT * FROM NoSocio;";
                 MySqlCommand comando = new MySqlCommand(query, sqlCon);
                 comando.CommandType = CommandType.Text;
                 sqlCon.Open();
@@ -46,28 +47,26 @@ namespace dsoo_comB_grupo4_club_deportivo
                 {
                     while (reader.Read())
                     {
-                        int renglon = dtgvSocios.Rows.Add();
-                        dtgvSocios.Rows[renglon].Cells[0].Value = reader.GetInt32(0); // idSocio
-                        dtgvSocios.Rows[renglon].Cells[1].Value = reader.GetString(1); // nombre
-                        dtgvSocios.Rows[renglon].Cells[2].Value = reader.GetString(2); // apellido
-                        dtgvSocios.Rows[renglon].Cells[3].Value = reader.GetString(3); // email
-                        dtgvSocios.Rows[renglon].Cells[4].Value = reader.GetString(4); // dni
-                        dtgvSocios.Rows[renglon].Cells[5].Value = reader.GetString(5); // direccion
-                        dtgvSocios.Rows[renglon].Cells[6].Value = reader.GetDateTime(6); // fechaNac
-                        dtgvSocios.Rows[renglon].Cells[7].Value = reader.GetInt32(7); // telefono
-                        dtgvSocios.Rows[renglon].Cells[8].Value = reader.GetBoolean(8); // fichaMed
-                        dtgvSocios.Rows[renglon].Cells[9].Value = reader.GetDateTime(9); // fechaInscrip
+                        int renglon = dtgvNoSocios.Rows.Add();
+                        dtgvNoSocios.Rows[renglon].Cells[0].Value = reader.GetInt32(0); // idSocio
+                        dtgvNoSocios.Rows[renglon].Cells[1].Value = reader.GetString(1); // nombre
+                        dtgvNoSocios.Rows[renglon].Cells[2].Value = reader.GetString(2); // apellido
+                        dtgvNoSocios.Rows[renglon].Cells[3].Value = reader.GetString(3); // email
+                        dtgvNoSocios.Rows[renglon].Cells[4].Value = reader.GetString(4); // dni
+                        dtgvNoSocios.Rows[renglon].Cells[5].Value = reader.GetString(5); // direccion
+                        dtgvNoSocios.Rows[renglon].Cells[6].Value = reader.GetDateTime(6); // fechaNac
+                        dtgvNoSocios.Rows[renglon].Cells[7].Value = reader.GetInt32(7); // telefono
+                        dtgvNoSocios.Rows[renglon].Cells[8].Value = reader.GetBoolean(8); // fichaMed
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No hay información para mostrar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("No hay información para mostrar", "Aviso del sistema.", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
-                
             }
             catch(Exception ex)
             {
-                //System.Diagnostics.Debug.WriteLine("frmListadoSocio.CS -> Catch");
+                //System.Diagnostics.Debug.WriteLine("frmListadoNoSocio.CS -> Catch");
                 MessageBox.Show(ex.Message);
                 System.Diagnostics.Debug.WriteLine(ex.Source);
             }
@@ -79,8 +78,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                 }
             }
         }
-
-        // Boton para volver al  formulario principal
+        // Boton para volver al formulario principal
         private void btnVolver_Click(object sender, EventArgs e)
         {
             frmPrincipal principal = new frmPrincipal();
