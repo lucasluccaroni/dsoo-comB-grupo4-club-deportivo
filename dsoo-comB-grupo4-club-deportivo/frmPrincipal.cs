@@ -56,7 +56,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             this.Hide();
         }
 
-        private void btnListarSocios_Click(object sender ,EventArgs e)
+        private void btnListarSocios_Click(object sender, EventArgs e)
         {
             frmListadoSocios listadoSocios = new frmListadoSocios();
             listadoSocios.usuario = usuario;

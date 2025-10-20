@@ -61,7 +61,7 @@
             dtgvSocios.AllowUserToDeleteRows = false;
             dtgvSocios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvSocios.Columns.AddRange(new DataGridViewColumn[] { idSocio, NombreSocio, ApellidoSocio, EmailSocio, DniSocio, DireccionSocio, FechaNacSocio, TelefonoSocio, FichaMedSocio, FechaInscripcionSocio });
-            dtgvSocios.Location = new Point(71, 147);
+            dtgvSocios.Location = new Point(29, 142);
             dtgvSocios.Name = "dtgvSocios";
             dtgvSocios.ReadOnly = true;
             dtgvSocios.Size = new Size(1089, 333);
@@ -133,7 +133,7 @@
             // 
             lblListadoSocios.AutoSize = true;
             lblListadoSocios.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblListadoSocios.Location = new Point(459, 44);
+            lblListadoSocios.Location = new Point(410, 53);
             lblListadoSocios.Name = "lblListadoSocios";
             lblListadoSocios.Size = new Size(299, 47);
             lblListadoSocios.TabIndex = 3;
@@ -143,7 +143,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1240, 610);
+            ClientSize = new Size(1192, 570);
             Controls.Add(lblListadoSocios);
             Controls.Add(dtgvSocios);
             Controls.Add(btnVolver);
