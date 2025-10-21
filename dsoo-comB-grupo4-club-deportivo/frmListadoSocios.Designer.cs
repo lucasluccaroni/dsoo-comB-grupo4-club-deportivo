@@ -41,6 +41,8 @@
             FichaMedSocio = new DataGridViewTextBoxColumn();
             FechaInscripcionSocio = new DataGridViewTextBoxColumn();
             lblListadoSocios = new Label();
+            btnVerDetalleSocio = new Button();
+            btnEliminarSocio = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgvSocios).BeginInit();
             SuspendLayout();
             // 
@@ -66,6 +68,7 @@
             dtgvSocios.ReadOnly = true;
             dtgvSocios.Size = new Size(1089, 333);
             dtgvSocios.TabIndex = 2;
+            dtgvSocios.CellClick += dtgvSocios_CellClick;
             // 
             // idSocio
             // 
@@ -139,16 +142,42 @@
             lblListadoSocios.TabIndex = 3;
             lblListadoSocios.Text = "Listado de socios";
             // 
+            // btnVerDetalleSocio
+            // 
+            btnVerDetalleSocio.BackColor = Color.LightSkyBlue;
+            btnVerDetalleSocio.Font = new Font("Segoe UI", 11.25F);
+            btnVerDetalleSocio.Location = new Point(826, 504);
+            btnVerDetalleSocio.Name = "btnVerDetalleSocio";
+            btnVerDetalleSocio.Size = new Size(100, 33);
+            btnVerDetalleSocio.TabIndex = 4;
+            btnVerDetalleSocio.Text = "Ver Detalle";
+            btnVerDetalleSocio.UseVisualStyleBackColor = false;
+            // 
+            // btnEliminarSocio
+            // 
+            btnEliminarSocio.BackColor = Color.FromArgb(255, 128, 128);
+            btnEliminarSocio.BackgroundImageLayout = ImageLayout.Zoom;
+            btnEliminarSocio.Font = new Font("Segoe UI", 11.25F);
+            btnEliminarSocio.Location = new Point(1018, 504);
+            btnEliminarSocio.Name = "btnEliminarSocio";
+            btnEliminarSocio.Size = new Size(100, 33);
+            btnEliminarSocio.TabIndex = 5;
+            btnEliminarSocio.Text = "Eliminar";
+            btnEliminarSocio.UseVisualStyleBackColor = false;
+            btnEliminarSocio.Click += btnEliminarSocio_Click;
+            // 
             // frmListadoSocios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1192, 570);
+            Controls.Add(btnEliminarSocio);
+            Controls.Add(btnVerDetalleSocio);
             Controls.Add(lblListadoSocios);
             Controls.Add(dtgvSocios);
             Controls.Add(btnVolver);
             Name = "frmListadoSocios";
-            Text = "frmListadoSocios";
+            Text = "Listado -> Socios";
             Load += frmListadoSocios_Load;
             ((System.ComponentModel.ISupportInitialize)dtgvSocios).EndInit();
             ResumeLayout(false);
@@ -170,5 +199,7 @@
         private DataGridViewTextBoxColumn FichaMedSocio;
         private DataGridViewTextBoxColumn FechaInscripcionSocio;
         private Label lblListadoSocios;
+        private Button btnVerDetalleSocio;
+        private Button btnEliminarSocio;
     }
 }

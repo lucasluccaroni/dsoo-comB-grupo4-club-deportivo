@@ -40,6 +40,8 @@
             FechaNacNoSocio = new DataGridViewTextBoxColumn();
             TelefonoNoSocio = new DataGridViewTextBoxColumn();
             FichaMedNoSocio = new DataGridViewTextBoxColumn();
+            btnEliminarNoSocio = new Button();
+            btnVerDetalleNoSocio = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgvNoSocios).BeginInit();
             SuspendLayout();
             // 
@@ -75,6 +77,7 @@
             dtgvNoSocios.ReadOnly = true;
             dtgvNoSocios.Size = new Size(945, 333);
             dtgvNoSocios.TabIndex = 5;
+            dtgvNoSocios.CellClick += dtgvNoSocios_CellClick;
             // 
             // IdNoSocio
             // 
@@ -130,16 +133,42 @@
             FichaMedNoSocio.Name = "FichaMedNoSocio";
             FichaMedNoSocio.ReadOnly = true;
             // 
+            // btnEliminarNoSocio
+            // 
+            btnEliminarNoSocio.BackColor = Color.FromArgb(255, 128, 128);
+            btnEliminarNoSocio.BackgroundImageLayout = ImageLayout.Zoom;
+            btnEliminarNoSocio.Font = new Font("Segoe UI", 11.25F);
+            btnEliminarNoSocio.Location = new Point(1030, 509);
+            btnEliminarNoSocio.Name = "btnEliminarNoSocio";
+            btnEliminarNoSocio.Size = new Size(100, 33);
+            btnEliminarNoSocio.TabIndex = 7;
+            btnEliminarNoSocio.Text = "Eliminar";
+            btnEliminarNoSocio.UseVisualStyleBackColor = false;
+            btnEliminarNoSocio.Click += btnEliminarNoSocio_Click;
+            // 
+            // btnVerDetalleNoSocio
+            // 
+            btnVerDetalleNoSocio.BackColor = Color.LightSkyBlue;
+            btnVerDetalleNoSocio.Font = new Font("Segoe UI", 11.25F);
+            btnVerDetalleNoSocio.Location = new Point(838, 509);
+            btnVerDetalleNoSocio.Name = "btnVerDetalleNoSocio";
+            btnVerDetalleNoSocio.Size = new Size(100, 33);
+            btnVerDetalleNoSocio.TabIndex = 6;
+            btnVerDetalleNoSocio.Text = "Ver Detalle";
+            btnVerDetalleNoSocio.UseVisualStyleBackColor = false;
+            // 
             // frmListadoNoSocios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1192, 570);
+            Controls.Add(btnEliminarNoSocio);
+            Controls.Add(btnVerDetalleNoSocio);
             Controls.Add(dtgvNoSocios);
             Controls.Add(lblListadoNoSocios);
             Controls.Add(btnVolver);
             Name = "frmListadoNoSocios";
-            Text = "frmListadoNoSocios";
+            Text = "Listado -> No Socios";
             Load += frmListadoNoSocios_Load;
             ((System.ComponentModel.ISupportInitialize)dtgvNoSocios).EndInit();
             ResumeLayout(false);
@@ -160,5 +189,7 @@
         private DataGridViewTextBoxColumn FechaNacNoSocio;
         private DataGridViewTextBoxColumn TelefonoNoSocio;
         private DataGridViewTextBoxColumn FichaMedNoSocio;
+        private Button btnEliminarNoSocio;
+        private Button btnVerDetalleNoSocio;
     }
 }

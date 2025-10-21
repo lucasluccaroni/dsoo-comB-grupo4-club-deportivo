@@ -27,6 +27,7 @@ namespace dsoo_comB_grupo4_club_deportivo
         {
             CargarGrilla();
         }
+
         // Metodo para buscar la consulta SQL en la base de datos y traer los datos para cargarlos en la grilla
         public void CargarGrilla()
         {
@@ -63,13 +64,89 @@ namespace dsoo_comB_grupo4_club_deportivo
                 {
                     MessageBox.Show("No hay información para mostrar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
-                
             }
             catch(Exception ex)
             {
-                //System.Diagnostics.Debug.WriteLine("frmListadoSocio.CS -> Catch");
                 MessageBox.Show(ex.Message);
-                System.Diagnostics.Debug.WriteLine(ex.Source);
+                //System.Diagnostics.Debug.WriteLine("frmListadoSocio.CS -> Catch");
+                //System.Diagnostics.Debug.WriteLine(ex.Source);
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+        }
+
+        // Metodo para ver el detalle de algun socio en la grilla
+        private void dtgvSocios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int nro = e.RowIndex;
+            if (nro != -1)
+            {
+                int idSocio = (int)dtgvSocios.Rows[nro].Cells[0].Value;
+                string nombreSocio = (string)dtgvSocios.Rows[nro].Cells[1].Value;
+                string apellidoSocio = (string)dtgvSocios.Rows[nro].Cells[2].Value;
+                string dniSocio = (string)dtgvSocios.Rows[nro].Cells[4].Value;
+
+                MessageBox.Show(
+                    "ID: " + idSocio +
+                    "\nNombre: " + nombreSocio +
+                    "\nApellido: " + apellidoSocio +
+                    "\nDNI: " + dniSocio, $"Informacion de socio: {idSocio}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        // Boton para activar el metodo de eliminar un socio
+        private void btnEliminarSocio_Click(object sender, EventArgs e)
+        {
+            if(dtgvSocios.SelectedRows.Count > 0)
+            {
+                int idSocio = (int)dtgvSocios.Rows[0].Cells["idSocio"].Value;
+                DialogResult confirmacion = MessageBox.Show($"¿Está seguro que desea eliminar al socio {idSocio}?", "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirmacion == DialogResult.Yes)
+                {
+                    EliminarSocio(idSocio);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay ningun Socio seleccionado.", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+        }
+
+        // Metodo para eliminar un socio
+        public void EliminarSocio(int idSocio)
+        {
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                string query;
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                query = "DELETE FROM Socio WHERE idSocio = @id;";
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                comando.Parameters.AddWithValue("@id", idSocio);
+                sqlCon.Open();
+
+                int filasAfectadas = comando.ExecuteNonQuery();
+                if(filasAfectadas > 0)
+                {
+                    MessageBox.Show("Socio eliminado correctamente.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dtgvSocios.Rows.Clear();
+                    CargarGrilla();
+                }
+                else
+                {
+                    MessageBox.Show("No se econtró el socio a eliminar.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                //System.Diagnostics.Debug.WriteLine("Eliminar socio -> Catch");
+                //System.Diagnostics.Debug.WriteLine(ex.Source);
+                MessageBox.Show(ex.Message);
             }
             finally
             {
