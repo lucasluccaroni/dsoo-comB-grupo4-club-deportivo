@@ -73,6 +73,26 @@ FichaMedica TINYINT,
 CONSTRAINT pk_nosocio PRIMARY KEY (IdNoSocio)
 );
 
+-- Actividades
+CREATE TABLE Actividad(
+IdActividad INT,
+Nombre VARCHAR(30),
+CupoMaximo INT,
+Precio FLOAT,
+CONSTRAINT pk_actividad PRIMARY KEY (IdActividad)
+);
+
+-- Inserción de actividades
+INSERT INTO Actividad VALUES
+(8900, "Zumba", 20, 18000),
+(8901, "Karate", 25, 20000),
+(8902, "Pilates", 10, 19000),
+(8903, "Spinning", 15, 18500),
+(8904, "Elongación", 30, 15000),
+(8905, "HIT", 15, 17000);
+SELECT * FROM Actividad;
+
+
 -- StoredProcedure para hacer el Login
 DELIMITER //
 CREATE PROCEDURE IngresoLogin(IN Usu VARCHAR(20), IN Pass VARCHAR(15))
@@ -87,7 +107,6 @@ DELIMITER //
 CALL IngresoLogin("lucas.luccaroni", "lucas123");
 CALL IngresoLogin("ivan.faigenbom", "ivan123");
 SELECT * FROM Usuario;
-
 
 
 -- Stored procedured para cargar un nuevo socio
