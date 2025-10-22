@@ -38,6 +38,8 @@ namespace dsoo_comB_grupo4_club_deportivo
             lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
 
+
+        // boton para registrar un nuevo socio
         private void btnRegistrarSocio_Click(object sender, EventArgs e)
         {
             frmInscripcionSocio inscripcionSocio = new frmInscripcionSocio();
@@ -47,6 +49,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             this.Hide();
         }
 
+        // boton para registrar un nuevo no socio
         private void btnRegistrarNoSocio_Click(object sender, EventArgs e)
         {
             frmInscripcionNoSocio inscripcionNoSocio = new frmInscripcionNoSocio();
@@ -56,6 +59,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             this.Hide();
         }
 
+        // boton para listar socios
         private void btnListarSocios_Click(object sender, EventArgs e)
         {
             frmListadoSocios listadoSocios = new frmListadoSocios();
@@ -65,12 +69,23 @@ namespace dsoo_comB_grupo4_club_deportivo
             this.Hide();
         }
 
+        // boton para listar No Socios
         private void btnListarNoSocios_Click(object sender, EventArgs e)
         {
             frmListadoNoSocios listadoNoSocios = new frmListadoNoSocios();
             listadoNoSocios.usuario = usuario;
             listadoNoSocios.rol = rol;
             listadoNoSocios.Show();
+            this.Hide();
+        }
+
+        // boton para inscribir un noSocio a una actividad
+        private void btnInscribirActividadNoSocio_Click(object sender, EventArgs e)
+        {
+            frmActividadNoSocio actividadNoSocio = new frmActividadNoSocio();
+            actividadNoSocio.rol = rol;
+            actividadNoSocio.usuario = usuario;
+            actividadNoSocio.Show();
             this.Hide();
         }
 

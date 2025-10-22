@@ -92,6 +92,17 @@ INSERT INTO Actividad VALUES
 (8905, "HIT", 15, 17000);
 SELECT * FROM Actividad;
 
+-- Pagos de actividades (para NoSocios)
+CREATE TABLE PagoActividad(
+IdPago INT,
+IdActividad INT,
+IdNoSocio INT,
+MontoPagado FLOAT,
+FechaPago DATE,
+CONSTRAINT pk_pago_activdad PRIMARY KEY (IdPago),
+CONSTRAINT fk_pago_actividad_act FOREIGN KEY (IdActividad) REFERENCES Actividad (IdActividad),
+CONSTRAINT fk_pago_actividad_soc FOREIGN KEY (IdNoSocio) REFERENCES NoSocio (IdNoSocio)
+);
 
 -- StoredProcedure para hacer el Login
 DELIMITER //

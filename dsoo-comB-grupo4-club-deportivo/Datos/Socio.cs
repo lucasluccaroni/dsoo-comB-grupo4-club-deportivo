@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using dsoo_comB_grupo4_club_deportivo.Entidades;
 using MySql.Data.MySqlClient;
 using System.Data;
+using dsoo_comB_grupo4_club_deportivo.Entidades.Personas;
 
 namespace dsoo_comB_grupo4_club_deportivo.Datos
 {

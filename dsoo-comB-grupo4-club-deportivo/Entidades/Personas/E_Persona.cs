@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 
-namespace dsoo_comB_grupo4_club_deportivo.Entidades
+namespace dsoo_comB_grupo4_club_deportivo.Entidades.Personas
 {
     public class E_Persona
     {

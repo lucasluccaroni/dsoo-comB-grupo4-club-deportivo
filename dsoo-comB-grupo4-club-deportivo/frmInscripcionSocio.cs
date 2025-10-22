@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using dsoo_comB_grupo4_club_deportivo.Entidades;
+using dsoo_comB_grupo4_club_deportivo.Entidades.Personas;
 
 namespace dsoo_comB_grupo4_club_deportivo
 {

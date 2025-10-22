@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             btnCobrarCuota = new Button();
-            btnCobrarActividad = new Button();
+            btnInscribirActividadNoSocio = new Button();
             btnRegistrarAsistencia = new Button();
             btnPagarSueldo = new Button();
             btnListadoSocios = new Button();
@@ -52,8 +52,8 @@
             lblFacturacion = new Label();
             panel3 = new Panel();
             lblProfesores = new Label();
+            lblNoSocio = new Label();
             pnlSocios.SuspendLayout();
-            panel2.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -61,23 +61,24 @@
             // 
             btnCobrarCuota.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnCobrarCuota.ForeColor = SystemColors.AppWorkspace;
-            btnCobrarCuota.Location = new Point(25, 23);
+            btnCobrarCuota.Location = new Point(122, 193);
             btnCobrarCuota.Name = "btnCobrarCuota";
             btnCobrarCuota.Size = new Size(133, 70);
             btnCobrarCuota.TabIndex = 1;
             btnCobrarCuota.Text = "Cobrar Cuota";
             btnCobrarCuota.UseVisualStyleBackColor = true;
             // 
-            // btnCobrarActividad
+            // btnInscribirActividadNoSocio
             // 
-            btnCobrarActividad.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnCobrarActividad.ForeColor = SystemColors.AppWorkspace;
-            btnCobrarActividad.Location = new Point(239, 23);
-            btnCobrarActividad.Name = "btnCobrarActividad";
-            btnCobrarActividad.Size = new Size(133, 70);
-            btnCobrarActividad.TabIndex = 2;
-            btnCobrarActividad.Text = "Cobrar Actividad";
-            btnCobrarActividad.UseVisualStyleBackColor = true;
+            btnInscribirActividadNoSocio.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnInscribirActividadNoSocio.ForeColor = SystemColors.AppWorkspace;
+            btnInscribirActividadNoSocio.Location = new Point(594, 193);
+            btnInscribirActividadNoSocio.Name = "btnInscribirActividadNoSocio";
+            btnInscribirActividadNoSocio.Size = new Size(133, 70);
+            btnInscribirActividadNoSocio.TabIndex = 2;
+            btnInscribirActividadNoSocio.Text = "Inscribir a Actividad";
+            btnInscribirActividadNoSocio.UseVisualStyleBackColor = true;
+            btnInscribirActividadNoSocio.Click += btnInscribirActividadNoSocio_Click;
             // 
             // btnRegistrarAsistencia
             // 
@@ -105,13 +106,12 @@
             // 
             btnListadoSocios.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnListadoSocios.ForeColor = SystemColors.AppWorkspace;
-            btnListadoSocios.Location = new Point(462, 11);
+            btnListadoSocios.Location = new Point(927, 168);
             btnListadoSocios.Name = "btnListadoSocios";
             btnListadoSocios.Size = new Size(122, 95);
             btnListadoSocios.TabIndex = 7;
             btnListadoSocios.Text = "Listado de Socios a vencer";
             btnListadoSocios.UseVisualStyleBackColor = true;
-            
             // 
             // btnSalir
             // 
@@ -164,11 +164,11 @@
             // 
             lblSocio.AutoSize = true;
             lblSocio.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblSocio.Location = new Point(36, 157);
+            lblSocio.Location = new Point(210, 136);
             lblSocio.Name = "lblSocio";
-            lblSocio.Size = new Size(255, 37);
+            lblSocio.Size = new Size(99, 37);
             lblSocio.TabIndex = 6;
-            lblSocio.Text = "Socios y No Socios";
+            lblSocio.Text = "Socios";
             // 
             // btnRegistrarSocio
             // 
@@ -208,11 +208,11 @@
             // 
             // pnlDivisor
             // 
-            pnlDivisor.BackColor = Color.Gainsboro;
+            pnlDivisor.BackColor = Color.Black;
             pnlDivisor.ForeColor = SystemColors.ActiveCaptionText;
-            pnlDivisor.Location = new Point(432, 3);
+            pnlDivisor.Location = new Point(424, 0);
             pnlDivisor.Name = "pnlDivisor";
-            pnlDivisor.Size = new Size(2, 257);
+            pnlDivisor.Size = new Size(2, 323);
             pnlDivisor.TabIndex = 13;
             // 
             // btnListarSocios
@@ -241,16 +241,21 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Gainsboro;
+            panel1.BackColor = Color.Black;
             panel1.ForeColor = SystemColors.ActiveCaptionText;
             panel1.Location = new Point(888, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2, 257);
+            panel1.Size = new Size(2, 323);
             panel1.TabIndex = 16;
             // 
             // pnlSocios
             // 
             pnlSocios.BackColor = Color.FromArgb(224, 224, 224);
+            pnlSocios.Controls.Add(panel2);
+            pnlSocios.Controls.Add(btnListadoSocios);
+            pnlSocios.Controls.Add(btnInscribirActividadNoSocio);
+            pnlSocios.Controls.Add(lblFacturacion);
+            pnlSocios.Controls.Add(btnCobrarCuota);
             pnlSocios.Controls.Add(panel1);
             pnlSocios.Controls.Add(btnListarNoSocios);
             pnlSocios.Controls.Add(btnListarSocios);
@@ -258,29 +263,27 @@
             pnlSocios.Controls.Add(btnRegistrarNoSocio);
             pnlSocios.Controls.Add(btnEmitirCarnet);
             pnlSocios.Controls.Add(btnRegistrarSocio);
-            pnlSocios.Location = new Point(36, 200);
+            pnlSocios.Location = new Point(54, 188);
             pnlSocios.Name = "pnlSocios";
-            pnlSocios.Size = new Size(1076, 125);
+            pnlSocios.Size = new Size(1076, 295);
             pnlSocios.TabIndex = 12;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(224, 224, 224);
-            panel2.Controls.Add(btnCobrarCuota);
-            panel2.Controls.Add(btnCobrarActividad);
-            panel2.Controls.Add(btnListadoSocios);
-            panel2.Location = new Point(36, 390);
+            panel2.BackColor = Color.Gainsboro;
+            panel2.ForeColor = SystemColors.ActiveCaptionText;
+            panel2.Location = new Point(3, 153);
             panel2.Name = "panel2";
-            panel2.Size = new Size(672, 125);
-            panel2.TabIndex = 13;
+            panel2.Size = new Size(880, 2);
+            panel2.TabIndex = 17;
             // 
             // lblFacturacion
             // 
             lblFacturacion.AutoSize = true;
-            lblFacturacion.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblFacturacion.Location = new Point(36, 350);
+            lblFacturacion.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblFacturacion.Location = new Point(365, 153);
             lblFacturacion.Name = "lblFacturacion";
-            lblFacturacion.Size = new Size(165, 37);
+            lblFacturacion.Size = new Size(126, 30);
             lblFacturacion.TabIndex = 14;
             lblFacturacion.Text = "Facturación";
             // 
@@ -289,7 +292,7 @@
             panel3.BackColor = Color.FromArgb(224, 224, 224);
             panel3.Controls.Add(btnRegistrarAsistencia);
             panel3.Controls.Add(btnPagarSueldo);
-            panel3.Location = new Point(36, 597);
+            panel3.Location = new Point(54, 594);
             panel3.Name = "panel3";
             panel3.Size = new Size(463, 125);
             panel3.TabIndex = 15;
@@ -298,11 +301,21 @@
             // 
             lblProfesores.AutoSize = true;
             lblProfesores.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblProfesores.Location = new Point(36, 557);
+            lblProfesores.Location = new Point(54, 554);
             lblProfesores.Name = "lblProfesores";
             lblProfesores.Size = new Size(154, 37);
             lblProfesores.TabIndex = 16;
             lblProfesores.Text = "Profesores";
+            // 
+            // lblNoSocio
+            // 
+            lblNoSocio.AutoSize = true;
+            lblNoSocio.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblNoSocio.Location = new Point(648, 136);
+            lblNoSocio.Name = "lblNoSocio";
+            lblNoSocio.Size = new Size(144, 37);
+            lblNoSocio.TabIndex = 17;
+            lblNoSocio.Text = "No Socios";
             // 
             // frmPrincipal
             // 
@@ -310,10 +323,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1212, 782);
+            Controls.Add(lblNoSocio);
             Controls.Add(lblProfesores);
             Controls.Add(panel3);
-            Controls.Add(lblFacturacion);
-            Controls.Add(panel2);
             Controls.Add(pnlSocios);
             Controls.Add(lblDate);
             Controls.Add(btnSalir);
@@ -324,7 +336,7 @@
             Text = "Club deportivo - Home";
             Load += frmPrincipal_Load;
             pnlSocios.ResumeLayout(false);
-            panel2.ResumeLayout(false);
+            pnlSocios.PerformLayout();
             panel3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -332,7 +344,7 @@
 
         #endregion
         private Button btnCobrarCuota;
-        private Button btnCobrarActividad;
+        private Button btnInscribirActividadNoSocio;
         private Button btnRegistrarAsistencia;
         private Button btnPagarSueldo;
         private Button btnListadoSocios;
@@ -350,9 +362,10 @@
         private Button btnListarNoSocios;
         private Panel panel1;
         private Panel pnlSocios;
-        private Panel panel2;
         private Label lblFacturacion;
         private Panel panel3;
         private Label lblProfesores;
+        private Panel panel2;
+        private Label lblNoSocio;
     }
 }

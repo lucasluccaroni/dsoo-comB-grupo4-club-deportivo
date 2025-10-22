@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dsoo_comB_grupo4_club_deportivo.Entidades
+namespace dsoo_comB_grupo4_club_deportivo.Entidades.Personas
 {
     public class E_NoSocio : E_Persona
     {
