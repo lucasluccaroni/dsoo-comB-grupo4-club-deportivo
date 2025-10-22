@@ -104,6 +104,19 @@ CONSTRAINT fk_pago_actividad_act FOREIGN KEY (IdActividad) REFERENCES Actividad 
 CONSTRAINT fk_pago_actividad_soc FOREIGN KEY (IdNoSocio) REFERENCES NoSocio (IdNoSocio)
 );
 
+-- Tabla de inscripcion a actividades para No Socios
+CREATE TABLE InscripcionActividad(
+IdInscripcion INT AUTO_INCREMENT,
+IdNoSocio INT,
+IdActividad INT,
+IdPago INT,
+FechaInscripcion DATE,
+CONSTRAINT pk_inscripcion PRIMARY KEY (IdInscripcion),
+CONSTRAINT fk_inscripcion_nosocio FOREIGN KEY (IdNoSocio) REFERENCES NoSocio (IdNoSocio),
+CONSTRAINT fk_inscripcion_actividad FOREIGN KEY (IdActividad) REFERENCES Actividad (IdActividad),
+CONSTRAINT fk_inscripcion_pago FOREIGN KEY (IdPago) REFERENCES PagoActividad (IdPago)
+);
+
 -- StoredProcedure para hacer el Login
 DELIMITER //
 CREATE PROCEDURE IngresoLogin(IN Usu VARCHAR(20), IN Pass VARCHAR(15))
