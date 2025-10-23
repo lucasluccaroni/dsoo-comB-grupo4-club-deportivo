@@ -56,5 +56,50 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             }
             return salida;
         }
+        // Método que busca en la DB si el socio existe
+        public bool VerificarNoSocio(string id)
+        {
+            bool salida;
+            string query;
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                // creamos una conexion con la DB y le solicitamos una consulta SELECT con el id del no Socio
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                query = "SELECT * FROM NoSocio WHERE IdNoSocio = @id ;";
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                comando.Parameters.AddWithValue("@id", id);
+                sqlCon.Open();
+
+                MySqlDataReader reader;
+                reader = comando.ExecuteReader();
+                System.Diagnostics.Debug.WriteLine("READER => " + reader.HasRows);
+                
+                if (reader.HasRows)
+                {
+                    // Si es true, significa que la consulta devolvió una fila por lo que el usuario existe
+                    salida = true; 
+                }
+                else
+                {
+                    // Si es false, significa que la consulta no devolvió una fila por lo que el socio no existe
+                    salida = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                salida = false;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+                return salida;
+
+        }
     }
 }

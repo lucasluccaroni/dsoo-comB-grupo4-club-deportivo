@@ -31,17 +31,21 @@
             lblNoSocio = new Label();
             lblCodigoActividad = new Label();
             txtIdNoSocio = new TextBox();
-            txtCodigoActividad = new TextBox();
+            txtIdActividad = new TextBox();
             lblActividades = new Label();
             btnVolver = new Button();
             btnPagar = new Button();
+            lblVerificarSocio = new Label();
+            lblVerificarActividad = new Label();
+            btnVerificarNoSocio = new Button();
+            btnVerificarActividad = new Button();
             SuspendLayout();
             // 
             // lblNoSocio
             // 
             lblNoSocio.AutoSize = true;
             lblNoSocio.Font = new Font("Segoe UI", 11.25F);
-            lblNoSocio.Location = new Point(132, 85);
+            lblNoSocio.Location = new Point(103, 126);
             lblNoSocio.Name = "lblNoSocio";
             lblNoSocio.Size = new Size(162, 20);
             lblNoSocio.TabIndex = 0;
@@ -51,7 +55,7 @@
             // 
             lblCodigoActividad.AutoSize = true;
             lblCodigoActividad.Font = new Font("Segoe UI", 11.25F);
-            lblCodigoActividad.Location = new Point(378, 85);
+            lblCodigoActividad.Location = new Point(374, 126);
             lblCodigoActividad.Name = "lblCodigoActividad";
             lblCodigoActividad.Size = new Size(194, 20);
             lblCodigoActividad.TabIndex = 1;
@@ -60,18 +64,18 @@
             // txtIdNoSocio
             // 
             txtIdNoSocio.Font = new Font("Segoe UI", 11.25F);
-            txtIdNoSocio.Location = new Point(132, 120);
+            txtIdNoSocio.Location = new Point(103, 161);
             txtIdNoSocio.Name = "txtIdNoSocio";
             txtIdNoSocio.Size = new Size(162, 27);
             txtIdNoSocio.TabIndex = 2;
             // 
-            // txtCodigoActividad
+            // txtIdActividad
             // 
-            txtCodigoActividad.Font = new Font("Segoe UI", 11.25F);
-            txtCodigoActividad.Location = new Point(378, 120);
-            txtCodigoActividad.Name = "txtCodigoActividad";
-            txtCodigoActividad.Size = new Size(194, 27);
-            txtCodigoActividad.TabIndex = 3;
+            txtIdActividad.Font = new Font("Segoe UI", 11.25F);
+            txtIdActividad.Location = new Point(374, 161);
+            txtIdActividad.Name = "txtIdActividad";
+            txtIdActividad.Size = new Size(194, 27);
+            txtIdActividad.TabIndex = 3;
             // 
             // lblActividades
             // 
@@ -79,7 +83,7 @@
             lblActividades.BackColor = Color.FromArgb(255, 224, 192);
             lblActividades.BorderStyle = BorderStyle.FixedSingle;
             lblActividades.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblActividades.Location = new Point(701, 53);
+            lblActividades.Location = new Point(688, 95);
             lblActividades.Name = "lblActividades";
             lblActividades.Size = new Size(143, 142);
             lblActividades.TabIndex = 4;
@@ -88,32 +92,74 @@
             // btnVolver
             // 
             btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVolver.Location = new Point(27, 25);
+            btnVolver.Location = new Point(12, 12);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(83, 35);
             btnVolver.TabIndex = 5;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // btnPagar
             // 
             btnPagar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnPagar.Location = new Point(280, 202);
+            btnPagar.Location = new Point(280, 313);
             btnPagar.Name = "btnPagar";
             btnPagar.Size = new Size(106, 43);
             btnPagar.TabIndex = 6;
             btnPagar.Text = "Pagar";
             btnPagar.UseVisualStyleBackColor = true;
             // 
+            // lblVerificarSocio
+            // 
+            lblVerificarSocio.AutoSize = true;
+            lblVerificarSocio.Location = new Point(195, 207);
+            lblVerificarSocio.Name = "lblVerificarSocio";
+            lblVerificarSocio.Size = new Size(38, 15);
+            lblVerificarSocio.TabIndex = 7;
+            lblVerificarSocio.Text = "label1";
+            // 
+            // lblVerificarActividad
+            // 
+            lblVerificarActividad.AutoSize = true;
+            lblVerificarActividad.Location = new Point(514, 207);
+            lblVerificarActividad.Name = "lblVerificarActividad";
+            lblVerificarActividad.Size = new Size(38, 15);
+            lblVerificarActividad.TabIndex = 8;
+            lblVerificarActividad.Text = "label2";
+            // 
+            // btnVerificarNoSocio
+            // 
+            btnVerificarNoSocio.Location = new Point(103, 203);
+            btnVerificarNoSocio.Name = "btnVerificarNoSocio";
+            btnVerificarNoSocio.Size = new Size(75, 23);
+            btnVerificarNoSocio.TabIndex = 9;
+            btnVerificarNoSocio.Text = "Verificar";
+            btnVerificarNoSocio.UseVisualStyleBackColor = true;
+            btnVerificarNoSocio.Click += btnVerificarNoSocio_Click;
+            // 
+            // btnVerificarActividad
+            // 
+            btnVerificarActividad.Location = new Point(385, 203);
+            btnVerificarActividad.Name = "btnVerificarActividad";
+            btnVerificarActividad.Size = new Size(75, 23);
+            btnVerificarActividad.TabIndex = 10;
+            btnVerificarActividad.Text = "Verificar";
+            btnVerificarActividad.UseVisualStyleBackColor = true;
+            // 
             // frmActividadNoSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(901, 607);
+            Controls.Add(btnVerificarActividad);
+            Controls.Add(btnVerificarNoSocio);
+            Controls.Add(lblVerificarActividad);
+            Controls.Add(lblVerificarSocio);
             Controls.Add(btnPagar);
             Controls.Add(btnVolver);
             Controls.Add(lblActividades);
-            Controls.Add(txtCodigoActividad);
+            Controls.Add(txtIdActividad);
             Controls.Add(txtIdNoSocio);
             Controls.Add(lblCodigoActividad);
             Controls.Add(lblNoSocio);
@@ -128,9 +174,13 @@
         private Label lblNoSocio;
         private Label lblCodigoActividad;
         private TextBox txtIdNoSocio;
-        private TextBox txtCodigoActividad;
+        private TextBox txtIdActividad;
         private Label lblActividades;
         private Button btnVolver;
         private Button btnPagar;
+        private Label lblVerificarSocio;
+        private Label lblVerificarActividad;
+        private Button btnVerificarNoSocio;
+        private Button btnVerificarActividad;
     }
 }
