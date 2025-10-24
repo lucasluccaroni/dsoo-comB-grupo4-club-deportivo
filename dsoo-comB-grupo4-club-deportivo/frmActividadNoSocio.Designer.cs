@@ -117,7 +117,7 @@
             lblVerificarSocio.Name = "lblVerificarSocio";
             lblVerificarSocio.Size = new Size(38, 15);
             lblVerificarSocio.TabIndex = 7;
-            lblVerificarSocio.Text = "label1";
+            lblVerificarSocio.Text = " ";
             // 
             // lblVerificarActividad
             // 
@@ -126,7 +126,8 @@
             lblVerificarActividad.Name = "lblVerificarActividad";
             lblVerificarActividad.Size = new Size(38, 15);
             lblVerificarActividad.TabIndex = 8;
-            lblVerificarActividad.Text = "label2";
+            lblVerificarActividad.Text = " ";
+            btnVerificarActividad.Click += btnVerificarActividad_Click;
             // 
             // btnVerificarNoSocio
             // 

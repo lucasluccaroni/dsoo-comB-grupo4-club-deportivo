@@ -52,8 +52,9 @@ namespace dsoo_comB_grupo4_club_deportivo
                 // instanciamos esta variable que tiene el metodo de nuevo_Socio
                 Datos.NoSocio noSocios = new Datos.NoSocio();
                 respuesta = noSocios.Nuevo_No_Socio(noSocio);
-                System.Diagnostics.Debug.WriteLine("llego aca");
+                //System.Diagnostics.Debug.WriteLine("Dentro del try - frmInscripcionNoSocio");
                 bool esNumero = int.TryParse(respuesta, out int codigo);
+                //System.Diagnostics.Debug.WriteLine(esNumero);
 
                 if (esNumero)
                 {
