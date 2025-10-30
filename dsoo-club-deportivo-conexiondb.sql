@@ -9,10 +9,15 @@ Integrantes:
 	- Luccaroni, Lucas
 */
 
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ CREACION Y USO DE LA DB ~~~~~~~~~~~~~~~~~~~~~~~~ 
 -- DROP DATABASE IF EXISTS Dsoo_club_deportivo;
 CREATE DATABASE Dsoo_club_deportivo;
 USE Dsoo_club_deportivo;
 
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ ROLES ~~~~~~~~~~~~~~~~~~~~~~~~ 
 -- Roles de usuarios que usen el sistema
 CREATE TABLE Roles(
 RolUsu INT,
@@ -24,6 +29,8 @@ INSERT INTO ROLES VALUES
 (999, "Administrador");
 
 
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ USUARIOS ~~~~~~~~~~~~~~~~~~~~~~~~
 -- Usuarios que usan el sistema
 CREATE TABLE Usuario(
 CodUsu INT AUTO_INCREMENT,
@@ -42,6 +49,9 @@ INSERT INTO Usuario (CodUsu, NombreUsu, PassUsu, RolUsu) VALUES
 (004, "matias.jara", "matias123", 999),
 (005, "lucas.luccaroni", "lucas123", 999);
 
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ SOCIOS ~~~~~~~~~~~~~~~~~~~~~~~~
 -- DROP TABLE Socio;
 -- Creacion de tabla Socios
 CREATE TABLE Socio(
@@ -58,6 +68,11 @@ FechaInscripcion DATE,
 CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
 );
 
+SELECT * FROM Socio;
+
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ NO SOCIOS ~~~~~~~~~~~~~~~~~~~~~~~~
 -- DROP TABLE NoSocio;
 -- Creacion de tabla NoSocios
 CREATE TABLE NoSocio(
@@ -73,6 +88,11 @@ FichaMedica TINYINT,
 CONSTRAINT pk_nosocio PRIMARY KEY (IdNoSocio)
 );
 
+SELECT * FROM NoSocio;
+
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ ACTIVIDADES ~~~~~~~~~~~~~~~~~~~~~~~~
 -- Actividades
 CREATE TABLE Actividad(
 IdActividad INT,
@@ -90,20 +110,73 @@ INSERT INTO Actividad VALUES
 (8903, "Spinning", 15, 18500),
 (8904, "Elongación", 30, 15000),
 (8905, "HIT", 15, 17000);
-SELECT * FROM Actividad;
+-- SELECT * FROM Actividad;
+-- DROP TABLE Actividad;
 
--- Pagos de actividades (para NoSocios)
-CREATE TABLE PagoActividad(
-IdPago INT,
-IdActividad INT,
-IdNoSocio INT,
-MontoPagado FLOAT,
-FechaPago DATE,
-CONSTRAINT pk_pago_activdad PRIMARY KEY (IdPago),
-CONSTRAINT fk_pago_actividad_act FOREIGN KEY (IdActividad) REFERENCES Actividad (IdActividad),
-CONSTRAINT fk_pago_actividad_soc FOREIGN KEY (IdNoSocio) REFERENCES NoSocio (IdNoSocio)
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ PROFESORES ~~~~~~~~~~~~~~~~~~~~~~~~
+-- DROP TABLE Profesor;
+CREATE TABLE Profesor(
+IdProfesor INT AUTO_INCREMENT,
+Condicion VARCHAR(15),
+Nombre VARCHAR(30),
+Apellido VARCHAR(30),
+Email VARCHAR (30),
+Dni VARCHAR(20),
+Direccion VARCHAR(50),
+FechaNac DATE,
+Telefono INT,
+FichaMedica TINYINT,
+CONSTRAINT pk_profesor PRIMARY KEY (IdProfesor)
 );
 
+INSERT INTO Profesor VALUES
+(1800, "Titular", "Carlos", "Perez", "carlosperez80@gmail.com", "29995712", "Santa Fe 1800, Belgrano, CABA", "1980-11-02", "1178553695", 1),
+(1801, "Titular", "Josefina", "Aguirre", "jaguirre@gmail.com", "38662897", "M.J. Haedo 2524, Florida, Vicente Lopez", "1992-05-30", "1132147771", 1),
+(1802, "Titular", "Sergio", "Malek", "maleksergio1@gmail.com", "35222443", "Av. Centenario 5569, San Isidro", "1985-07-12", "1155588702", 1),
+(1803, "Titular", "Carla", "Sigmo", "sigmocar@gmail.com", "39001234", "Bulnes 1238, Saavedra, CABA", "1990-08-01", "1100965858", 1),
+(1804, "Titular", "Juan", "Medina", "juan_medina80@gmail.com", "406981212", "Estanislao Del Campo, Almagro, CABA", "1995-01-20", "1161038801", 1),
+(1805, "Titular", "Adrian", "Pineda", "adripineda80@gmail.com", "41885965", "Carlos Villate 1889, Munro, Vicente Lopez", "1999-03-10", "1178789699", 1),
+(1806, "Suplente", "Micaela", "Monsalvo,", "mica_monsalvo@gmail.com", "47183221", "Juan B. Justo 4345, Beccar, San Iisdro", "2003-02-22", "1185296301", 1),
+(1807, "Suplente", "Maximo", "Beltran,", "beltran_maximo1992@gmail.com", "36111211", "Nicolas Avellaneda 5587, Villa Devoto, CABA", "1992-09-28", "1174102536", 1),
+(1808, "Suplente", "Nerea", "Orlami,", "nereaorlami@gmail.com", "41222958", "Carrasco 6565, Caballito, CABA", "2000-07-12", "1198674512", 1);
+-- SELECT * FROM Profesor;
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ EDICION DE LAS ACTIVDADES ~~~~~~~~~~~~~~~~~~~~~~~~
+CREATE TABLE EdicionActividad(
+IdEdicion INT AUTO_INCREMENT,
+IdActividad INT,
+IdProfesor INT,
+FechaActividad DATE,
+CupoEdicion INT DEFAULT 0,
+CONSTRAINT pk_edicion PRIMARY KEY (IdEdicion),
+CONSTRAINT fk_edicion_actividad FOREIGN KEY (IdActividad) REFERENCES Actividad (IdActividad),
+CONSTRAINT fk_edicion_profesor FOREIGN KEY (IdProfesor) REFERENCES Profesor (IdProfesor)
+);
+
+
+INSERT INTO EdicionActividad (IdEdicion, IdActividad, IdProfesor, FechaActividad) VALUES
+(2500, 8900, 1803, "2025-11-03"),
+(2501, 8901, 1802, "2025-11-03"),
+(2502, 8902, 1801, "2025-11-04"),
+(2503, 8903, 1805, "2025-11-04"),
+(2504, 8904, 1804, "2025-11-05"),
+(2505, 8905, 1800, "2025-11-05");
+(2506, 8900, 1803, "2025-11-10"),
+(2507, 8901, 1802, "2025-11-10"),
+(2508, 8902, 1801, "2025-11-11"),
+(2509, 8903, 1805, "2025-11-11"),
+(2510, 8904, 1804, "2025-11-12"),
+(2511, 8905, 1800, "2025-11-12");
+-- SELECT * FROM EdicionActividad;
+-- DROP TABLE EdicionActividad;
+
+
+-- Consulta de prueba
+-- SELECT a.Nombre, e.FechaActividad, CONCAT(p.Nombre, ' ', p.Apellido), a.Precio FROM Actividad a INNER JOIN EdicionActividad e ON a.IdActividad = e.IdActividad INNER JOIN Profesor p ON e.IdProfesor = p.IdProfesor WHERE e.FechaActividad > curdate() ORDER BY a.Nombre;SELECT a.Nombre, e.FechaActividad, CONCAT(p.Nombre, ' ', p.Apellido), a.Precio FROM Actividad a INNER JOIN EdicionActividad e ON a.IdActividad = e.IdActividad INNER JOIN Profesor p ON e.IdProfesor = p.IdProfesor WHERE e.FechaActividad > curdate() ORDER BY e.FechaActividad;
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ INSCRIPCION A ACTIVIDADES (NoSocios) ~~~~~~~~~~~~~~~~~~~~~~~~
 -- Tabla de inscripcion a actividades para No Socios
 CREATE TABLE InscripcionActividad(
 IdInscripcion INT AUTO_INCREMENT,
@@ -116,6 +189,25 @@ CONSTRAINT fk_inscripcion_nosocio FOREIGN KEY (IdNoSocio) REFERENCES NoSocio (Id
 CONSTRAINT fk_inscripcion_actividad FOREIGN KEY (IdActividad) REFERENCES Actividad (IdActividad),
 CONSTRAINT fk_inscripcion_pago FOREIGN KEY (IdPago) REFERENCES PagoActividad (IdPago)
 );
+
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ PAGOS DE ACTIVIDADES ~~~~~~~~~~~~~~~~~~~~~~~~
+-- Pagos de actividades (para NoSocios)
+CREATE TABLE PagoActividad(
+IdPago INT,
+IdActividad INT,
+IdNoSocio INT,
+MontoPagado FLOAT,
+FechaPago DATE,
+CONSTRAINT pk_pago_activdad PRIMARY KEY (IdPago),
+CONSTRAINT fk_pago_actividad_act FOREIGN KEY (IdActividad) REFERENCES Actividad (IdActividad),
+CONSTRAINT fk_pago_actividad_soc FOREIGN KEY (IdNoSocio) REFERENCES NoSocio (IdNoSocio)
+);
+
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ STORE PROCEDURES ~~~~~~~~~~~~~~~~~~~~~~~~
 
 -- StoredProcedure para hacer el Login
 DELIMITER //
@@ -133,7 +225,7 @@ CALL IngresoLogin("ivan.faigenbom", "ivan123");
 SELECT * FROM Usuario;
 
 
--- Stored procedured para cargar un nuevo socio
+-- Stored procedured para cargar un nuevo Socio
 DELIMITER //
 CREATE PROCEDURE NuevoSocio(
 	IN nombre VARCHAR(30),
@@ -173,6 +265,7 @@ DELIMITER //
 -- SELECT * FROM Socio;
 
 
+-- Stored procedured para cargar un nuevo NoSocio
 DELIMITER //
 CREATE PROCEDURE NuevoNoSocio(
 	IN nombre VARCHAR(30),

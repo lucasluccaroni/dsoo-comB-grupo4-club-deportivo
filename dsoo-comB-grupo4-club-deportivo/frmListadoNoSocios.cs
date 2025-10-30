@@ -22,7 +22,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        // Metodo para que cuand se cargue el formulario automaticamente se implemente el metodo "CargarGrilla"
+        // Metodo para que cuandO se cargue el formulario automaticamente se implemente el metodo "CargarGrilla"
         private void frmListadoNoSocios_Load(object sender, EventArgs e)
         {
             CargarGrilla();

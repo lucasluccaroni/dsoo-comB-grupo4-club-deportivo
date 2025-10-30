@@ -28,66 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             lblNoSocio = new Label();
-            lblCodigoActividad = new Label();
             txtIdNoSocio = new TextBox();
-            txtIdActividad = new TextBox();
-            lblActividades = new Label();
             btnVolver = new Button();
             btnPagar = new Button();
             lblVerificarSocio = new Label();
-            lblVerificarActividad = new Label();
             btnVerificarNoSocio = new Button();
-            btnVerificarActividad = new Button();
+            dtgvActividad = new DataGridView();
+            NombreAct = new DataGridViewTextBoxColumn();
+            FechaAct = new DataGridViewTextBoxColumn();
+            NombreProf = new DataGridViewTextBoxColumn();
+            PrecioAct = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dtgvActividad).BeginInit();
             SuspendLayout();
             // 
             // lblNoSocio
             // 
             lblNoSocio.AutoSize = true;
             lblNoSocio.Font = new Font("Segoe UI", 11.25F);
-            lblNoSocio.Location = new Point(103, 126);
+            lblNoSocio.Location = new Point(12, 91);
             lblNoSocio.Name = "lblNoSocio";
             lblNoSocio.Size = new Size(162, 20);
             lblNoSocio.TabIndex = 0;
             lblNoSocio.Text = "Ingrese ID del NoSocio";
             // 
-            // lblCodigoActividad
-            // 
-            lblCodigoActividad.AutoSize = true;
-            lblCodigoActividad.Font = new Font("Segoe UI", 11.25F);
-            lblCodigoActividad.Location = new Point(374, 126);
-            lblCodigoActividad.Name = "lblCodigoActividad";
-            lblCodigoActividad.Size = new Size(194, 20);
-            lblCodigoActividad.TabIndex = 1;
-            lblCodigoActividad.Text = "Ingrese código de actividad";
-            // 
             // txtIdNoSocio
             // 
             txtIdNoSocio.Font = new Font("Segoe UI", 11.25F);
-            txtIdNoSocio.Location = new Point(103, 161);
+            txtIdNoSocio.Location = new Point(12, 126);
             txtIdNoSocio.Name = "txtIdNoSocio";
             txtIdNoSocio.Size = new Size(162, 27);
             txtIdNoSocio.TabIndex = 2;
-            // 
-            // txtIdActividad
-            // 
-            txtIdActividad.Font = new Font("Segoe UI", 11.25F);
-            txtIdActividad.Location = new Point(374, 161);
-            txtIdActividad.Name = "txtIdActividad";
-            txtIdActividad.Size = new Size(194, 27);
-            txtIdActividad.TabIndex = 3;
-            // 
-            // lblActividades
-            // 
-            lblActividades.AutoSize = true;
-            lblActividades.BackColor = Color.FromArgb(255, 224, 192);
-            lblActividades.BorderStyle = BorderStyle.FixedSingle;
-            lblActividades.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblActividades.Location = new Point(688, 95);
-            lblActividades.Name = "lblActividades";
-            lblActividades.Size = new Size(143, 142);
-            lblActividades.TabIndex = 4;
-            lblActividades.Text = "Actividades:\r\n\r\n8900 ---  Zumba\r\n8901 ---  Spinning\r\n8902 --- Pilates\r\n8903 --- Elongacion\r\n8904 --- HIT\r\n";
             // 
             // btnVolver
             // 
@@ -103,7 +76,7 @@
             // btnPagar
             // 
             btnPagar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnPagar.Location = new Point(280, 313);
+            btnPagar.Location = new Point(896, 592);
             btnPagar.Name = "btnPagar";
             btnPagar.Size = new Size(106, 43);
             btnPagar.TabIndex = 6;
@@ -113,25 +86,15 @@
             // lblVerificarSocio
             // 
             lblVerificarSocio.AutoSize = true;
-            lblVerificarSocio.Location = new Point(195, 207);
+            lblVerificarSocio.Location = new Point(104, 172);
             lblVerificarSocio.Name = "lblVerificarSocio";
-            lblVerificarSocio.Size = new Size(38, 15);
+            lblVerificarSocio.Size = new Size(10, 15);
             lblVerificarSocio.TabIndex = 7;
             lblVerificarSocio.Text = " ";
             // 
-            // lblVerificarActividad
-            // 
-            lblVerificarActividad.AutoSize = true;
-            lblVerificarActividad.Location = new Point(514, 207);
-            lblVerificarActividad.Name = "lblVerificarActividad";
-            lblVerificarActividad.Size = new Size(38, 15);
-            lblVerificarActividad.TabIndex = 8;
-            lblVerificarActividad.Text = " ";
-            btnVerificarActividad.Click += btnVerificarActividad_Click;
-            // 
             // btnVerificarNoSocio
             // 
-            btnVerificarNoSocio.Location = new Point(103, 203);
+            btnVerificarNoSocio.Location = new Point(12, 168);
             btnVerificarNoSocio.Name = "btnVerificarNoSocio";
             btnVerificarNoSocio.Size = new Size(75, 23);
             btnVerificarNoSocio.TabIndex = 9;
@@ -139,33 +102,80 @@
             btnVerificarNoSocio.UseVisualStyleBackColor = true;
             btnVerificarNoSocio.Click += btnVerificarNoSocio_Click;
             // 
-            // btnVerificarActividad
+            // dtgvActividad
             // 
-            btnVerificarActividad.Location = new Point(385, 203);
-            btnVerificarActividad.Name = "btnVerificarActividad";
-            btnVerificarActividad.Size = new Size(75, 23);
-            btnVerificarActividad.TabIndex = 10;
-            btnVerificarActividad.Text = "Verificar";
-            btnVerificarActividad.UseVisualStyleBackColor = true;
+            dtgvActividad.AllowUserToAddRows = false;
+            dtgvActividad.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dtgvActividad.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            dtgvActividad.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgvActividad.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtgvActividad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvActividad.Columns.AddRange(new DataGridViewColumn[] { NombreAct, FechaAct, NombreProf, PrecioAct });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtgvActividad.DefaultCellStyle = dataGridViewCellStyle2;
+            dtgvActividad.Location = new Point(129, 224);
+            dtgvActividad.Name = "dtgvActividad";
+            dtgvActividad.ReadOnly = true;
+            dtgvActividad.Size = new Size(818, 156);
+            dtgvActividad.TabIndex = 10;
+            // 
+            // NombreAct
+            // 
+            NombreAct.HeaderText = "ACTIVIDAD";
+            NombreAct.Name = "NombreAct";
+            NombreAct.ReadOnly = true;
+            NombreAct.Width = 110;
+            // 
+            // FechaAct
+            // 
+            FechaAct.HeaderText = "FECHA";
+            FechaAct.Name = "FechaAct";
+            FechaAct.ReadOnly = true;
+            FechaAct.Width = 79;
+            // 
+            // NombreProf
+            // 
+            NombreProf.HeaderText = "PROFESOR";
+            NombreProf.Name = "NombreProf";
+            NombreProf.ReadOnly = true;
+            NombreProf.Width = 105;
+            // 
+            // PrecioAct
+            // 
+            PrecioAct.HeaderText = "PRECIO";
+            PrecioAct.Name = "PrecioAct";
+            PrecioAct.ReadOnly = true;
+            PrecioAct.Width = 83;
             // 
             // frmActividadNoSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(901, 607);
-            Controls.Add(btnVerificarActividad);
+            ClientSize = new Size(1026, 647);
+            Controls.Add(dtgvActividad);
             Controls.Add(btnVerificarNoSocio);
-            Controls.Add(lblVerificarActividad);
             Controls.Add(lblVerificarSocio);
             Controls.Add(btnPagar);
             Controls.Add(btnVolver);
-            Controls.Add(lblActividades);
-            Controls.Add(txtIdActividad);
             Controls.Add(txtIdNoSocio);
-            Controls.Add(lblCodigoActividad);
             Controls.Add(lblNoSocio);
             Name = "frmActividadNoSocio";
             Text = "No Socio -> Inscripción a Actividad";
+            Load += frmActividadNoSocio_Load;
+            ((System.ComponentModel.ISupportInitialize)dtgvActividad).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -173,15 +183,15 @@
         #endregion
 
         private Label lblNoSocio;
-        private Label lblCodigoActividad;
         private TextBox txtIdNoSocio;
-        private TextBox txtIdActividad;
-        private Label lblActividades;
         private Button btnVolver;
         private Button btnPagar;
         private Label lblVerificarSocio;
-        private Label lblVerificarActividad;
         private Button btnVerificarNoSocio;
-        private Button btnVerificarActividad;
+        private DataGridView dtgvActividad;
+        private DataGridViewTextBoxColumn NombreAct;
+        private DataGridViewTextBoxColumn FechaAct;
+        private DataGridViewTextBoxColumn NombreProf;
+        private DataGridViewTextBoxColumn PrecioAct;
     }
 }
