@@ -56,8 +56,9 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             }
             return salida;
         }
+
         // Método que busca en la DB si el socio existe
-        public bool VerificarNoSocio(string id)
+        public bool VerificarNoSocio(int id)
         {
             bool salida;
             string query;
@@ -99,6 +100,11 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 }
             }
                 return salida;
+        }
+
+        // Metodo para inscribir un NoSocio
+        public string InscribirNoSocio(int idNoSocio, int idEdicion)
+        {
 
         }
     }

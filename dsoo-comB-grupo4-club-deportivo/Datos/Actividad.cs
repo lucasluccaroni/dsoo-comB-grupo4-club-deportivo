@@ -9,7 +9,7 @@ using System.Data;
 
 namespace dsoo_comB_grupo4_club_deportivo.Datos
 {
-    internal class Actividad
+    public class Actividad
     {
         // Método que busca en la DB si la actividad existe y tiene cupo
         public bool VerificarActividad(string idAct)

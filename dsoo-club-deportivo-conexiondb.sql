@@ -68,7 +68,7 @@ FechaInscripcion DATE,
 CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
 );
 
-SELECT * FROM Socio;
+-- SELECT * FROM Socio;
 
 
 
@@ -88,7 +88,7 @@ FichaMedica TINYINT,
 CONSTRAINT pk_nosocio PRIMARY KEY (IdNoSocio)
 );
 
-SELECT * FROM NoSocio;
+-- SELECT * FROM NoSocio;
 
 
 
@@ -112,6 +112,7 @@ INSERT INTO Actividad VALUES
 (8905, "HIT", 15, 17000);
 -- SELECT * FROM Actividad;
 -- DROP TABLE Actividad;
+
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~ PROFESORES ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,6 +143,8 @@ INSERT INTO Profesor VALUES
 (1808, "Suplente", "Nerea", "Orlami,", "nereaorlami@gmail.com", "41222958", "Carrasco 6565, Caballito, CABA", "2000-07-12", "1198674512", 1);
 -- SELECT * FROM Profesor;
 
+
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~ EDICION DE LAS ACTIVDADES ~~~~~~~~~~~~~~~~~~~~~~~~
 CREATE TABLE EdicionActividad(
 IdEdicion INT AUTO_INCREMENT,
@@ -161,7 +164,7 @@ INSERT INTO EdicionActividad (IdEdicion, IdActividad, IdProfesor, FechaActividad
 (2502, 8902, 1801, "2025-11-04"),
 (2503, 8903, 1805, "2025-11-04"),
 (2504, 8904, 1804, "2025-11-05"),
-(2505, 8905, 1800, "2025-11-05");
+(2505, 8905, 1800, "2025-11-05"),
 (2506, 8900, 1803, "2025-11-10"),
 (2507, 8901, 1802, "2025-11-10"),
 (2508, 8902, 1801, "2025-11-11"),
@@ -171,29 +174,34 @@ INSERT INTO EdicionActividad (IdEdicion, IdActividad, IdProfesor, FechaActividad
 -- SELECT * FROM EdicionActividad;
 -- DROP TABLE EdicionActividad;
 
+-- INSERT INTO EdicionActividad(IdEdicion, IdActividad, IdProfesor, FechaActividad, CupoEdicion) VALUES
+-- (2512, 8902, 1801, "2025-11-14", 10);
 
--- Consulta de prueba
+--  ------------ Consultas de prueba ------------
 -- SELECT a.Nombre, e.FechaActividad, CONCAT(p.Nombre, ' ', p.Apellido), a.Precio FROM Actividad a INNER JOIN EdicionActividad e ON a.IdActividad = e.IdActividad INNER JOIN Profesor p ON e.IdProfesor = p.IdProfesor WHERE e.FechaActividad > curdate() ORDER BY a.Nombre;SELECT a.Nombre, e.FechaActividad, CONCAT(p.Nombre, ' ', p.Apellido), a.Precio FROM Actividad a INNER JOIN EdicionActividad e ON a.IdActividad = e.IdActividad INNER JOIN Profesor p ON e.IdProfesor = p.IdProfesor WHERE e.FechaActividad > curdate() ORDER BY e.FechaActividad;
+-- SELECT a.Nombre AS Actividad, e.FechaActividad, CONCAT(p.Nombre, ' ', p.Apellido) AS Profesor, a.Precio, a.CupoMaximo - e.CupoEdicion AS CuposDisponibles FROM Actividad a INNER JOIN EdicionActividad e ON a.IdActividad = e.IdActividad INNER JOIN Profesor p ON e.IdProfesor = p.IdProfesor WHERE e.FechaActividad > CURDATE() ORDER BY e.FechaActividad;
+
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~ INSCRIPCION A ACTIVIDADES (NoSocios) ~~~~~~~~~~~~~~~~~~~~~~~~
 -- Tabla de inscripcion a actividades para No Socios
 CREATE TABLE InscripcionActividad(
-IdInscripcion INT AUTO_INCREMENT,
+IdInscripcion INT,
 IdNoSocio INT,
-IdActividad INT,
-IdPago INT,
-FechaInscripcion DATE,
+IdEdicion INT,
+fechaInscripcion DATE,
+Pagado BOOL DEFAULT FALSE,
 CONSTRAINT pk_inscripcion PRIMARY KEY (IdInscripcion),
 CONSTRAINT fk_inscripcion_nosocio FOREIGN KEY (IdNoSocio) REFERENCES NoSocio (IdNoSocio),
-CONSTRAINT fk_inscripcion_actividad FOREIGN KEY (IdActividad) REFERENCES Actividad (IdActividad),
-CONSTRAINT fk_inscripcion_pago FOREIGN KEY (IdPago) REFERENCES PagoActividad (IdPago)
+CONSTRAINT fk_inscripcion_edicion FOREIGN KEY (IdEdicion) REFERENCES EdicionActividad (IdEdicion)
 );
 
+-- SELECT * FROM InscripcionActividad
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~ PAGOS DE ACTIVIDADES ~~~~~~~~~~~~~~~~~~~~~~~~
 -- Pagos de actividades (para NoSocios)
+/*
 CREATE TABLE PagoActividad(
 IdPago INT,
 IdActividad INT,
@@ -204,7 +212,7 @@ CONSTRAINT pk_pago_activdad PRIMARY KEY (IdPago),
 CONSTRAINT fk_pago_actividad_act FOREIGN KEY (IdActividad) REFERENCES Actividad (IdActividad),
 CONSTRAINT fk_pago_actividad_soc FOREIGN KEY (IdNoSocio) REFERENCES NoSocio (IdNoSocio)
 );
-
+*/
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~ STORE PROCEDURES ~~~~~~~~~~~~~~~~~~~~~~~~

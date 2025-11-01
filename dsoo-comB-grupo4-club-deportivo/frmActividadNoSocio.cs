@@ -15,9 +15,11 @@ namespace dsoo_comB_grupo4_club_deportivo
     public partial class frmActividadNoSocio : Form
     {
         internal string usuario, rol;
+
         public frmActividadNoSocio()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         // Metodo para que cuando se cargue el formulario automaticamente se implemente el metodo "CargarGrilla"
@@ -33,12 +35,22 @@ namespace dsoo_comB_grupo4_club_deportivo
             MySqlConnection sqlCon = new MySqlConnection();
             try
             {
-                string queryUno;
-                string queryDos;
+                string query;
                 sqlCon = Conexion.getInstancia().CrearConexion();
-                queryUno = "SELECT a.Nombre, e.FechaActividad, CONCAT(p.Nombre, ' ', p.Apellido), a.Precio FROM Actividad a INNER JOIN EdicionActividad e ON a.IdActividad = e.IdActividad INNER JOIN Profesor p ON e.IdProfesor = p.IdProfesor WHERE e.FechaActividad > curdate() ORDER BY a.Nombre;";
-                queryDos = "Select ";
-                MySqlCommand comando = new MySqlCommand(queryUno, sqlCon);
+                query = @"SELECT 
+                    e.IdEdicion,
+                    a.Nombre AS Actividad, 
+                    e.FechaActividad, 
+                    CONCAT(p.Nombre, ' ', p.Apellido) AS Profesor, 
+                    a.Precio, 
+                    a.CupoMaximo - e.CupoEdicion AS CuposDisponibles
+                        FROM Actividad a
+                        INNER JOIN EdicionActividad e ON a.IdActividad = e.IdActividad
+                        INNER JOIN Profesor p ON e.IdProfesor = p.IdProfesor
+                        WHERE e.FechaActividad > CURDATE()
+                        ORDER BY e.FechaActividad;";
+
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
                 comando.CommandType = CommandType.Text;
                 sqlCon.Open();
 
@@ -49,10 +61,12 @@ namespace dsoo_comB_grupo4_club_deportivo
                     while (reader.Read())
                     {
                         int renglon = dtgvActividad.Rows.Add();
-                        dtgvActividad.Rows[renglon].Cells[0].Value = reader.GetString(0); // Nombre actividad
-                        dtgvActividad.Rows[renglon].Cells[1].Value = reader.GetDateTime(1); // Fecha de la edicion
-                        dtgvActividad.Rows[renglon].Cells[2].Value = reader.GetString(2); // Nombre + Apellido prof
-                        dtgvActividad.Rows[renglon].Cells[3].Value = reader.GetInt32(3); // Precio
+                        dtgvActividad.Rows[renglon].Cells[0].Value = reader.GetInt32(0); // Id de la edicion
+                        dtgvActividad.Rows[renglon].Cells[1].Value = reader.GetString(1); // Nombre actividad
+                        dtgvActividad.Rows[renglon].Cells[2].Value = reader.GetDateTime(2); // Fecha de la edicion
+                        dtgvActividad.Rows[renglon].Cells[3].Value = reader.GetString(3); // Nombre + Apellido prof
+                        dtgvActividad.Rows[renglon].Cells[4].Value = reader.GetInt32(4); // Precio
+                        dtgvActividad.Rows[renglon].Cells[5].Value = reader.GetInt32(5); // Cupos disponibles
                     }
                 }
                 else
@@ -62,7 +76,6 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
             catch (Exception ex)
             {
-                //System.Diagnostics.Debug.WriteLine("frmListadoNoSocio.CS -> Catch");
                 MessageBox.Show(ex.Message);
                 System.Diagnostics.Debug.WriteLine(ex.Source);
             }
@@ -75,23 +88,43 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
-        // boton para verificar que el socio exista
-        private void btnVerificarNoSocio_Click(object sender, EventArgs e)
+                
+        // Método para seleccionar una actividad de la grilla y poder inscribir un NoSocio en ella
+        private void dtgvActividad_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string idNoSocio = txtIdNoSocio.Text;
-            NoSocio noSocio = new NoSocio();
-            bool noSocioExiste = noSocio.VerificarNoSocio(idNoSocio);
+            frmInscripcionActividad inscripActividad = new frmInscripcionActividad();
 
-            if (noSocioExiste)
+            int nro = e.RowIndex;
+
+            // Tomamos de la grilla los datos de la actividad seleccionada
+            string nombreActSeleccionada = (string)dtgvActividad.Rows[nro].Cells[1].Value;
+            DateTime fechaActSeleccionada = (DateTime)dtgvActividad.Rows[nro].Cells[2].Value;
+            string fechaParseada = fechaActSeleccionada.ToShortDateString();
+            string profActSeleccionada = (string)dtgvActividad.Rows[nro].Cells[3].Value;
+            int cupoActSeleccionada = (int)dtgvActividad.Rows[nro].Cells[5].Value;
+
+            // Si la actividad tiene cupo, pasamos al formulario de inscripcion
+            if ((nro != -1) && (cupoActSeleccionada > 0))
             {
-                lblVerificarSocio.Text = "Correcto.";
-                lblVerificarSocio.ForeColor = Color.FromArgb(0, 128, 0);
+                DialogResult confirmacion =  MessageBox.Show($"¿Desea inscribir un NoSocio para {nombreActSeleccionada} el dia {fechaParseada}?", "Aviso del sistema - Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmacion == DialogResult.Yes)
+                {
+                    int idEdicion = (int)dtgvActividad.Rows[nro].Cells[0].Value;
+                    inscripActividad.usuario = usuario;
+                    inscripActividad.rol = rol;
+                    inscripActividad.idEdicion = idEdicion;
+                    inscripActividad.nombreActividad = nombreActSeleccionada;
+                    inscripActividad.profesor = profActSeleccionada;
+                    inscripActividad.fechaActividad = fechaParseada;
+                    inscripActividad.Show();
+                    this.Hide();
+                }
             }
             else
             {
-                lblVerificarSocio.Text = "No existe.";
-                lblVerificarSocio.ForeColor = Color.FromArgb(255, 000, 0);
+                MessageBox.Show("No hay cupo disponible para la actividad seleccionada.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         // Boton para volver al formulario principal
