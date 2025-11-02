@@ -80,5 +80,48 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             }
             return salida;
         }
+
+        public string InscribirActividadNoSocio(int idEdicion, int idNoSocio)
+        {
+            string? salida;
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand("InscribirActividad", sqlCon);
+                comando.CommandType = CommandType.StoredProcedure;
+
+                // agregamos los parametros
+                comando.Parameters.Add("p_idEdicion", MySqlDbType.Int32).Value = idEdicion;
+                comando.Parameters.Add("p_idNoSoc", MySqlDbType.Int32).Value = idNoSocio;
+
+                MySqlParameter ParCodigo = new MySqlParameter();
+                ParCodigo.ParameterName = "respuesta";
+                ParCodigo.MySqlDbType = MySqlDbType.Int32;
+                ParCodigo.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(ParCodigo);
+                sqlCon.Open();
+                comando.ExecuteNonQuery();
+                salida = Convert.ToString(ParCodigo.Value);
+                System.Diagnostics.Debug.WriteLine("Respuesta del StoreProcedure ↓");
+                System.Diagnostics.Debug.WriteLine(salida);
+            }
+            catch (Exception ex)
+            {
+                salida = ex.Message;
+                System.Diagnostics.Debug.WriteLine(ex.Source);
+                System.Diagnostics.Debug.WriteLine("Respuesta del StoreProcedure => " + salida);
+
+
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+            return salida;
+        }
     }
 }

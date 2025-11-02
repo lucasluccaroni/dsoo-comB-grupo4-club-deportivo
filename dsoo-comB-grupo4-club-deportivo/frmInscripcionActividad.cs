@@ -53,6 +53,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             {
                 lblVerificarSocio.Text = "No se encontró.";
                 lblVerificarSocio.ForeColor = Color.FromArgb(255, 000, 0);
+                idNoSocio = 0;
             }
         }
 
@@ -68,7 +69,29 @@ namespace dsoo_comB_grupo4_club_deportivo
 
         private void btnConfirmarInscripcion_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine(idNoSocio);
+            if (idNoSocio != 0)
+            {
+                Actividad actividad = new Actividad();
+                string inscripcion = actividad.InscribirActividadNoSocio(idEdicion, idNoSocio);
 
+                bool esNumero = int.TryParse(inscripcion, out int resultado);
+                if (esNumero)
+                {
+                    if(resultado == 1)
+                    {
+                        MessageBox.Show("Este NoSocio ya esta inscripto!", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Inscripcion realizada con éxito. N° de inscripcion: {resultado}", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe proporionar un NoSocio válido.", "Aviso del sistema - Error en ID", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
         }
     }
 }

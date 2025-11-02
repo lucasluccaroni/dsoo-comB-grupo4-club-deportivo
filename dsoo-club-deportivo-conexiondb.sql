@@ -171,11 +171,11 @@ INSERT INTO EdicionActividad (IdEdicion, IdActividad, IdProfesor, FechaActividad
 (2509, 8903, 1805, "2025-11-11"),
 (2510, 8904, 1804, "2025-11-12"),
 (2511, 8905, 1800, "2025-11-12");
+
 -- SELECT * FROM EdicionActividad;
 -- DROP TABLE EdicionActividad;
 
--- INSERT INTO EdicionActividad(IdEdicion, IdActividad, IdProfesor, FechaActividad, CupoEdicion) VALUES
--- (2512, 8902, 1801, "2025-11-14", 10);
+-- INSERT INTO EdicionActividad(IdEdicion, IdActividad, IdProfesor, FechaActividad, CupoEdicion) VALUES (2512, 8902, 1801, "2025-11-14", 10);
 
 --  ------------ Consultas de prueba ------------
 -- SELECT a.Nombre, e.FechaActividad, CONCAT(p.Nombre, ' ', p.Apellido), a.Precio FROM Actividad a INNER JOIN EdicionActividad e ON a.IdActividad = e.IdActividad INNER JOIN Profesor p ON e.IdProfesor = p.IdProfesor WHERE e.FechaActividad > curdate() ORDER BY a.Nombre;SELECT a.Nombre, e.FechaActividad, CONCAT(p.Nombre, ' ', p.Apellido), a.Precio FROM Actividad a INNER JOIN EdicionActividad e ON a.IdActividad = e.IdActividad INNER JOIN Profesor p ON e.IdProfesor = p.IdProfesor WHERE e.FechaActividad > curdate() ORDER BY e.FechaActividad;
@@ -230,7 +230,7 @@ DELIMITER //
 -- Test de que funciona el StoredProcedure ↓ 
 CALL IngresoLogin("lucas.luccaroni", "lucas123");
 CALL IngresoLogin("ivan.faigenbom", "ivan123");
-SELECT * FROM Usuario;
+-- SELECT * FROM Usuario;
 
 
 -- Stored procedured para cargar un nuevo Socio
@@ -311,3 +311,45 @@ END//
 DELIMITER //
 
 -- SELECT * FROM NoSocio;
+
+
+-- Stored procedured para inscribir nuevo NoSocio a una actividad
+-- DROP PROCEDURE IF EXISTS InscribirActividad;
+DELIMITER //
+CREATE PROCEDURE InscribirActividad(
+	IN p_idEdicion INT,
+    IN p_idNoSoc INT,
+    OUT respuesta INT)
+BEGIN
+	DECLARE idInscrip INT;
+    DECLARE fechaActual DATE;
+    DECLARE existe INT DEFAULT 0;
+    DECLARE boolPagado BOOL DEFAULT FALSE;
+    DECLARE filas INT DEFAULT 0;
+    SET fechaActual = CURDATE();
+    
+    SET filas = (SELECT COUNT(*) FROM InscripcionActividad);
+    IF filas = 0 THEN
+		SET idInscrip = 800; -- Primer id de las inscripciones (la 1er inscripcion)
+	ELSE
+		-- buscamos el ultimo numero de IdInscripcion almacenado para sumarle una unidad y considerarla como primary key de la tabla (IdInscripcion)
+		SET idInscrip = (SELECT max(IdInscripcion) + 1 FROM InscripcionActividad);
+        
+         -- para saber si ya registrado el socio - existe será 0 si el NoSocio no está inscripto, y 1 si ya lo está
+        SET existe = (
+			SELECT COUNT(*)
+				FROM InscripcionActividad i
+					WHERE i.IdNoSocio = p_IdNoSoc
+						AND i.IdEdicion = p_IdEdicion);
+    END IF;
+    
+	IF existe = 0 THEN
+		INSERT INTO InscripcionActividad(IdInscripcion, IdNoSocio, IdEdicion, fechaInscripcion) VALUES (idInscrip, p_idNoSoc, p_idEdicion, fechaActual);
+        SET respuesta = idInscrip;
+	ELSE
+		SET respuesta = existe;
+	END IF;
+END//
+DELIMITER //
+
+-- SELECT * FROM InscripcionActividad;

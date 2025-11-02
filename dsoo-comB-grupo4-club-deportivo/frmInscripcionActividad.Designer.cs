@@ -187,6 +187,7 @@
             btnConfirmarInscripcion.TabIndex = 22;
             btnConfirmarInscripcion.Text = "Confirmar";
             btnConfirmarInscripcion.UseVisualStyleBackColor = false;
+            btnConfirmarInscripcion.Click += btnConfirmarInscripcion_Click;
             // 
             // frmInscripcionActividad
             // 

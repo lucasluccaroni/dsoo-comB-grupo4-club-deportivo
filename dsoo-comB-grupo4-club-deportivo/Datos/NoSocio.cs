@@ -40,7 +40,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 sqlCon.Open();
                 comando.ExecuteNonQuery();
                 salida = Convert.ToString(ParCodigo.Value);
-                //System.Diagnostics.Debug.WriteLine("PAR CODIGO QUE ES => " + salida);
+                System.Diagnostics.Debug.WriteLine("PAR CODIGO QUE ES => " + salida);
 
             }
             catch (Exception ex)
@@ -100,12 +100,6 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 }
             }
                 return salida;
-        }
-
-        // Metodo para inscribir un NoSocio
-        public string InscribirNoSocio(int idNoSocio, int idEdicion)
-        {
-
         }
     }
 }
