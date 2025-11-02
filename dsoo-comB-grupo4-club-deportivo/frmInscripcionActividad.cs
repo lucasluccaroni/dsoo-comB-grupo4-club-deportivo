@@ -85,6 +85,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                     else
                     {
                         MessageBox.Show($"Inscripcion realizada con éxito. N° de inscripcion: {resultado}", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
                     }
                 }
             }

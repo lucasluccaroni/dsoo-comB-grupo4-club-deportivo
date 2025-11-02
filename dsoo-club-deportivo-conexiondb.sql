@@ -345,6 +345,12 @@ BEGIN
     
 	IF existe = 0 THEN
 		INSERT INTO InscripcionActividad(IdInscripcion, IdNoSocio, IdEdicion, fechaInscripcion) VALUES (idInscrip, p_idNoSoc, p_idEdicion, fechaActual);
+        
+        -- Actualizamos el cupo de la edicion
+		UPDATE EdicionActividad
+			SET CupoEdicion = CupoEdicion + 1
+				WHERE IdEdicion = p_idEdicion;
+        
         SET respuesta = idInscrip;
 	ELSE
 		SET respuesta = existe;
