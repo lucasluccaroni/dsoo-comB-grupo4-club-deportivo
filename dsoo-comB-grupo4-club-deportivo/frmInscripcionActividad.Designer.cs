@@ -42,6 +42,7 @@
             lblProf = new Label();
             panel1 = new Panel();
             btnConfirmarInscripcion = new Button();
+            btnPagar = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -189,11 +190,22 @@
             btnConfirmarInscripcion.UseVisualStyleBackColor = false;
             btnConfirmarInscripcion.Click += btnConfirmarInscripcion_Click;
             // 
+            // btnPagar
+            // 
+            btnPagar.Location = new Point(669, 397);
+            btnPagar.Name = "btnPagar";
+            btnPagar.Size = new Size(94, 29);
+            btnPagar.TabIndex = 23;
+            btnPagar.Text = "Pagar";
+            btnPagar.UseVisualStyleBackColor = true;
+            btnPagar.Click += btnPagar_Click;
+            // 
             // frmInscripcionActividad
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnPagar);
             Controls.Add(btnConfirmarInscripcion);
             Controls.Add(panel1);
             Controls.Add(lbl);
@@ -227,5 +239,6 @@
         private Label lblProf;
         private Panel panel1;
         private Button btnConfirmarInscripcion;
+        private Button btnPagar;
     }
 }

@@ -9,10 +9,10 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades.Pagos
     public class E_Pago
     {
         public int? IdPago { get; set; }
-        public int? Monto { get; set; }
-        public DateOnly? FechaPago { get; set; }
+        public float? Monto { get; set; }
+        public DateTime? FechaPago { get; set; }
 
-        public E_Pago(int idPago, int monto, DateOnly fechaPago)
+        public E_Pago(int idPago, float monto, DateTime fechaPago)
         {
             IdPago = idPago;
             Monto = monto;

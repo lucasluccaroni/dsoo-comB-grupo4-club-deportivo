@@ -89,6 +89,17 @@ namespace dsoo_comB_grupo4_club_deportivo
             this.Hide();
         }
 
+
+        // boton para ir al formulario de pagar una actividad
+        private void btnPagarActividad_Click( object sender, EventArgs e)
+        {
+            frmPagarActividad pagarAct = new frmPagarActividad();
+            pagarAct.rol = rol;
+            pagarAct.usuario = usuario;
+            pagarAct.Show();
+            this.Hide();
+        }
+
         // boton para "cerrar sesion" o salir del sistema
         private void btnSalir_Click(object sender, EventArgs e)
         {

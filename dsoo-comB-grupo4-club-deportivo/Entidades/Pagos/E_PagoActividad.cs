@@ -8,12 +8,12 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades.Pagos
 {
     public class E_PagoActividad : E_Pago
     {
-        public int? IdActividad { get; set; }
+        public int? IdEdicion { get; set; }
         public int IdNoSocio { get; set; }
 
-        public E_PagoActividad(int IdPago, int Monto, DateOnly FechaPago, int idAct, int idNoSoc) : base (IdPago, Monto, FechaPago)
+        public E_PagoActividad(int IdPago, int idEdi, int idNoSoc, float Monto, DateTime FechaPago ) : base (IdPago, Monto, FechaPago)
         {
-            IdActividad = idAct;
+            IdEdicion = idEdi;
             IdNoSocio = idNoSoc;
         }
     }

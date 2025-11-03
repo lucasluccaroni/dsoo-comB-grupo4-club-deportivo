@@ -111,8 +111,6 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 salida = ex.Message;
                 System.Diagnostics.Debug.WriteLine(ex.Source);
                 System.Diagnostics.Debug.WriteLine("Respuesta del StoreProcedure => " + salida);
-
-
             }
             finally
             {

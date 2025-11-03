@@ -57,16 +57,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
-        // Boton para volver al formulario de grilla de actividades
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            frmActividadNoSocio actividadNoSocio = new frmActividadNoSocio();
-            actividadNoSocio.rol = rol;
-            actividadNoSocio.usuario = usuario;
-            actividadNoSocio.Show();
-            this.Hide();
-        }
-
+        // Boton para confirmar la inscripcion y efectuarla
         private void btnConfirmarInscripcion_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(idNoSocio);
@@ -85,7 +76,6 @@ namespace dsoo_comB_grupo4_club_deportivo
                     else
                     {
                         MessageBox.Show($"Inscripcion realizada con éxito. N° de inscripcion: {resultado}", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
                     }
                 }
             }
@@ -93,6 +83,27 @@ namespace dsoo_comB_grupo4_club_deportivo
             {
                 MessageBox.Show("Debe proporionar un NoSocio válido.", "Aviso del sistema - Error en ID", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+        }
+
+
+        // Boton para ir al formulario de pagar una inscripcion
+        private void btnPagar_Click(object sender, EventArgs e)
+        {
+            frmPagarActividad pagarAct = new frmPagarActividad();
+            pagarAct.usuario = usuario;
+            pagarAct.rol = rol;
+            pagarAct.Show();
+            this.Hide();
+        }
+
+        // Boton para volver al formulario de grilla de actividades
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            frmActividadNoSocio actividadNoSocio = new frmActividadNoSocio();
+            actividadNoSocio.rol = rol;
+            actividadNoSocio.usuario = usuario;
+            actividadNoSocio.Show();
+            this.Hide();
         }
     }
 }

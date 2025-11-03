@@ -201,18 +201,18 @@ CONSTRAINT fk_inscripcion_edicion FOREIGN KEY (IdEdicion) REFERENCES EdicionActi
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~ PAGOS DE ACTIVIDADES ~~~~~~~~~~~~~~~~~~~~~~~~
 -- Pagos de actividades (para NoSocios)
-/*
+-- DROP TABLE IF EXISTS PagoActividad;
 CREATE TABLE PagoActividad(
 IdPago INT,
-IdActividad INT,
+IdEdicion INT,
 IdNoSocio INT,
 MontoPagado FLOAT,
 FechaPago DATE,
 CONSTRAINT pk_pago_activdad PRIMARY KEY (IdPago),
-CONSTRAINT fk_pago_actividad_act FOREIGN KEY (IdActividad) REFERENCES Actividad (IdActividad),
+CONSTRAINT fk_pago_actividad_act FOREIGN KEY (IdEdicion) REFERENCES EdicionActividad (IdEdicion),
 CONSTRAINT fk_pago_actividad_soc FOREIGN KEY (IdNoSocio) REFERENCES NoSocio (IdNoSocio)
 );
-*/
+
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~ STORE PROCEDURES ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -359,3 +359,95 @@ END//
 DELIMITER //
 
 -- SELECT * FROM InscripcionActividad;
+
+
+
+-- Stored procedure para Pagar la inscripcion a una actividad por un NoSocio
+-- DROP PROCEDURE IF EXISTS PagarActividad; 
+DELIMITER //
+CREATE PROCEDURE PagarActividad(
+	IN p_idInscripcion INT
+)
+BEGIN
+	DECLARE v_idEdicion INT;
+    DECLARE v_idNoSocio INT;
+    DECLARE v_precio FLOAT;
+    DECLARE v_idPago INT;
+    DECLARE v_fecha DATE;
+    DECLARE v_pagado BOOL;
+    
+    
+    -- 1) Verificar que la inscripción exista y obtener datos
+    SELECT i.IdEdicion, i.IdNoSocio, a.Precio, i.Pagado
+		INTO v_idEdicion, v_idNoSocio, v_precio, v_pagado
+			FROM InscripcionActividad i
+				JOIN EdicionActividad e ON i.IdEdicion = e.IdEdicion
+				JOIN Actividad a ON e.IdActividad = a.IdActividad
+					WHERE i.IdInscripcion = p_idInscripcion;
+                
+	-- Si no existe una inscripcion con ese ID, salir
+    IF v_idEdicion IS NULL THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'La inscripción no existe';
+    END IF;
+    
+    
+     -- 2) Validar si ya la inscripcion ya está pagada
+    IF v_pagado = TRUE THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'La inscripción ya fue pagada';
+    END IF;
+    
+    
+     -- 3) Generar nuevo IdPago
+    SELECT IFNULL(MAX(IdPago), 1000) + 1 INTO v_idPago FROM PagoActividad;
+	SET v_fecha = CURDATE();
+    
+    --  4) Insertar pago
+    INSERT INTO PagoActividad(IdPago, IdEdicion, IdNoSocio, MontoPagado, FechaPago)
+    VALUES (v_idPago, v_idEdicion, v_idNoSocio, v_precio, v_fecha);
+    
+    -- 5) Marcar inscripción como pagada
+    UPDATE InscripcionActividad
+    SET Pagado = TRUE
+    WHERE IdInscripcion = p_idInscripcion;
+    
+    -- 6) Devolver datos del comprobante
+	   SELECT 
+		i.IdInscripcion,
+		a.IdActividad,
+		n.IdNoSocio,
+		a.Nombre AS Actividad,
+		CONCAT(n.Nombre, ' ', n.Apellido) AS NoSocio,
+		e.FechaActividad,
+		a.Precio,
+		p.IdPago,
+		p.FechaPago
+			FROM InscripcionActividad i
+			JOIN EdicionActividad e ON i.IdEdicion = e.IdEdicion
+			JOIN Actividad a ON e.IdActividad = a.IdActividad
+			JOIN NoSocio n ON i.IdNoSocio = n.IdNoSocio
+			JOIN PagoActividad p ON p.IdEdicion = e.IdEdicion AND p.IdNoSocio = n.IdNoSocio
+			WHERE i.IdInscripcion = p_idInscripcion
+			ORDER BY p.IdPago DESC
+			LIMIT 1;
+END//
+DELIMITER //
+
+-- SELECT * FROM PagoActividad;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
