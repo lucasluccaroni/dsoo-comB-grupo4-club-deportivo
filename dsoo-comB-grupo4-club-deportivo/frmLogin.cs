@@ -80,7 +80,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             if(tablaLogin.Rows.Count > 0)
             {
                 // quiere decir que el resultado tiene 1 fila por lo que el usuario existe
-                MessageBox.Show("Ingreso exitoso", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Ingreso exitoso.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // ahora tenemos la conexion establecida y pasamos a mostrar el form principal
                 frmPrincipal Principal = new frmPrincipal();
@@ -91,7 +91,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
             else
             {
-                MessageBox.Show("Usuario y/o contraseña incorrecto.", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario y/o contraseña incorrecto.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

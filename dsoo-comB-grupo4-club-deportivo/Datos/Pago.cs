@@ -63,7 +63,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                     Actividad = reader.GetString("Actividad"),
                     NoSocio = reader.GetString("NoSocio"),
                     FechaActividad = reader.GetDateTime("FechaActividad"),
-                    Precio = Convert.ToDecimal(reader.GetFloat("Precio")),
+                    Precio = reader.GetFloat("Precio"),
                     FechaPago = reader.GetDateTime("FechaPago")
                 };
 

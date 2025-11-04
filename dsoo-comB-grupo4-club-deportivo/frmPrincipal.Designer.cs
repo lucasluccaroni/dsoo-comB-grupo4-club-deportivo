@@ -62,7 +62,7 @@
             // 
             btnCobrarCuota.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnCobrarCuota.ForeColor = SystemColors.AppWorkspace;
-            btnCobrarCuota.Location = new Point(148, 257);
+            btnCobrarCuota.Location = new Point(148, 291);
             btnCobrarCuota.Margin = new Padding(3, 4, 3, 4);
             btnCobrarCuota.Name = "btnCobrarCuota";
             btnCobrarCuota.Size = new Size(152, 93);
@@ -75,7 +75,7 @@
             btnInscribirActividadNoSocio.BackColor = Color.FromArgb(255, 224, 192);
             btnInscribirActividadNoSocio.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnInscribirActividadNoSocio.ForeColor = SystemColors.ControlText;
-            btnInscribirActividadNoSocio.Location = new Point(547, 257);
+            btnInscribirActividadNoSocio.Location = new Point(666, 136);
             btnInscribirActividadNoSocio.Margin = new Padding(3, 4, 3, 4);
             btnInscribirActividadNoSocio.Name = "btnInscribirActividadNoSocio";
             btnInscribirActividadNoSocio.Size = new Size(152, 93);
@@ -112,10 +112,10 @@
             // 
             btnListadoSocios.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnListadoSocios.ForeColor = SystemColors.AppWorkspace;
-            btnListadoSocios.Location = new Point(1059, 224);
+            btnListadoSocios.Location = new Point(1047, 230);
             btnListadoSocios.Margin = new Padding(3, 4, 3, 4);
             btnListadoSocios.Name = "btnListadoSocios";
-            btnListadoSocios.Size = new Size(139, 127);
+            btnListadoSocios.Size = new Size(152, 127);
             btnListadoSocios.TabIndex = 7;
             btnListadoSocios.Text = "Listado de Socios a vencer";
             btnListadoSocios.UseVisualStyleBackColor = true;
@@ -145,8 +145,9 @@
             lblDate.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic);
             lblDate.Location = new Point(14, 12);
             lblDate.Name = "lblDate";
-            lblDate.Size = new Size(0, 23);
+            lblDate.Size = new Size(17, 23);
             lblDate.TabIndex = 11;
+            lblDate.Text = "-";
             // 
             // lblUsuario
             // 
@@ -182,7 +183,7 @@
             // 
             btnRegistrarSocio.BackColor = Color.FromArgb(255, 224, 192);
             btnRegistrarSocio.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnRegistrarSocio.Location = new Point(37, 43);
+            btnRegistrarSocio.Location = new Point(37, 69);
             btnRegistrarSocio.Margin = new Padding(3, 4, 3, 4);
             btnRegistrarSocio.Name = "btnRegistrarSocio";
             btnRegistrarSocio.Size = new Size(152, 93);
@@ -208,7 +209,7 @@
             btnRegistrarNoSocio.BackColor = Color.FromArgb(255, 224, 192);
             btnRegistrarNoSocio.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnRegistrarNoSocio.ForeColor = SystemColors.ControlText;
-            btnRegistrarNoSocio.Location = new Point(547, 43);
+            btnRegistrarNoSocio.Location = new Point(542, 23);
             btnRegistrarNoSocio.Margin = new Padding(3, 4, 3, 4);
             btnRegistrarNoSocio.Name = "btnRegistrarNoSocio";
             btnRegistrarNoSocio.Size = new Size(152, 93);
@@ -231,7 +232,7 @@
             // 
             btnListarSocios.BackColor = Color.FromArgb(255, 224, 192);
             btnListarSocios.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnListarSocios.Location = new Point(281, 43);
+            btnListarSocios.Location = new Point(265, 69);
             btnListarSocios.Margin = new Padding(3, 4, 3, 4);
             btnListarSocios.Name = "btnListarSocios";
             btnListarSocios.Size = new Size(152, 93);
@@ -244,7 +245,7 @@
             // 
             btnListarNoSocios.BackColor = Color.FromArgb(255, 224, 192);
             btnListarNoSocios.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnListarNoSocios.Location = new Point(784, 43);
+            btnListarNoSocios.Location = new Point(799, 23);
             btnListarNoSocios.Margin = new Padding(3, 4, 3, 4);
             btnListarNoSocios.Name = "btnListarNoSocios";
             btnListarNoSocios.Size = new Size(152, 93);
@@ -282,14 +283,14 @@
             pnlSocios.Location = new Point(62, 251);
             pnlSocios.Margin = new Padding(3, 4, 3, 4);
             pnlSocios.Name = "pnlSocios";
-            pnlSocios.Size = new Size(1230, 393);
+            pnlSocios.Size = new Size(1230, 429);
             pnlSocios.TabIndex = 12;
             // 
             // btnPagarActividad
             // 
             btnPagarActividad.BackColor = Color.FromArgb(255, 224, 192);
             btnPagarActividad.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPagarActividad.Location = new Point(784, 257);
+            btnPagarActividad.Location = new Point(666, 291);
             btnPagarActividad.Name = "btnPagarActividad";
             btnPagarActividad.Size = new Size(152, 93);
             btnPagarActividad.TabIndex = 18;
@@ -301,17 +302,17 @@
             // 
             panel2.BackColor = Color.Gainsboro;
             panel2.ForeColor = SystemColors.ActiveCaptionText;
-            panel2.Location = new Point(3, 204);
+            panel2.Location = new Point(0, 258);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1006, 3);
+            panel2.Size = new Size(1010, 3);
             panel2.TabIndex = 17;
             // 
             // lblFacturacion
             // 
             lblFacturacion.AutoSize = true;
             lblFacturacion.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblFacturacion.Location = new Point(417, 204);
+            lblFacturacion.Location = new Point(404, 258);
             lblFacturacion.Name = "lblFacturacion";
             lblFacturacion.Size = new Size(165, 37);
             lblFacturacion.TabIndex = 14;

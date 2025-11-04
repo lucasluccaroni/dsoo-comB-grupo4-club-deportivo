@@ -50,14 +50,23 @@ namespace dsoo_comB_grupo4_club_deportivo
                 return;
             }
 
-            var c = resultado.Comprobante;
+            var comprobante = resultado.Comprobante;
             MessageBox.Show("Pago exitoso!", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            btnComprobante.Enabled = true;
 
+            docFactura.nroInscrip_f = comprobante.IdInscripcion;
+            docFactura.actividad_f = comprobante.Actividad;
+            docFactura.nombreNoSocio_f = comprobante.NoSocio;
+            docFactura.monto_f = comprobante.Precio;
+            docFactura.fechaAct_f = comprobante.FechaActividad;
+            docFactura.fechaPago_f = comprobante.FechaPago;
+            
+            btnComprobante.Enabled = true;
         }
 
         private void btnComprobante_Click(object sender, EventArgs e)
         {
+            docFactura.usuario = usuario;
+            docFactura.rol = rol;
             docFactura.Show();
             this.Hide();
         }

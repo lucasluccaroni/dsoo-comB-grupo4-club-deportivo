@@ -85,6 +85,7 @@
             btnComprobante.TabIndex = 4;
             btnComprobante.Text = "Comprobante";
             btnComprobante.UseVisualStyleBackColor = true;
+            btnComprobante.Click += btnComprobante_Click;
             // 
             // frmPagarActividad
             // 
@@ -100,6 +101,7 @@
             Text = "Pagar una actividad";
             ResumeLayout(false);
             PerformLayout();
+            Load += frmPagarActividad_Load;
         }
 
         #endregion

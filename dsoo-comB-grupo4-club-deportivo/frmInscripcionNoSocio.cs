@@ -64,7 +64,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                     }
                     else
                     {
-                        MessageBox.Show("Socio nro." + respuesta + " registrado con exito.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("NoSocio N°" + respuesta + " registrado con éxito.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                 }
                 else

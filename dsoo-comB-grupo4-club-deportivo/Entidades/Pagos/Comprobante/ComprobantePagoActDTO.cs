@@ -13,7 +13,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades.Pagos.Comprobante
         public string Actividad { get; set; }
         public string NoSocio { get; set; }
         public DateTime FechaActividad { get; set; }
-        public decimal Precio { get; set; }
+        public float Precio { get; set; }
         public DateTime FechaPago { get; set; }
     }
 }

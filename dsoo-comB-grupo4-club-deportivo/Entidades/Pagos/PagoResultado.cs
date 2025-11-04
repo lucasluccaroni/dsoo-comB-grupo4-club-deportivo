@@ -11,6 +11,6 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades.Pagos
     {
         public bool Exito { get; set; }
         public string Mensaje { get; set; }
-        public ComprobantePagoActDTO Comprobante { get; set; }
+        public ComprobantePagoActDTO? Comprobante { get; set; }
     }
 }

@@ -91,7 +91,7 @@ namespace dsoo_comB_grupo4_club_deportivo
 
 
         // boton para ir al formulario de pagar una actividad
-        private void btnPagarActividad_Click( object sender, EventArgs e)
+        private void btnPagarActividad_Click(object sender, EventArgs e)
         {
             frmPagarActividad pagarAct = new frmPagarActividad();
             pagarAct.rol = rol;

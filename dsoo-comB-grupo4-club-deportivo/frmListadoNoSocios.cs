@@ -94,7 +94,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                     "ID: " + idNoSocio +
                     "\nNombre: " + nombreNoSocio +
                     "\nApellido: " + apellidoNoSocio +
-                    "\nDNI: " + dniNoSocio, $"Informacion de socio: {idNoSocio}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "\nDNI: " + dniNoSocio, $"Informacion de NoSocio: {idNoSocio}", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
