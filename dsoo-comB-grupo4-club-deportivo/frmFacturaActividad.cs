@@ -68,7 +68,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             lblActividad.Text = actividad_f;
             lblNoSocio.Text = nombreNoSocio_f;
             lblFecha.Text = Convert.ToString(fechaAct_f);
-            lblPrecio.Text = Convert.ToString(monto_f);
+            lblPrecio.Text = $"${Convert.ToString(monto_f)}";
             lblFechaPago.Text = DateTime.UtcNow.ToShortDateString();
         }
     }
