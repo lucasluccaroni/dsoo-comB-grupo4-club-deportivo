@@ -67,7 +67,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             {
                 // creamos una conexion con la DB y le solicitamos una consulta SELECT con el id del no Socio
                 sqlCon = Conexion.getInstancia().CrearConexion();
-                query = "SELECT * FROM NoSocio WHERE IdNoSocio = @id ;";
+                query = "SELECT * FROM NoSocio WHERE IdNoSocio = @id AND Activo = TRUE;";
                 MySqlCommand comando = new MySqlCommand(query, sqlCon);
                 comando.Parameters.AddWithValue("@id", id);
                 sqlCon.Open();
@@ -100,6 +100,84 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 }
             }
                 return salida;
+        }
+
+        // Método para inactivar un NoSocio
+        public bool InactivarNoSocio(int idNoSocio)
+        {
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                string query;
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                query = "UPDATE NoSocio SET Activo = FALSE WHERE IdNoSocio = @id;";
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                comando.Parameters.AddWithValue("@id", idNoSocio);
+                sqlCon.Open();
+
+                int filasAfectadas = comando.ExecuteNonQuery();
+                if (filasAfectadas > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                //System.Diagnostics.Debug.WriteLine("Eliminar NoSocio -> Catch");
+                //System.Diagnostics.Debug.WriteLine(ex.Source);
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+        }
+
+        // Método para reactivar un NoSocio
+        public bool ReactivarNoSocio(int idNoSocio)
+        {
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                string query;
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                query = "UPDATE NoSocio SET Activo = TRUE WHERE IdNoSocio = @id;";
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                comando.Parameters.AddWithValue("@id", idNoSocio);
+                sqlCon.Open();
+
+                int filasAfectadas = comando.ExecuteNonQuery();
+                if (filasAfectadas > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                //System.Diagnostics.Debug.WriteLine("Eliminar NoSocio -> Catch");
+                //System.Diagnostics.Debug.WriteLine(ex.Source);
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
         }
     }
 }

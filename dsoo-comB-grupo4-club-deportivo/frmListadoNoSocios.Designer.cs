@@ -40,17 +40,20 @@
             FechaNacNoSocio = new DataGridViewTextBoxColumn();
             TelefonoNoSocio = new DataGridViewTextBoxColumn();
             FichaMedNoSocio = new DataGridViewTextBoxColumn();
-            btnEliminarNoSocio = new Button();
-            btnVerDetalleNoSocio = new Button();
+            ActivoNoSocio = new DataGridViewTextBoxColumn();
+            btnInactivarNoSocio = new Button();
+            chkMostrarInactivos = new CheckBox();
+            btnReactivarNoSocio = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgvNoSocios).BeginInit();
             SuspendLayout();
             // 
             // btnVolver
             // 
             btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVolver.Location = new Point(12, 12);
+            btnVolver.Location = new Point(14, 16);
+            btnVolver.Margin = new Padding(3, 4, 3, 4);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(83, 32);
+            btnVolver.Size = new Size(95, 43);
             btnVolver.TabIndex = 0;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
@@ -60,9 +63,9 @@
             // 
             lblListadoNoSocios.AutoSize = true;
             lblListadoNoSocios.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblListadoNoSocios.Location = new Point(385, 46);
+            lblListadoNoSocios.Location = new Point(440, 61);
             lblListadoNoSocios.Name = "lblListadoNoSocios";
-            lblListadoNoSocios.Size = new Size(364, 47);
+            lblListadoNoSocios.Size = new Size(456, 60);
             lblListadoNoSocios.TabIndex = 4;
             lblListadoNoSocios.Text = "Listado de NO socios";
             // 
@@ -71,102 +74,146 @@
             dtgvNoSocios.AllowUserToAddRows = false;
             dtgvNoSocios.AllowUserToDeleteRows = false;
             dtgvNoSocios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvNoSocios.Columns.AddRange(new DataGridViewColumn[] { IdNoSocio, NombreNoSocio, ApellidoNoSocio, EmailNoSocio, DniNoSocio, DireccionNoSocio, FechaNacNoSocio, TelefonoNoSocio, FichaMedNoSocio });
-            dtgvNoSocios.Location = new Point(110, 143);
+            dtgvNoSocios.Columns.AddRange(new DataGridViewColumn[] { IdNoSocio, NombreNoSocio, ApellidoNoSocio, EmailNoSocio, DniNoSocio, DireccionNoSocio, FechaNacNoSocio, TelefonoNoSocio, FichaMedNoSocio, ActivoNoSocio });
+            dtgvNoSocios.Location = new Point(36, 191);
+            dtgvNoSocios.Margin = new Padding(3, 4, 3, 4);
             dtgvNoSocios.Name = "dtgvNoSocios";
             dtgvNoSocios.ReadOnly = true;
-            dtgvNoSocios.Size = new Size(945, 333);
+            dtgvNoSocios.RowHeadersWidth = 51;
+            dtgvNoSocios.Size = new Size(1314, 444);
             dtgvNoSocios.TabIndex = 5;
             dtgvNoSocios.CellClick += dtgvNoSocios_CellClick;
             // 
             // IdNoSocio
             // 
             IdNoSocio.HeaderText = "ID-NO.SOCIO";
+            IdNoSocio.MinimumWidth = 6;
             IdNoSocio.Name = "IdNoSocio";
             IdNoSocio.ReadOnly = true;
+            IdNoSocio.Width = 125;
             // 
             // NombreNoSocio
             // 
             NombreNoSocio.HeaderText = "NOMBRE";
+            NombreNoSocio.MinimumWidth = 6;
             NombreNoSocio.Name = "NombreNoSocio";
             NombreNoSocio.ReadOnly = true;
+            NombreNoSocio.Width = 125;
             // 
             // ApellidoNoSocio
             // 
             ApellidoNoSocio.HeaderText = "APELLIDO";
+            ApellidoNoSocio.MinimumWidth = 6;
             ApellidoNoSocio.Name = "ApellidoNoSocio";
             ApellidoNoSocio.ReadOnly = true;
+            ApellidoNoSocio.Width = 125;
             // 
             // EmailNoSocio
             // 
             EmailNoSocio.HeaderText = "EMAIL";
+            EmailNoSocio.MinimumWidth = 6;
             EmailNoSocio.Name = "EmailNoSocio";
             EmailNoSocio.ReadOnly = true;
+            EmailNoSocio.Width = 125;
             // 
             // DniNoSocio
             // 
             DniNoSocio.HeaderText = "DNI";
+            DniNoSocio.MinimumWidth = 6;
             DniNoSocio.Name = "DniNoSocio";
             DniNoSocio.ReadOnly = true;
+            DniNoSocio.Width = 125;
             // 
             // DireccionNoSocio
             // 
             DireccionNoSocio.HeaderText = "DIRECCION";
+            DireccionNoSocio.MinimumWidth = 6;
             DireccionNoSocio.Name = "DireccionNoSocio";
             DireccionNoSocio.ReadOnly = true;
+            DireccionNoSocio.Width = 125;
             // 
             // FechaNacNoSocio
             // 
             FechaNacNoSocio.HeaderText = "FECHA NAC";
+            FechaNacNoSocio.MinimumWidth = 6;
             FechaNacNoSocio.Name = "FechaNacNoSocio";
             FechaNacNoSocio.ReadOnly = true;
+            FechaNacNoSocio.Width = 125;
             // 
             // TelefonoNoSocio
             // 
             TelefonoNoSocio.HeaderText = "TELEFONO";
+            TelefonoNoSocio.MinimumWidth = 6;
             TelefonoNoSocio.Name = "TelefonoNoSocio";
             TelefonoNoSocio.ReadOnly = true;
+            TelefonoNoSocio.Width = 125;
             // 
             // FichaMedNoSocio
             // 
             FichaMedNoSocio.HeaderText = "FICHA-MED";
+            FichaMedNoSocio.MinimumWidth = 6;
             FichaMedNoSocio.Name = "FichaMedNoSocio";
             FichaMedNoSocio.ReadOnly = true;
+            FichaMedNoSocio.Width = 125;
             // 
-            // btnEliminarNoSocio
+            // ActivoNoSocio
             // 
-            btnEliminarNoSocio.BackColor = Color.FromArgb(255, 128, 128);
-            btnEliminarNoSocio.BackgroundImageLayout = ImageLayout.Zoom;
-            btnEliminarNoSocio.Font = new Font("Segoe UI", 11.25F);
-            btnEliminarNoSocio.Location = new Point(1030, 509);
-            btnEliminarNoSocio.Name = "btnEliminarNoSocio";
-            btnEliminarNoSocio.Size = new Size(100, 33);
-            btnEliminarNoSocio.TabIndex = 7;
-            btnEliminarNoSocio.Text = "Eliminar";
-            btnEliminarNoSocio.UseVisualStyleBackColor = false;
-            btnEliminarNoSocio.Click += btnEliminarNoSocio_Click;
+            ActivoNoSocio.HeaderText = "ACTIVO";
+            ActivoNoSocio.MinimumWidth = 6;
+            ActivoNoSocio.Name = "ActivoNoSocio";
+            ActivoNoSocio.ReadOnly = true;
+            ActivoNoSocio.Width = 125;
             // 
-            // btnVerDetalleNoSocio
+            // btnInactivarNoSocio
             // 
-            btnVerDetalleNoSocio.BackColor = Color.LightSkyBlue;
-            btnVerDetalleNoSocio.Font = new Font("Segoe UI", 11.25F);
-            btnVerDetalleNoSocio.Location = new Point(838, 509);
-            btnVerDetalleNoSocio.Name = "btnVerDetalleNoSocio";
-            btnVerDetalleNoSocio.Size = new Size(100, 33);
-            btnVerDetalleNoSocio.TabIndex = 6;
-            btnVerDetalleNoSocio.Text = "Ver Detalle";
-            btnVerDetalleNoSocio.UseVisualStyleBackColor = false;
+            btnInactivarNoSocio.BackColor = Color.FromArgb(255, 128, 128);
+            btnInactivarNoSocio.BackgroundImageLayout = ImageLayout.Zoom;
+            btnInactivarNoSocio.Font = new Font("Segoe UI", 11.25F);
+            btnInactivarNoSocio.Location = new Point(1131, 667);
+            btnInactivarNoSocio.Margin = new Padding(3, 4, 3, 4);
+            btnInactivarNoSocio.Name = "btnInactivarNoSocio";
+            btnInactivarNoSocio.Size = new Size(160, 68);
+            btnInactivarNoSocio.TabIndex = 7;
+            btnInactivarNoSocio.Text = "Inactivar NoSocio";
+            btnInactivarNoSocio.UseVisualStyleBackColor = false;
+            btnInactivarNoSocio.Click += btnInactivarNoSocio_Click;
+            // 
+            // chkMostrarInactivos
+            // 
+            chkMostrarInactivos.AutoSize = true;
+            chkMostrarInactivos.Location = new Point(36, 667);
+            chkMostrarInactivos.Name = "chkMostrarInactivos";
+            chkMostrarInactivos.Size = new Size(144, 24);
+            chkMostrarInactivos.TabIndex = 8;
+            chkMostrarInactivos.Text = "Mostrar Inactivos";
+            chkMostrarInactivos.UseVisualStyleBackColor = true;
+            chkMostrarInactivos.CheckedChanged += chkMostrarInactivos_CheckedChanged;
+            // 
+            // btnReactivarNoSocio
+            // 
+            btnReactivarNoSocio.BackColor = Color.FromArgb(192, 255, 192);
+            btnReactivarNoSocio.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnReactivarNoSocio.Location = new Point(965, 669);
+            btnReactivarNoSocio.Name = "btnReactivarNoSocio";
+            btnReactivarNoSocio.Size = new Size(160, 68);
+            btnReactivarNoSocio.TabIndex = 9;
+            btnReactivarNoSocio.Text = "Reactivar NoSocio";
+            btnReactivarNoSocio.UseVisualStyleBackColor = false;
+            btnReactivarNoSocio.Enabled = false;
+            btnReactivarNoSocio.Click += btnReactivarSocio_Click;
             // 
             // frmListadoNoSocios
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1192, 570);
-            Controls.Add(btnEliminarNoSocio);
-            Controls.Add(btnVerDetalleNoSocio);
+            ClientSize = new Size(1362, 760);
+            Controls.Add(btnReactivarNoSocio);
+            Controls.Add(chkMostrarInactivos);
+            Controls.Add(btnInactivarNoSocio);
             Controls.Add(dtgvNoSocios);
             Controls.Add(lblListadoNoSocios);
             Controls.Add(btnVolver);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "frmListadoNoSocios";
             Text = "Listado -> No Socios";
             Load += frmListadoNoSocios_Load;
@@ -180,6 +227,7 @@
         private Button btnVolver;
         private Label lblListadoNoSocios;
         private DataGridView dtgvNoSocios;
+        private Button btnInactivarNoSocio;
         private DataGridViewTextBoxColumn IdNoSocio;
         private DataGridViewTextBoxColumn NombreNoSocio;
         private DataGridViewTextBoxColumn ApellidoNoSocio;
@@ -189,7 +237,8 @@
         private DataGridViewTextBoxColumn FechaNacNoSocio;
         private DataGridViewTextBoxColumn TelefonoNoSocio;
         private DataGridViewTextBoxColumn FichaMedNoSocio;
-        private Button btnEliminarNoSocio;
-        private Button btnVerDetalleNoSocio;
+        private DataGridViewTextBoxColumn ActivoNoSocio;
+        private CheckBox chkMostrarInactivos;
+        private Button btnReactivarNoSocio;
     }
 }

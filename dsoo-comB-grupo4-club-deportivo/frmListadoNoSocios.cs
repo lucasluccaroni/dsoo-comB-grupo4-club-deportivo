@@ -29,14 +29,22 @@ namespace dsoo_comB_grupo4_club_deportivo
         }
 
         // Metodo para buscar la consulta SQL en la base de datos y traer los datos para cargarlos en la grilla
-        public void CargarGrilla()
+        public void CargarGrilla(bool mostrarInactivos = false)
         {
             MySqlConnection sqlCon = new MySqlConnection();
             try
             {
                 string query;
                 sqlCon = Conexion.getInstancia().CrearConexion();
-                query = "SELECT * FROM NoSocio;";
+                if (mostrarInactivos)
+                {
+                    query = "SELECT * FROM NoSocio WHERE Activo = FALSE;";
+                }
+                else
+                {
+                    query = "SELECT * FROM NoSocio WHERE Activo = TRUE;";
+
+                }
                 MySqlCommand comando = new MySqlCommand(query, sqlCon);
                 comando.CommandType = CommandType.Text;
                 sqlCon.Open();
@@ -57,6 +65,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                         dtgvNoSocios.Rows[renglon].Cells[6].Value = reader.GetDateTime(6); // fechaNac
                         dtgvNoSocios.Rows[renglon].Cells[7].Value = reader.GetInt32(7); // telefono
                         dtgvNoSocios.Rows[renglon].Cells[8].Value = reader.GetBoolean(8); // fichaMed
+                        dtgvNoSocios.Rows[renglon].Cells[9].Value = reader.GetBoolean(9); // activo
                     }
                 }
                 else
@@ -98,64 +107,87 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
-        // Boton para activar el metodo de eliminar un NoSocio
-        private void btnEliminarNoSocio_Click(object sender, EventArgs e)
+        // Boton para activar el metodo de inactivar un NoSocio
+        private void btnInactivarNoSocio_Click(object sender, EventArgs e)
         {
             if (dtgvNoSocios.SelectedRows.Count > 0)
             {
-                int idNoSocio = (int)dtgvNoSocios.Rows[0].Cells["idNoSocio"].Value;
-                DialogResult confirmacion = MessageBox.Show($"¿Está seguro que desea eliminar al No Socio {idNoSocio}?", "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                NoSocio herramientasNoSocio = new NoSocio();
+                int idNoSocio = (int)dtgvNoSocios.SelectedRows[0].Cells["idNoSocio"].Value;
+                System.Diagnostics.Debug.WriteLine("id a inactivar => "+ idNoSocio);
+                DialogResult confirmacion = MessageBox.Show($"¿Está seguro que desea inactivar al No Socio {idNoSocio}?", "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmacion == DialogResult.Yes)
                 {
-                    EliminarNoSocio(idNoSocio);
+                    bool resultado = herramientasNoSocio.InactivarNoSocio(idNoSocio);
+                    if (resultado)
+                    {
+                        MessageBox.Show("No Socio inactivado correctamente.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dtgvNoSocios.Rows.Clear();
+                        CargarGrilla();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se econtró el No Socio a inactivar.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("No hay ningun Socio seleccionado.", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("No hay ningun NoSocio seleccionado.", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
         }
-
-        // Metodo para eliminar un NoSocio
-        public void EliminarNoSocio(int idNoSocio)
+        
+        // checkBox para mostrar NoSocios activos o inactivos
+        private void chkMostrarInactivos_CheckedChanged(object sender, EventArgs e)
         {
-            MySqlConnection sqlCon = new MySqlConnection();
-            try
+            if (chkMostrarInactivos.Checked)
             {
-                string query;
-                sqlCon = Conexion.getInstancia().CrearConexion();
-                query = "DELETE FROM NoSocio WHERE IdNoSocio = @id;";
-                MySqlCommand comando = new MySqlCommand(query, sqlCon);
-                comando.Parameters.AddWithValue("@id", idNoSocio);
-                sqlCon.Open();
-
-                int filasAfectadas = comando.ExecuteNonQuery();
-                if (filasAfectadas > 0)
-                {
-                    MessageBox.Show("No Socio eliminado correctamente.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dtgvNoSocios.Rows.Clear();
-                    CargarGrilla();
-                }
-                else
-                {
-                    MessageBox.Show("No se econtró el No Socio a eliminar.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                dtgvNoSocios.Rows.Clear();
+                CargarGrilla(true); // muestra NoSocios inactivos
+                btnReactivarNoSocio.Enabled = true; // activa el boton de reactivar NoSocios
+                btnInactivarNoSocio.Enabled = false; // desactiva el boton para inactivar NoSocios
             }
-            catch (Exception ex)
+            else
             {
-                //System.Diagnostics.Debug.WriteLine("Eliminar NoSocio -> Catch");
-                //System.Diagnostics.Debug.WriteLine(ex.Source);
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (sqlCon.State == ConnectionState.Open)
-                {
-                    sqlCon.Close();
-                }
+                dtgvNoSocios.Rows.Clear();
+                CargarGrilla(false); // muestra NoSocios activos
+                btnReactivarNoSocio.Enabled = false; // desactiva el boton de reactivar NoSocios
+                btnInactivarNoSocio.Enabled = true; // activa el boton para inactivar NoSocios
             }
         }
 
+        // boton para activar el método de reactivar un NoSocio
+        private void btnReactivarSocio_Click(object sender, EventArgs e)
+        {
+            if (dtgvNoSocios.SelectedRows.Count > 0)
+            {
+                NoSocio herramientasNoSocio = new NoSocio();
+                int idNoSocio = (int)dtgvNoSocios.SelectedRows[0].Cells["idNoSocio"].Value;
+                System.Diagnostics.Debug.WriteLine("id a activar => " + idNoSocio);
+                DialogResult confirmacion = MessageBox.Show($"¿Está seguro que desea activar al No Socio {idNoSocio}?", "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirmacion == DialogResult.Yes)
+                {
+                    bool resultado = herramientasNoSocio.ReactivarNoSocio(idNoSocio);
+                    if (resultado)
+                    {
+                        MessageBox.Show("NoSocio activado correctamente.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dtgvNoSocios.Rows.Clear();
+                        CargarGrilla();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se econtró el NoSocio a activar.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay ningun NoSocio seleccionado.", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+
+        }
+
+        
         // Boton para volver al formulario principal
         private void btnVolver_Click(object sender, EventArgs e)
         {

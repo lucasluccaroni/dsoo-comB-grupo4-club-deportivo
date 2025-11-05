@@ -9,6 +9,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades.Personas
     public class E_NoSocio : E_Persona
     {
         public int IdNoSocio { get; set; }
+        public bool Activo { get; set; }
 
         public E_NoSocio(
             string Nombre,
@@ -32,6 +33,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades.Personas
                 )
         {
             IdNoSocio = idNoSocio;
+            Activo = true;
         }
     }
 }

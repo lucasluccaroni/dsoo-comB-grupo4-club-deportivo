@@ -85,6 +85,7 @@ Direccion VARCHAR(30),
 FechaNac DATE,
 Telefono INT,
 FichaMedica TINYINT,
+Activo BOOL DEFAULT TRUE,
 CONSTRAINT pk_nosocio PRIMARY KEY (IdNoSocio)
 );
 
@@ -175,7 +176,9 @@ INSERT INTO EdicionActividad (IdEdicion, IdActividad, IdProfesor, FechaActividad
 -- SELECT * FROM EdicionActividad;
 -- DROP TABLE EdicionActividad;
 
--- INSERT INTO EdicionActividad(IdEdicion, IdActividad, IdProfesor, FechaActividad, CupoEdicion) VALUES (2512, 8902, 1801, "2025-11-14", 10);
+--  Inserción de edición con cupo lleno para demostración de que no se podrá inscribir nadie a esta actividad por estar completa en cupo.
+INSERT INTO EdicionActividad(IdEdicion, IdActividad, IdProfesor, FechaActividad, CupoEdicion) VALUES (2512, 8902, 1801, "2025-11-14", 10);
+
 
 --  ------------ Consultas de prueba ------------
 -- SELECT a.Nombre, e.FechaActividad, CONCAT(p.Nombre, ' ', p.Apellido), a.Precio FROM Actividad a INNER JOIN EdicionActividad e ON a.IdActividad = e.IdActividad INNER JOIN Profesor p ON e.IdProfesor = p.IdProfesor WHERE e.FechaActividad > curdate() ORDER BY a.Nombre;SELECT a.Nombre, e.FechaActividad, CONCAT(p.Nombre, ' ', p.Apellido), a.Precio FROM Actividad a INNER JOIN EdicionActividad e ON a.IdActividad = e.IdActividad INNER JOIN Profesor p ON e.IdProfesor = p.IdProfesor WHERE e.FechaActividad > curdate() ORDER BY e.FechaActividad;
@@ -302,7 +305,8 @@ BEGIN
 	END IF;
     
     IF existe = 0 THEN
-		INSERT INTO NoSocio VALUES (filas, nombre, apellido, email, dniNoSoc, direccion, fechaNac, telefono, fichaMedica);
+		INSERT INTO NoSocio	(IdNoSocio, Nombre, Apellido, Email, Dni, Direccion, FechaNac, Telefono, FichaMedica, Activo)
+		VALUES (filas, nombre, apellido, email, dniNoSoc, direccion, fechaNac, telefono, fichaMedica, TRUE);
         SET respuesta = filas;
 	ELSE
 		SET respuesta = existe;
