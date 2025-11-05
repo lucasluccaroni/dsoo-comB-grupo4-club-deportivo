@@ -45,10 +45,9 @@
             // btnVolver
             // 
             btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVolver.Location = new Point(14, 16);
-            btnVolver.Margin = new Padding(3, 4, 3, 4);
+            btnVolver.Location = new Point(12, 12);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(95, 47);
+            btnVolver.Size = new Size(83, 35);
             btnVolver.TabIndex = 5;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
@@ -60,7 +59,7 @@
             dtgvActividad.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvActividad.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             dtgvActividad.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
@@ -78,12 +77,11 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dtgvActividad.DefaultCellStyle = dataGridViewCellStyle2;
-            dtgvActividad.Location = new Point(35, 120);
-            dtgvActividad.Margin = new Padding(3, 4, 3, 4);
+            dtgvActividad.Location = new Point(164, 95);
             dtgvActividad.Name = "dtgvActividad";
             dtgvActividad.ReadOnly = true;
             dtgvActividad.RowHeadersWidth = 51;
-            dtgvActividad.Size = new Size(1123, 454);
+            dtgvActividad.Size = new Size(786, 340);
             dtgvActividad.TabIndex = 10;
             dtgvActividad.CellClick += dtgvActividad_CellClick;
             // 
@@ -95,7 +93,7 @@
             IdEdicion.Name = "IdEdicion";
             IdEdicion.ReadOnly = true;
             IdEdicion.Resizable = DataGridViewTriState.True;
-            IdEdicion.Width = 140;
+            IdEdicion.Width = 113;
             // 
             // NombreAct
             // 
@@ -104,7 +102,7 @@
             NombreAct.MinimumWidth = 6;
             NombreAct.Name = "NombreAct";
             NombreAct.ReadOnly = true;
-            NombreAct.Width = 135;
+            NombreAct.Width = 110;
             // 
             // FechaAct
             // 
@@ -113,7 +111,7 @@
             FechaAct.MinimumWidth = 6;
             FechaAct.Name = "FechaAct";
             FechaAct.ReadOnly = true;
-            FechaAct.Width = 97;
+            FechaAct.Width = 79;
             // 
             // NombreProf
             // 
@@ -122,7 +120,7 @@
             NombreProf.MinimumWidth = 6;
             NombreProf.Name = "NombreProf";
             NombreProf.ReadOnly = true;
-            NombreProf.Width = 131;
+            NombreProf.Width = 105;
             // 
             // PrecioAct
             // 
@@ -131,7 +129,7 @@
             PrecioAct.MinimumWidth = 6;
             PrecioAct.Name = "PrecioAct";
             PrecioAct.ReadOnly = true;
-            PrecioAct.Width = 104;
+            PrecioAct.Width = 83;
             // 
             // CuposDispAct
             // 
@@ -140,27 +138,26 @@
             CuposDispAct.MinimumWidth = 6;
             CuposDispAct.Name = "CuposDispAct";
             CuposDispAct.ReadOnly = true;
-            CuposDispAct.Width = 199;
+            CuposDispAct.Width = 158;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label1.Location = new Point(506, 64);
+            label1.Location = new Point(443, 48);
             label1.Name = "label1";
-            label1.Size = new Size(168, 38);
+            label1.Size = new Size(134, 30);
             label1.TabIndex = 11;
             label1.Text = "Actividades";
             // 
             // frmActividadNoSocio
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1217, 625);
+            ClientSize = new Size(1065, 469);
             Controls.Add(label1);
             Controls.Add(dtgvActividad);
             Controls.Add(btnVolver);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmActividadNoSocio";
             Text = "No Socio -> Inscripción a Actividad";
             Load += frmActividadNoSocio_Load;

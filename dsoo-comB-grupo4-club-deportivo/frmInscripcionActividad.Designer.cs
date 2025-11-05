@@ -48,9 +48,11 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(21, 26);
+            btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVolver.Location = new Point(12, 11);
+            btnVolver.Margin = new Padding(3, 2, 3, 2);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(94, 29);
+            btnVolver.Size = new Size(93, 33);
             btnVolver.TabIndex = 0;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
@@ -58,10 +60,10 @@
             // 
             // btnVerificarNoSocio
             // 
-            btnVerificarNoSocio.Location = new Point(45, 217);
-            btnVerificarNoSocio.Margin = new Padding(3, 4, 3, 4);
+            btnVerificarNoSocio.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVerificarNoSocio.Location = new Point(39, 163);
             btnVerificarNoSocio.Name = "btnVerificarNoSocio";
-            btnVerificarNoSocio.Size = new Size(86, 31);
+            btnVerificarNoSocio.Size = new Size(75, 33);
             btnVerificarNoSocio.TabIndex = 12;
             btnVerificarNoSocio.Text = "Verificar";
             btnVerificarNoSocio.UseVisualStyleBackColor = true;
@@ -70,20 +72,19 @@
             // txtIdNoSocio
             // 
             txtIdNoSocio.Font = new Font("Segoe UI", 11.25F);
-            txtIdNoSocio.Location = new Point(45, 161);
-            txtIdNoSocio.Margin = new Padding(3, 4, 3, 4);
+            txtIdNoSocio.Location = new Point(39, 121);
             txtIdNoSocio.Name = "txtIdNoSocio";
             txtIdNoSocio.PlaceholderText = "Id NoSocio";
-            txtIdNoSocio.Size = new Size(185, 32);
+            txtIdNoSocio.Size = new Size(162, 27);
             txtIdNoSocio.TabIndex = 11;
             // 
             // lblNoSocio
             // 
             lblNoSocio.AutoSize = true;
             lblNoSocio.Font = new Font("Segoe UI", 11.25F);
-            lblNoSocio.Location = new Point(45, 114);
+            lblNoSocio.Location = new Point(39, 86);
             lblNoSocio.Name = "lblNoSocio";
-            lblNoSocio.Size = new Size(204, 25);
+            lblNoSocio.Size = new Size(162, 20);
             lblNoSocio.TabIndex = 10;
             lblNoSocio.Text = "Ingrese ID del NoSocio";
             // 
@@ -91,9 +92,9 @@
             // 
             lblVerificarSocio.AutoSize = true;
             lblVerificarSocio.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblVerificarSocio.Location = new Point(137, 222);
+            lblVerificarSocio.Location = new Point(120, 166);
             lblVerificarSocio.Name = "lblVerificarSocio";
-            lblVerificarSocio.Size = new Size(15, 23);
+            lblVerificarSocio.Size = new Size(13, 19);
             lblVerificarSocio.TabIndex = 13;
             lblVerificarSocio.Text = " ";
             // 
@@ -101,9 +102,9 @@
             // 
             lblNombreAct.AutoSize = true;
             lblNombreAct.Font = new Font("Segoe UI", 10.2F);
-            lblNombreAct.Location = new Point(158, 30);
+            lblNombreAct.Location = new Point(138, 22);
             lblNombreAct.Name = "lblNombreAct";
-            lblNombreAct.Size = new Size(17, 23);
+            lblNombreAct.Size = new Size(15, 19);
             lblNombreAct.TabIndex = 14;
             lblNombreAct.Text = "-";
             // 
@@ -111,9 +112,9 @@
             // 
             lblFechaAct.AutoSize = true;
             lblFechaAct.Font = new Font("Segoe UI", 10.2F);
-            lblFechaAct.Location = new Point(158, 78);
+            lblFechaAct.Location = new Point(138, 58);
             lblFechaAct.Name = "lblFechaAct";
-            lblFechaAct.Size = new Size(17, 23);
+            lblFechaAct.Size = new Size(15, 19);
             lblFechaAct.TabIndex = 15;
             lblFechaAct.Text = "-";
             // 
@@ -121,9 +122,9 @@
             // 
             lblProfAct.AutoSize = true;
             lblProfAct.Font = new Font("Segoe UI", 10.2F);
-            lblProfAct.Location = new Point(158, 128);
+            lblProfAct.Location = new Point(138, 96);
             lblProfAct.Name = "lblProfAct";
-            lblProfAct.Size = new Size(17, 23);
+            lblProfAct.Size = new Size(15, 19);
             lblProfAct.TabIndex = 16;
             lblProfAct.Text = "-";
             // 
@@ -131,36 +132,36 @@
             // 
             lbl.AutoSize = true;
             lbl.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lbl.Location = new Point(405, 44);
+            lbl.Location = new Point(354, 33);
             lbl.Name = "lbl";
-            lbl.Size = new Size(115, 28);
+            lbl.Size = new Size(94, 21);
             lbl.TabIndex = 17;
             lbl.Text = "Inscripción";
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(32, 33);
+            lblNombre.Location = new Point(28, 25);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(75, 20);
+            lblNombre.Size = new Size(60, 15);
             lblNombre.TabIndex = 18;
             lblNombre.Text = "Actividad:";
             // 
             // lblFecha
             // 
             lblFecha.AutoSize = true;
-            lblFecha.Location = new Point(57, 78);
+            lblFecha.Location = new Point(50, 58);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(50, 20);
+            lblFecha.Size = new Size(41, 15);
             lblFecha.TabIndex = 19;
             lblFecha.Text = "Fecha:";
             // 
             // lblProf
             // 
             lblProf.AutoSize = true;
-            lblProf.Location = new Point(26, 128);
+            lblProf.Location = new Point(23, 96);
             lblProf.Name = "lblProf";
-            lblProf.Size = new Size(81, 20);
+            lblProf.Size = new Size(65, 15);
             lblProf.TabIndex = 20;
             lblProf.Text = "Profesor/a:";
             // 
@@ -173,18 +174,21 @@
             panel1.Controls.Add(lblFecha);
             panel1.Controls.Add(lblProfAct);
             panel1.Controls.Add(lblNombre);
-            panel1.Location = new Point(348, 86);
+            panel1.Location = new Point(304, 64);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(308, 193);
+            panel1.Size = new Size(270, 145);
             panel1.TabIndex = 21;
             // 
             // btnConfirmarInscripcion
             // 
             btnConfirmarInscripcion.BackColor = Color.FromArgb(192, 255, 192);
+            btnConfirmarInscripcion.Font = new Font("Segoe UI", 11.25F);
             btnConfirmarInscripcion.ForeColor = SystemColors.ControlText;
-            btnConfirmarInscripcion.Location = new Point(281, 350);
+            btnConfirmarInscripcion.Location = new Point(246, 262);
+            btnConfirmarInscripcion.Margin = new Padding(3, 2, 3, 2);
             btnConfirmarInscripcion.Name = "btnConfirmarInscripcion";
-            btnConfirmarInscripcion.Size = new Size(174, 55);
+            btnConfirmarInscripcion.Size = new Size(157, 48);
             btnConfirmarInscripcion.TabIndex = 22;
             btnConfirmarInscripcion.Text = "Confirmar";
             btnConfirmarInscripcion.UseVisualStyleBackColor = false;
@@ -192,9 +196,11 @@
             // 
             // btnPagar
             // 
-            btnPagar.Location = new Point(669, 397);
+            btnPagar.Font = new Font("Segoe UI", 11.25F);
+            btnPagar.Location = new Point(585, 280);
+            btnPagar.Margin = new Padding(3, 2, 3, 2);
             btnPagar.Name = "btnPagar";
-            btnPagar.Size = new Size(94, 29);
+            btnPagar.Size = new Size(91, 47);
             btnPagar.TabIndex = 23;
             btnPagar.Text = "Pagar";
             btnPagar.UseVisualStyleBackColor = true;
@@ -202,9 +208,9 @@
             // 
             // frmInscripcionActividad
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(btnPagar);
             Controls.Add(btnConfirmarInscripcion);
             Controls.Add(panel1);
@@ -214,6 +220,7 @@
             Controls.Add(txtIdNoSocio);
             Controls.Add(lblNoSocio);
             Controls.Add(btnVolver);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmInscripcionActividad";
             Text = "Inscripcion a Actividad";
             Load += frmInscripcionActividad_Load;
