@@ -44,9 +44,15 @@
             ActivoSocio = new DataGridViewTextBoxColumn();
             lblListadoSocios = new Label();
             btnInactivarSocio = new Button();
-            chkMostrarInactivos = new CheckBox();
             btnReactivarSocio = new Button();
+            btnImprimir = new Button();
+            rbtActivos = new RadioButton();
+            rbtInactivos = new RadioButton();
+            rbtVencenHoy = new RadioButton();
+            pnlListas = new Panel();
+            btnMostrar = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgvSocios).BeginInit();
+            pnlListas.SuspendLayout();
             SuspendLayout();
             // 
             // btnVolver
@@ -188,7 +194,7 @@
             btnInactivarSocio.BackColor = Color.FromArgb(255, 128, 128);
             btnInactivarSocio.BackgroundImageLayout = ImageLayout.Zoom;
             btnInactivarSocio.Font = new Font("Segoe UI", 11.25F);
-            btnInactivarSocio.Location = new Point(1163, 660);
+            btnInactivarSocio.Location = new Point(1162, 663);
             btnInactivarSocio.Margin = new Padding(3, 4, 3, 4);
             btnInactivarSocio.Name = "btnInactivarSocio";
             btnInactivarSocio.Size = new Size(123, 70);
@@ -197,37 +203,92 @@
             btnInactivarSocio.UseVisualStyleBackColor = false;
             btnInactivarSocio.Click += btnInactivarSocio_Click;
             // 
-            // chkMostrarInactivos
-            // 
-            chkMostrarInactivos.AutoSize = true;
-            chkMostrarInactivos.Location = new Point(71, 686);
-            chkMostrarInactivos.Name = "chkMostrarInactivos";
-            chkMostrarInactivos.Size = new Size(144, 24);
-            chkMostrarInactivos.TabIndex = 6;
-            chkMostrarInactivos.Text = "Mostrar Inactivos";
-            chkMostrarInactivos.UseVisualStyleBackColor = true;
-            chkMostrarInactivos.CheckedChanged += chkMostrarInactivos_CheckedChanged;
-            // 
             // btnReactivarSocio
             // 
             btnReactivarSocio.BackColor = Color.FromArgb(192, 255, 192);
+            btnReactivarSocio.Enabled = false;
             btnReactivarSocio.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnReactivarSocio.Location = new Point(1033, 663);
             btnReactivarSocio.Name = "btnReactivarSocio";
-            btnReactivarSocio.Size = new Size(104, 67);
+            btnReactivarSocio.Size = new Size(123, 70);
             btnReactivarSocio.TabIndex = 7;
             btnReactivarSocio.Text = "Reactivar Socio";
             btnReactivarSocio.UseVisualStyleBackColor = false;
-            btnReactivarSocio.Enabled = false;
             btnReactivarSocio.Click += btnReactivarSocio_Click;
+            // 
+            // btnImprimir
+            // 
+            btnImprimir.Enabled = false;
+            btnImprimir.Location = new Point(309, 715);
+            btnImprimir.Name = "btnImprimir";
+            btnImprimir.Size = new Size(144, 29);
+            btnImprimir.TabIndex = 9;
+            btnImprimir.Text = "Imprimir";
+            btnImprimir.UseVisualStyleBackColor = true;
+            // 
+            // rbtActivos
+            // 
+            rbtActivos.AutoSize = true;
+            rbtActivos.Location = new Point(25, 7);
+            rbtActivos.Name = "rbtActivos";
+            rbtActivos.Size = new Size(125, 24);
+            rbtActivos.TabIndex = 10;
+            rbtActivos.TabStop = true;
+            rbtActivos.Text = "Socios Activos";
+            rbtActivos.UseVisualStyleBackColor = true;
+            // 
+            // rbtInactivos
+            // 
+            rbtInactivos.AutoSize = true;
+            rbtInactivos.Location = new Point(25, 37);
+            rbtInactivos.Name = "rbtInactivos";
+            rbtInactivos.Size = new Size(135, 24);
+            rbtInactivos.TabIndex = 11;
+            rbtInactivos.TabStop = true;
+            rbtInactivos.Text = "Socios Inactivos";
+            rbtInactivos.UseVisualStyleBackColor = true;
+            // 
+            // rbtVencenHoy
+            // 
+            rbtVencenHoy.AutoSize = true;
+            rbtVencenHoy.Location = new Point(25, 67);
+            rbtVencenHoy.Name = "rbtVencenHoy";
+            rbtVencenHoy.Size = new Size(180, 24);
+            rbtVencenHoy.TabIndex = 12;
+            rbtVencenHoy.TabStop = true;
+            rbtVencenHoy.Text = "Socios que vencen hoy";
+            rbtVencenHoy.UseVisualStyleBackColor = true;
+            // 
+            // pnlListas
+            // 
+            pnlListas.BorderStyle = BorderStyle.FixedSingle;
+            pnlListas.Controls.Add(rbtInactivos);
+            pnlListas.Controls.Add(rbtVencenHoy);
+            pnlListas.Controls.Add(rbtActivos);
+            pnlListas.Location = new Point(27, 650);
+            pnlListas.Name = "pnlListas";
+            pnlListas.Size = new Size(276, 94);
+            pnlListas.TabIndex = 13;
+            // 
+            // btnMostrar
+            // 
+            btnMostrar.Location = new Point(309, 650);
+            btnMostrar.Name = "btnMostrar";
+            btnMostrar.Size = new Size(144, 49);
+            btnMostrar.TabIndex = 14;
+            btnMostrar.Text = "Mostrar";
+            btnMostrar.UseVisualStyleBackColor = true;
+            btnMostrar.Click += btnMostrar_Click;
             // 
             // frmListadoSocios
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1476, 760);
+            Controls.Add(btnMostrar);
+            Controls.Add(pnlListas);
+            Controls.Add(btnImprimir);
             Controls.Add(btnReactivarSocio);
-            Controls.Add(chkMostrarInactivos);
             Controls.Add(btnInactivarSocio);
             Controls.Add(lblListadoSocios);
             Controls.Add(dtgvSocios);
@@ -237,6 +298,8 @@
             Text = "Listado -> Socios";
             Load += frmListadoSocios_Load;
             ((System.ComponentModel.ISupportInitialize)dtgvSocios).EndInit();
+            pnlListas.ResumeLayout(false);
+            pnlListas.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -247,7 +310,6 @@
         private DataGridView dtgvSocios;
         private Label lblListadoSocios;
         private Button btnInactivarSocio;
-        private CheckBox chkMostrarInactivos;
         private DataGridViewTextBoxColumn idSocio;
         private DataGridViewTextBoxColumn NombreSocio;
         private DataGridViewTextBoxColumn ApellidoSocio;
@@ -261,5 +323,11 @@
         private DataGridViewTextBoxColumn FechaVencimientoSocio;
         private DataGridViewTextBoxColumn ActivoSocio;
         private Button btnReactivarSocio;
+        private Button btnImprimir;
+        private RadioButton rbtActivos;
+        private RadioButton rbtInactivos;
+        private RadioButton rbtVencenHoy;
+        private Panel pnlListas;
+        private Button btnMostrar;
     }
 }

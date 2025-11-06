@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 
 namespace dsoo_comB_grupo4_club_deportivo
@@ -17,6 +18,13 @@ namespace dsoo_comB_grupo4_club_deportivo
     public partial class frmListadoSocios : Form
     {
         internal string? rol, usuario;
+        public enum FiltroSocios
+        {
+            Activos,
+            Inactivos,
+            VencenHoy
+        }
+
         public frmListadoSocios()
         {
             InitializeComponent();
@@ -26,26 +34,32 @@ namespace dsoo_comB_grupo4_club_deportivo
         // Metodo para que cuand se cargue el formulario automaticamente se implemente el metodo "CargarGrilla"
         private void frmListadoSocios_Load(object sender, EventArgs e)
         {
-            CargarGrilla();
+            CargarGrilla(FiltroSocios.Activos);
         }
 
         // Metodo para buscar la consulta SQL en la base de datos y traer los datos para cargarlos en la grilla
-        public void CargarGrilla(bool mostrarInactivos = false)
+        public void CargarGrilla(FiltroSocios filtro)
         {
             MySqlConnection sqlCon = new MySqlConnection();
             try
             {
-                string query;
+                // La query incialmente no tiene ninfun filtro mas que buscar los registros de Socios
+                string query = "SELECT * FROM Socio ";
                 sqlCon = Conexion.getInstancia().CrearConexion();
-                if (mostrarInactivos)
+                switch (filtro)
                 {
-                    query = "SELECT * FROM Socio WHERE Activo = FALSE;";
-                }
-                else
-                {
-                    query = "SELECT * FROM Socio WHERE Activo = TRUE;";
+                    case FiltroSocios.Activos:
+                        query += "WHERE Activo = TRUE;";
+                        break;
+                    case FiltroSocios.Inactivos:
 
+                            query += "WHERE Activo = FALSE;";
+                            break;
+                    case FiltroSocios.VencenHoy:
+                            query += "WHERE FechaVencimiento = CURDATE() AND Activo = TRUE;";
+                            break;
                 }
+
                 MySqlCommand comando = new MySqlCommand(query, sqlCon);
                 comando.CommandType = CommandType.Text;
                 sqlCon.Open();
@@ -73,7 +87,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                 }
                 else
                 {
-                    MessageBox.Show("No hay información para mostrar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("No hay información para mostrar.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
             }
             catch(Exception ex)
@@ -91,6 +105,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
+        
         // Metodo para ver el detalle de algun socio en la grilla
         private void dtgvSocios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -110,6 +125,41 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
+
+        // Boton para Mostrar distintas listas de socios dependiendo del radioButton seleccionado
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            if (rbtActivos.Checked)
+            {
+                dtgvSocios.Rows.Clear();
+                CargarGrilla(FiltroSocios.Activos); // muestra Socios activos
+                btnReactivarSocio.Enabled = false; // desactiva el boton de reactivar Socios
+                btnInactivarSocio.Enabled = true; // activa el boton para inactivar Socios 
+                btnImprimir.Enabled = false; // desactiva el boton para imprimir
+                btnImprimir.BackColor = SystemColors.Control; // pone el boton imprimir con su color original
+            }
+
+            if (rbtInactivos.Checked)
+            {
+                dtgvSocios.Rows.Clear();
+                CargarGrilla(FiltroSocios.Inactivos); // muestra Socios inactivos
+                btnReactivarSocio.Enabled = true; // activa el boton de reactivar Socios
+                btnInactivarSocio.Enabled = false; // desactiva el boton para inactivar Socios
+                btnImprimir.Enabled = false; // desactiva el boton para imprimir
+                btnImprimir.BackColor = SystemColors.Control; // pone el boton imprimir con su color original
+            }
+
+            if (rbtVencenHoy.Checked)
+            {
+                dtgvSocios.Rows.Clear(); // limpiamos las grilla
+                btnReactivarSocio.Enabled = false; // desactiva el boton de reactivar Socios
+                btnInactivarSocio.Enabled = false; // desactiva el boton para inactivar Socios
+                CargarGrilla(FiltroSocios.VencenHoy); // cargamos la grilla de VencenHoy
+                btnImprimir.Enabled = true; // desactiva el boton de impresion
+                btnImprimir.BackColor = Color.FromArgb(139, 146, 249);
+            }
+        }
+
         // Boton para inactivar un socio
         private void btnInactivarSocio_Click(object sender, EventArgs e)
         {
@@ -126,7 +176,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                     {
                         MessageBox.Show("Socio inactivado correctamente.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         dtgvSocios.Rows.Clear();
-                        CargarGrilla();
+                        CargarGrilla(FiltroSocios.Activos);
                     }
                     else
                     {
@@ -140,25 +190,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
-        // checkBox para mostrar NoSocios activos o inactivos
-        private void chkMostrarInactivos_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkMostrarInactivos.Checked)
-            {
-                dtgvSocios.Rows.Clear();
-                CargarGrilla(true); // muestra Socios inactivos
-                btnReactivarSocio.Enabled = true; // activa el boton de reactivar Socios
-                btnInactivarSocio.Enabled = false; // desactiva el boton para inactivar Socios
-            }
-            else
-            {
-                dtgvSocios.Rows.Clear();
-                CargarGrilla(false); // muestra Socios activos
-                btnReactivarSocio.Enabled = false; // desactiva el boton de reactivar Socios
-                btnInactivarSocio.Enabled = true; // activa el boton para inactivar Socios
-            }
-        }
-
+        
         // boton para activar el método de reactivar un NoSocio
         private void btnReactivarSocio_Click(object sender, EventArgs e)
         {
@@ -175,7 +207,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                     {
                         MessageBox.Show("Socio activado correctamente.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         dtgvSocios.Rows.Clear();
-                        CargarGrilla();
+                        CargarGrilla(FiltroSocios.Activos);
                     }
                     else
                     {
@@ -187,9 +219,9 @@ namespace dsoo_comB_grupo4_club_deportivo
             {
                 MessageBox.Show("No hay ningun Socio seleccionado.", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
-
         }
 
+               
         // Boton para volver al  formulario principal
         private void btnVolver_Click(object sender, EventArgs e)
         {
