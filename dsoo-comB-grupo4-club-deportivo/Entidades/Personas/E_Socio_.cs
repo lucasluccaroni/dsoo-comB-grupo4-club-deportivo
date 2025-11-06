@@ -10,7 +10,9 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades.Personas
     {
 
         public int Id_Socio { get; set; }
-        public DateTime fechaInscripcion;
+        public DateTime FechaInscripcion { get; private set; }
+        public DateTime FechaVencimiento { get; private set; }
+        public bool Activo { get; set; }
 
 
         public E_Socio(
@@ -34,7 +36,15 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades.Personas
                 FichaMedica)
         {
             Id_Socio = id_Socio;
-            fechaInscripcion = DateTime.Today;
+            FechaInscripcion = DateTime.Today;
+            FechaVencimiento = FechaInscripcion.AddDays(30);
+            Activo = true;
+        }
+
+        // Método para modificar la fecha de vencimeinto cada vez que se paga
+        public void RenovarCuota(int dias = 30)
+        {
+            FechaVencimiento = DateTime.Today.AddDays(30);
         }
     }
 }

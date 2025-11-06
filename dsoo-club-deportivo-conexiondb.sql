@@ -65,6 +65,8 @@ FechaNac DATE,
 Telefono INT,
 FichaMedica TINYINT,
 FechaInscripcion DATE,
+FechaVencimiento DATE,
+Activo BOOL DEFAULT TRUE,
 CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
 );
 
@@ -237,6 +239,7 @@ CALL IngresoLogin("ivan.faigenbom", "ivan123");
 
 
 -- Stored procedured para cargar un nuevo Socio
+-- DROP PROCEDURE IF EXISTS NuevoSocio;
 DELIMITER //
 CREATE PROCEDURE NuevoSocio(
 	IN nombre VARCHAR(30),
@@ -247,7 +250,6 @@ CREATE PROCEDURE NuevoSocio(
     IN fechaNac DATE,
     IN telefono INT,
     IN fichaMedica TINYINT,
-    IN fechaInscripcion DATE,
     OUT respuesta INT)
 BEGIN
 	DECLARE filas INT DEFAULT 0;
@@ -266,7 +268,8 @@ BEGIN
 	END IF;
     
     IF existe = 0 THEN
-		INSERT INTO Socio VALUES (filas, nombre, apellido, email, dniSoc, direccion, fechaNac, telefono, fichaMedica, fechaInscripcion);
+		INSERT INTO Socio(IdSocio, Nombre, Apellido, Email, Dni, Direccion, FechaNac, Telefono, FichaMedica, FechaInscripcion, FechaVencimiento, Activo)
+        VALUES (filas, nombre, apellido, email, dniSoc, direccion, fechaNac, telefono, fichaMedica, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 30 DAY), TRUE);
         SET respuesta = filas;
 	ELSE
 		SET respuesta = existe;

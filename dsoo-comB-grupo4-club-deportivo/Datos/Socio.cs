@@ -32,7 +32,9 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 comando.Parameters.Add("fechaNac", MySqlDbType.Date).Value = socio.FechaNac;
                 comando.Parameters.Add("telefono", MySqlDbType.Int32).Value = socio.Telefono;
                 comando.Parameters.Add("fichaMedica", MySqlDbType.Byte).Value = socio.FichaMedica ? (byte)1 : (byte)0;
-                comando.Parameters.Add("fechaInscripcion", MySqlDbType.Date).Value = socio.fechaInscripcion;
+                //comando.Parameters.Add("fechaInscripcion", MySqlDbType.Date).Value = socio.FechaInscripcion;
+                //comando.Parameters.Add("fechaVencimiento", MySqlDbType.Date).Value = socio.FechaVencimiento;
+                //comando.Parameters.Add("activo", MySqlDbType.Byte).Value = socio.Activo ? (byte)1 : (byte)0;
 
                 MySqlParameter ParCodigo = new MySqlParameter();
                 ParCodigo.ParameterName = "respuesta";
