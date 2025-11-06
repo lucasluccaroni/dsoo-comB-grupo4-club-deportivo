@@ -61,6 +61,82 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             return salida;
         }
 
+        // Metodo para inactivar un socio
+        public bool InactivarSocio(int idSocio)
+        {
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                string query;
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                query = "UPDATE Socio SET Activo = FALSE WHERE IdSocio = @id;";
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                comando.Parameters.AddWithValue("@id", idSocio);
+                sqlCon.Open();
 
+                int filasAfectadas = comando.ExecuteNonQuery();
+                if (filasAfectadas > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                //System.Diagnostics.Debug.WriteLine("Eliminar socio -> Catch");
+                //System.Diagnostics.Debug.WriteLine(ex.Source);
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+        }
+
+        // Método para reactivar un NoSocio
+        public bool ReactivarSocio(int idSocio)
+        {
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                string query;
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                query = "UPDATE Socio SET Activo = TRUE WHERE IdSocio = @id;";
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                comando.Parameters.AddWithValue("@id", idSocio);
+                sqlCon.Open();
+
+                int filasAfectadas = comando.ExecuteNonQuery();
+                if (filasAfectadas > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                //System.Diagnostics.Debug.WriteLine("Eliminar NoSocio -> Catch");
+                //System.Diagnostics.Debug.WriteLine(ex.Source);
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+        }
     }
 }

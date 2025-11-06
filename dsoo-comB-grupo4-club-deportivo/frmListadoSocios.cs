@@ -1,4 +1,7 @@
-﻿using System;
+﻿using dsoo_comB_grupo4_club_deportivo.Datos;
+using dsoo_comB_grupo4_club_deportivo.Entidades.Personas;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using dsoo_comB_grupo4_club_deportivo.Datos;
 
 
 namespace dsoo_comB_grupo4_club_deportivo
@@ -29,14 +30,22 @@ namespace dsoo_comB_grupo4_club_deportivo
         }
 
         // Metodo para buscar la consulta SQL en la base de datos y traer los datos para cargarlos en la grilla
-        public void CargarGrilla()
+        public void CargarGrilla(bool mostrarInactivos = false)
         {
             MySqlConnection sqlCon = new MySqlConnection();
             try
             {
                 string query;
                 sqlCon = Conexion.getInstancia().CrearConexion();
-                query = "SELECT * FROM Socio;";
+                if (mostrarInactivos)
+                {
+                    query = "SELECT * FROM Socio WHERE Activo = FALSE;";
+                }
+                else
+                {
+                    query = "SELECT * FROM Socio WHERE Activo = TRUE;";
+
+                }
                 MySqlCommand comando = new MySqlCommand(query, sqlCon);
                 comando.CommandType = CommandType.Text;
                 sqlCon.Open();
@@ -58,6 +67,8 @@ namespace dsoo_comB_grupo4_club_deportivo
                         dtgvSocios.Rows[renglon].Cells[7].Value = reader.GetInt32(7); // telefono
                         dtgvSocios.Rows[renglon].Cells[8].Value = reader.GetBoolean(8); // fichaMed
                         dtgvSocios.Rows[renglon].Cells[9].Value = reader.GetDateTime(9); // fechaInscrip
+                        dtgvSocios.Rows[renglon].Cells[10].Value = reader.GetDateTime(10); // fechaVencimiento
+                        dtgvSocios.Rows[renglon].Cells[11].Value = reader.GetBoolean(11); // activo
                     }
                 }
                 else
@@ -99,16 +110,28 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
-        // Boton para activar el metodo de eliminar un socio
-        private void btnEliminarSocio_Click(object sender, EventArgs e)
+        // Boton para inactivar un socio
+        private void btnInactivarSocio_Click(object sender, EventArgs e)
         {
             if(dtgvSocios.SelectedRows.Count > 0)
             {
-                int idSocio = (int)dtgvSocios.Rows[0].Cells["idSocio"].Value;
-                DialogResult confirmacion = MessageBox.Show($"¿Está seguro que desea eliminar al socio {idSocio}?", "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                Socio herramientasSocio = new Socio();
+                int idSocio = (int)dtgvSocios.SelectedRows[0].Cells["idSocio"].Value;
+                System.Diagnostics.Debug.WriteLine("id a inactivar => " + idSocio);
+                DialogResult confirmacion = MessageBox.Show($"¿Está seguro que desea inactivar al Socio {idSocio}?", "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmacion == DialogResult.Yes)
                 {
-                    EliminarSocio(idSocio);
+                    bool resultado = herramientasSocio.InactivarSocio(idSocio);
+                    if (resultado)
+                    {
+                        MessageBox.Show("Socio inactivado correctamente.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dtgvSocios.Rows.Clear();
+                        CargarGrilla();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se econtró el Socio a inactivar.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
@@ -117,44 +140,54 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
-        // Metodo para eliminar un socio
-        public void EliminarSocio(int idSocio)
+        // checkBox para mostrar NoSocios activos o inactivos
+        private void chkMostrarInactivos_CheckedChanged(object sender, EventArgs e)
         {
-            MySqlConnection sqlCon = new MySqlConnection();
-            try
+            if (chkMostrarInactivos.Checked)
             {
-                string query;
-                sqlCon = Conexion.getInstancia().CrearConexion();
-                query = "DELETE FROM Socio WHERE idSocio = @id;";
-                MySqlCommand comando = new MySqlCommand(query, sqlCon);
-                comando.Parameters.AddWithValue("@id", idSocio);
-                sqlCon.Open();
+                dtgvSocios.Rows.Clear();
+                CargarGrilla(true); // muestra Socios inactivos
+                btnReactivarSocio.Enabled = true; // activa el boton de reactivar Socios
+                btnInactivarSocio.Enabled = false; // desactiva el boton para inactivar Socios
+            }
+            else
+            {
+                dtgvSocios.Rows.Clear();
+                CargarGrilla(false); // muestra Socios activos
+                btnReactivarSocio.Enabled = false; // desactiva el boton de reactivar Socios
+                btnInactivarSocio.Enabled = true; // activa el boton para inactivar Socios
+            }
+        }
 
-                int filasAfectadas = comando.ExecuteNonQuery();
-                if(filasAfectadas > 0)
-                {
-                    MessageBox.Show("Socio eliminado correctamente.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dtgvSocios.Rows.Clear();
-                    CargarGrilla();
-                }
-                else
-                {
-                    MessageBox.Show("No se econtró el socio a eliminar.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
+        // boton para activar el método de reactivar un NoSocio
+        private void btnReactivarSocio_Click(object sender, EventArgs e)
+        {
+            if (dtgvSocios.SelectedRows.Count > 0)
             {
-                //System.Diagnostics.Debug.WriteLine("Eliminar socio -> Catch");
-                //System.Diagnostics.Debug.WriteLine(ex.Source);
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (sqlCon.State == ConnectionState.Open)
+                Socio herramientasSocio = new Socio();
+                int idSocio = (int)dtgvSocios.SelectedRows[0].Cells["idSocio"].Value;
+                System.Diagnostics.Debug.WriteLine("id a activar => " + idSocio);
+                DialogResult confirmacion = MessageBox.Show($"¿Está seguro que desea activar al Socio {idSocio}?", "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirmacion == DialogResult.Yes)
                 {
-                    sqlCon.Close();
+                    bool resultado = herramientasSocio.ReactivarSocio(idSocio);
+                    if (resultado)
+                    {
+                        MessageBox.Show("Socio activado correctamente.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dtgvSocios.Rows.Clear();
+                        CargarGrilla();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se econtró el Socio a activar.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("No hay ningun Socio seleccionado.", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+
         }
 
         // Boton para volver al  formulario principal
