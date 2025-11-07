@@ -225,6 +225,7 @@
             btnImprimir.TabIndex = 9;
             btnImprimir.Text = "Imprimir";
             btnImprimir.UseVisualStyleBackColor = true;
+            btnImprimir.Click += btnImprimir_Click;
             // 
             // rbtActivos
             // 

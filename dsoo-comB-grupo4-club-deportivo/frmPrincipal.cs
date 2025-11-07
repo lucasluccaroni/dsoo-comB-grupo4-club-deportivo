@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dsoo_comB_grupo4_club_deportivo.Datos;
+using dsoo_comB_grupo4_club_deportivo.Entidades.Personas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,6 +51,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             this.Hide();
         }
 
+
         // boton para registrar un nuevo no socio
         private void btnRegistrarNoSocio_Click(object sender, EventArgs e)
         {
@@ -58,6 +61,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             inscripcionNoSocio.Show();
             this.Hide();
         }
+
 
         // boton para listar socios
         private void btnListarSocios_Click(object sender, EventArgs e)
@@ -69,6 +73,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             this.Hide();
         }
 
+
         // boton para listar No Socios
         private void btnListarNoSocios_Click(object sender, EventArgs e)
         {
@@ -78,6 +83,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             listadoNoSocios.Show();
             this.Hide();
         }
+
 
         // boton para inscribir un noSocio a una actividad
         private void btnInscribirActividadNoSocio_Click(object sender, EventArgs e)
@@ -99,6 +105,24 @@ namespace dsoo_comB_grupo4_club_deportivo
             pagarAct.Show();
             this.Hide();
         }
+
+
+        // Boton para mandar la impresion del listado de socios que vencen hoy
+        private void btnListadoVencimiento_Click(object sender, EventArgs e)
+        {
+            Socio herramientasSocio = new Socio();
+            List<E_Socio> vencenHoy = herramientasSocio.ListaSociosVencenHoy();
+            if (vencenHoy.Count > 0)
+            {
+                frmListadoVencimientos impresionVencidos = new frmListadoVencimientos(vencenHoy);
+                impresionVencidos.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No hay socios que vencen hoy.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+        }
+
 
         // boton para "cerrar sesion" o salir del sistema
         private void btnSalir_Click(object sender, EventArgs e)

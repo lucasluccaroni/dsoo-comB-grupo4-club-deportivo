@@ -10,8 +10,8 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades.Personas
     {
 
         public int Id_Socio { get; set; }
-        public DateTime FechaInscripcion { get; private set; }
-        public DateTime FechaVencimiento { get; private set; }
+        public DateTime FechaInscripcion { get; set; }
+        public DateTime FechaVencimiento { get; set; }
         public bool Activo { get; set; }
 
 

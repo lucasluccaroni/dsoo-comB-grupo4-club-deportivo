@@ -138,5 +138,52 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 }
             }
         }
+
+        public List<E_Socio> ListaSociosVencenHoy()
+        {
+            List<E_Socio> lista = new List<E_Socio>();
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                string query = "SELECT * FROM Socio WHERE FechaVencimiento = CURDATE() AND Activo = TRUE;";
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                sqlCon.Open();
+
+                MySqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    E_Socio socio = new E_Socio(
+                        reader.GetString("Nombre"),
+                        reader.GetString("Apellido"),
+                        reader.GetString("Email"),
+                        reader.GetString("Dni"),
+                        reader.GetString("Direccion"),
+                        reader.GetDateTime("FechaNac"),
+                        reader.GetInt32("Telefono"),
+                        reader.GetBoolean("FichaMedica"),
+                        reader.GetInt32("IdSocio")
+                    );
+
+                    socio.FechaInscripcion = reader.GetDateTime("FechaInscripcion");
+                    socio.FechaVencimiento = reader.GetDateTime("FechaVencimiento");
+                    socio.Activo = reader.GetBoolean("Activo");
+
+                    lista.Add(socio);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+            return lista;
+        }
     }
 }

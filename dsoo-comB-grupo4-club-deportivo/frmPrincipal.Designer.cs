@@ -31,9 +31,7 @@
             components = new System.ComponentModel.Container();
             btnCobrarCuota = new Button();
             btnInscribirActividadNoSocio = new Button();
-            btnRegistrarAsistencia = new Button();
-            btnPagarSueldo = new Button();
-            btnListadoSocios = new Button();
+            btnListadoVencimiento = new Button();
             btnSalir = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             lblDate = new Label();
@@ -51,11 +49,8 @@
             btnPagarActividad = new Button();
             panel2 = new Panel();
             lblFacturacion = new Label();
-            panel3 = new Panel();
-            lblProfesores = new Label();
             lblNoSocio = new Label();
             pnlSocios.SuspendLayout();
-            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // btnCobrarCuota
@@ -84,41 +79,19 @@
             btnInscribirActividadNoSocio.UseVisualStyleBackColor = false;
             btnInscribirActividadNoSocio.Click += btnInscribirActividadNoSocio_Click;
             // 
-            // btnRegistrarAsistencia
+            // btnListadoVencimiento
             // 
-            btnRegistrarAsistencia.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnRegistrarAsistencia.ForeColor = SystemColors.AppWorkspace;
-            btnRegistrarAsistencia.Location = new Point(46, 31);
-            btnRegistrarAsistencia.Margin = new Padding(3, 4, 3, 4);
-            btnRegistrarAsistencia.Name = "btnRegistrarAsistencia";
-            btnRegistrarAsistencia.Size = new Size(152, 93);
-            btnRegistrarAsistencia.TabIndex = 3;
-            btnRegistrarAsistencia.Text = "Registrar Asistencia (profesor)";
-            btnRegistrarAsistencia.UseVisualStyleBackColor = true;
-            // 
-            // btnPagarSueldo
-            // 
-            btnPagarSueldo.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnPagarSueldo.ForeColor = SystemColors.AppWorkspace;
-            btnPagarSueldo.Location = new Point(265, 15);
-            btnPagarSueldo.Margin = new Padding(3, 4, 3, 4);
-            btnPagarSueldo.Name = "btnPagarSueldo";
-            btnPagarSueldo.Size = new Size(139, 127);
-            btnPagarSueldo.TabIndex = 4;
-            btnPagarSueldo.Text = "Pagar sueldo (profesor)";
-            btnPagarSueldo.UseVisualStyleBackColor = true;
-            // 
-            // btnListadoSocios
-            // 
-            btnListadoSocios.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnListadoSocios.ForeColor = SystemColors.AppWorkspace;
-            btnListadoSocios.Location = new Point(1047, 230);
-            btnListadoSocios.Margin = new Padding(3, 4, 3, 4);
-            btnListadoSocios.Name = "btnListadoSocios";
-            btnListadoSocios.Size = new Size(152, 127);
-            btnListadoSocios.TabIndex = 7;
-            btnListadoSocios.Text = "Listado de Socios a vencer";
-            btnListadoSocios.UseVisualStyleBackColor = true;
+            btnListadoVencimiento.BackColor = Color.FromArgb(255, 224, 192);
+            btnListadoVencimiento.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            btnListadoVencimiento.ForeColor = SystemColors.ControlText;
+            btnListadoVencimiento.Location = new Point(1047, 230);
+            btnListadoVencimiento.Margin = new Padding(3, 4, 3, 4);
+            btnListadoVencimiento.Name = "btnListadoVencimiento";
+            btnListadoVencimiento.Size = new Size(152, 127);
+            btnListadoVencimiento.TabIndex = 7;
+            btnListadoVencimiento.Text = "Listado Socios vencen hoy";
+            btnListadoVencimiento.UseVisualStyleBackColor = false;
+            btnListadoVencimiento.Click += btnListadoVencimiento_Click;
             // 
             // btnSalir
             // 
@@ -269,7 +242,7 @@
             pnlSocios.BackColor = Color.FromArgb(224, 224, 224);
             pnlSocios.Controls.Add(btnPagarActividad);
             pnlSocios.Controls.Add(panel2);
-            pnlSocios.Controls.Add(btnListadoSocios);
+            pnlSocios.Controls.Add(btnListadoVencimiento);
             pnlSocios.Controls.Add(btnInscribirActividadNoSocio);
             pnlSocios.Controls.Add(lblFacturacion);
             pnlSocios.Controls.Add(btnCobrarCuota);
@@ -300,12 +273,12 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.Gainsboro;
+            panel2.BackColor = Color.Black;
             panel2.ForeColor = SystemColors.ActiveCaptionText;
             panel2.Location = new Point(0, 258);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1010, 3);
+            panel2.Size = new Size(1017, 2);
             panel2.TabIndex = 17;
             // 
             // lblFacturacion
@@ -317,27 +290,6 @@
             lblFacturacion.Size = new Size(165, 37);
             lblFacturacion.TabIndex = 14;
             lblFacturacion.Text = "Facturación";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.FromArgb(224, 224, 224);
-            panel3.Controls.Add(btnRegistrarAsistencia);
-            panel3.Controls.Add(btnPagarSueldo);
-            panel3.Location = new Point(62, 792);
-            panel3.Margin = new Padding(3, 4, 3, 4);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(529, 167);
-            panel3.TabIndex = 15;
-            // 
-            // lblProfesores
-            // 
-            lblProfesores.AutoSize = true;
-            lblProfesores.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblProfesores.Location = new Point(62, 739);
-            lblProfesores.Name = "lblProfesores";
-            lblProfesores.Size = new Size(189, 46);
-            lblProfesores.TabIndex = 16;
-            lblProfesores.Text = "Profesores";
             // 
             // lblNoSocio
             // 
@@ -354,10 +306,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1385, 1043);
+            ClientSize = new Size(1385, 785);
             Controls.Add(lblNoSocio);
-            Controls.Add(lblProfesores);
-            Controls.Add(panel3);
             Controls.Add(pnlSocios);
             Controls.Add(lblDate);
             Controls.Add(btnSalir);
@@ -370,7 +320,6 @@
             Load += frmPrincipal_Load;
             pnlSocios.ResumeLayout(false);
             pnlSocios.PerformLayout();
-            panel3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -378,9 +327,7 @@
         #endregion
         private Button btnCobrarCuota;
         private Button btnInscribirActividadNoSocio;
-        private Button btnRegistrarAsistencia;
-        private Button btnPagarSueldo;
-        private Button btnListadoSocios;
+        private Button btnListadoVencimiento;
         private Button btnSalir;
         private System.Windows.Forms.Timer timer1;
         private Label lblDate;
@@ -396,8 +343,6 @@
         private Panel panel1;
         private Panel pnlSocios;
         private Label lblFacturacion;
-        private Panel panel3;
-        private Label lblProfesores;
         private Panel panel2;
         private Label lblNoSocio;
         private Button btnPagarActividad;

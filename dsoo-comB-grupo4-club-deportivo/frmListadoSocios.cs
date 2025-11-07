@@ -37,6 +37,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             CargarGrilla(FiltroSocios.Activos);
         }
 
+
         // Metodo para buscar la consulta SQL en la base de datos y traer los datos para cargarlos en la grilla
         public void CargarGrilla(FiltroSocios filtro)
         {
@@ -160,6 +161,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
+
         // Boton para inactivar un socio
         private void btnInactivarSocio_Click(object sender, EventArgs e)
         {
@@ -221,7 +223,22 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
-               
+        
+        // Boton para mandar la impresion del listado de socios que vencen hoy
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            Socio herramientasSocio = new Socio();
+            List<E_Socio> vencenHoy = herramientasSocio.ListaSociosVencenHoy();
+            if(vencenHoy.Count > 0)
+            {
+                frmListadoVencimientos impresionVencidos = new frmListadoVencimientos(vencenHoy);
+                impresionVencidos.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No hay socios que vencen hoy.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+        }
         // Boton para volver al  formulario principal
         private void btnVolver_Click(object sender, EventArgs e)
         {
