@@ -61,6 +61,105 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             return salida;
         }
 
+
+        // Método que busca en la DB si el socio existe y está activo
+        public bool VerificarSocio(int id)
+        {
+            bool salida;
+            string query;
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                // creamos una conexion con la DB y le solicitamos una consulta SELECT con el id del Socio
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                query = "SELECT * FROM Socio WHERE IdSocio = @id AND Activo = TRUE;";
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                comando.Parameters.AddWithValue("@id", id);
+                sqlCon.Open();
+
+                MySqlDataReader reader;
+                reader = comando.ExecuteReader();
+                System.Diagnostics.Debug.WriteLine("READER => " + reader.HasRows);
+
+                if (reader.HasRows)
+                {
+                    // Si es true, significa que la consulta devolvió una fila por lo que el socio existe
+                    salida = true;
+                }
+                else
+                {
+                    // Si es false, significa que la consulta no devolvió una fila por lo que el socio no existe o no está activo
+                    salida = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                salida = false;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+            return salida;
+        }
+
+
+        // Método para traer los datos de un Socio desde la DB
+        public E_Socio DatosDelSocio(int id)
+        {
+            E_Socio socio = null;
+            string query;
+            MySqlConnection sqlCon = new MySqlConnection();
+            try
+            {
+                sqlCon = Conexion.getInstancia().CrearConexion();
+                query = "SELECT * FROM Socio WHERE IdSocio = @id;";
+                MySqlCommand comando = new MySqlCommand(query, sqlCon);
+                comando.Parameters.AddWithValue("@id", id);
+                sqlCon.Open();
+                MySqlDataReader reader;
+                reader = comando.ExecuteReader();
+                if (reader.Read())
+                {
+                    socio = new E_Socio(
+                        reader.GetString("Nombre"),
+                        reader.GetString("Apellido"),
+                        reader.GetString("Email"),
+                        reader.GetString("Dni"),
+                        reader.GetString("Direccion"),
+                        reader.GetDateTime("FechaNac"),
+                        reader.GetInt32("Telefono"),
+                        reader.GetBoolean("FichaMedica"),
+                        reader.GetInt32("IdSocio")
+                        );
+                    // Asignamos los campos que son calculados desde la DB
+                    socio.FechaInscripcion = reader.GetDateTime("FechaInscripcion");
+                    socio.FechaVencimiento = reader.GetDateTime("FechaVencimiento");
+                    socio.Activo = reader.GetBoolean("Activo");
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al obtener los datos del socio: " + ex.Message);
+                System.Diagnostics.Debug.WriteLine(ex.Message + " - " + ex.Source);
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                }
+            }
+            return socio;
+        }
+
+
+
+
         // Metodo para inactivar un socio
         public bool InactivarSocio(int idSocio)
         {

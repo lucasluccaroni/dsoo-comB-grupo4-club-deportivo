@@ -58,10 +58,9 @@
             // btnVolver
             // 
             btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVolver.Location = new Point(14, 16);
-            btnVolver.Margin = new Padding(3, 4, 3, 4);
+            btnVolver.Location = new Point(12, 12);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(95, 43);
+            btnVolver.Size = new Size(83, 32);
             btnVolver.TabIndex = 1;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
@@ -73,12 +72,11 @@
             dtgvSocios.AllowUserToDeleteRows = false;
             dtgvSocios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvSocios.Columns.AddRange(new DataGridViewColumn[] { idSocio, NombreSocio, ApellidoSocio, EmailSocio, DniSocio, DireccionSocio, FechaNacSocio, TelefonoSocio, FichaMedSocio, FechaInscripcionSocio, FechaVencimientoSocio, ActivoSocio });
-            dtgvSocios.Location = new Point(14, 189);
-            dtgvSocios.Margin = new Padding(3, 4, 3, 4);
+            dtgvSocios.Location = new Point(12, 142);
             dtgvSocios.Name = "dtgvSocios";
             dtgvSocios.ReadOnly = true;
             dtgvSocios.RowHeadersWidth = 51;
-            dtgvSocios.Size = new Size(1437, 444);
+            dtgvSocios.Size = new Size(1257, 333);
             dtgvSocios.TabIndex = 2;
             dtgvSocios.CellClick += dtgvSocios_CellClick;
             // 
@@ -161,7 +159,7 @@
             FechaInscripcionSocio.MinimumWidth = 6;
             FechaInscripcionSocio.Name = "FechaInscripcionSocio";
             FechaInscripcionSocio.ReadOnly = true;
-            FechaInscripcionSocio.Width = 177;
+            FechaInscripcionSocio.Width = 146;
             // 
             // FechaVencimientoSocio
             // 
@@ -183,9 +181,9 @@
             // 
             lblListadoSocios.AutoSize = true;
             lblListadoSocios.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblListadoSocios.Location = new Point(469, 71);
+            lblListadoSocios.Location = new Point(410, 53);
             lblListadoSocios.Name = "lblListadoSocios";
-            lblListadoSocios.Size = new Size(376, 60);
+            lblListadoSocios.Size = new Size(299, 47);
             lblListadoSocios.TabIndex = 3;
             lblListadoSocios.Text = "Listado de socios";
             // 
@@ -194,12 +192,11 @@
             btnInactivarSocio.BackColor = Color.FromArgb(255, 128, 128);
             btnInactivarSocio.BackgroundImageLayout = ImageLayout.Zoom;
             btnInactivarSocio.Font = new Font("Segoe UI", 11.25F);
-            btnInactivarSocio.Location = new Point(1162, 663);
-            btnInactivarSocio.Margin = new Padding(3, 4, 3, 4);
+            btnInactivarSocio.Location = new Point(1017, 497);
             btnInactivarSocio.Name = "btnInactivarSocio";
-            btnInactivarSocio.Size = new Size(123, 70);
+            btnInactivarSocio.Size = new Size(108, 52);
             btnInactivarSocio.TabIndex = 5;
-            btnInactivarSocio.Text = "Inactivar Socio";
+            btnInactivarSocio.Text = "Inactivar";
             btnInactivarSocio.UseVisualStyleBackColor = false;
             btnInactivarSocio.Click += btnInactivarSocio_Click;
             // 
@@ -208,20 +205,22 @@
             btnReactivarSocio.BackColor = Color.FromArgb(192, 255, 192);
             btnReactivarSocio.Enabled = false;
             btnReactivarSocio.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnReactivarSocio.Location = new Point(1033, 663);
+            btnReactivarSocio.Location = new Point(904, 497);
+            btnReactivarSocio.Margin = new Padding(3, 2, 3, 2);
             btnReactivarSocio.Name = "btnReactivarSocio";
-            btnReactivarSocio.Size = new Size(123, 70);
+            btnReactivarSocio.Size = new Size(108, 52);
             btnReactivarSocio.TabIndex = 7;
-            btnReactivarSocio.Text = "Reactivar Socio";
+            btnReactivarSocio.Text = "Reactivar";
             btnReactivarSocio.UseVisualStyleBackColor = false;
             btnReactivarSocio.Click += btnReactivarSocio_Click;
             // 
             // btnImprimir
             // 
             btnImprimir.Enabled = false;
-            btnImprimir.Location = new Point(309, 715);
+            btnImprimir.Location = new Point(270, 529);
+            btnImprimir.Margin = new Padding(3, 2, 3, 2);
             btnImprimir.Name = "btnImprimir";
-            btnImprimir.Size = new Size(144, 29);
+            btnImprimir.Size = new Size(126, 33);
             btnImprimir.TabIndex = 9;
             btnImprimir.Text = "Imprimir";
             btnImprimir.UseVisualStyleBackColor = true;
@@ -230,9 +229,10 @@
             // rbtActivos
             // 
             rbtActivos.AutoSize = true;
-            rbtActivos.Location = new Point(25, 7);
+            rbtActivos.Location = new Point(22, 5);
+            rbtActivos.Margin = new Padding(3, 2, 3, 2);
             rbtActivos.Name = "rbtActivos";
-            rbtActivos.Size = new Size(125, 24);
+            rbtActivos.Size = new Size(101, 19);
             rbtActivos.TabIndex = 10;
             rbtActivos.TabStop = true;
             rbtActivos.Text = "Socios Activos";
@@ -241,9 +241,10 @@
             // rbtInactivos
             // 
             rbtInactivos.AutoSize = true;
-            rbtInactivos.Location = new Point(25, 37);
+            rbtInactivos.Location = new Point(22, 28);
+            rbtInactivos.Margin = new Padding(3, 2, 3, 2);
             rbtInactivos.Name = "rbtInactivos";
-            rbtInactivos.Size = new Size(135, 24);
+            rbtInactivos.Size = new Size(109, 19);
             rbtInactivos.TabIndex = 11;
             rbtInactivos.TabStop = true;
             rbtInactivos.Text = "Socios Inactivos";
@@ -252,9 +253,10 @@
             // rbtVencenHoy
             // 
             rbtVencenHoy.AutoSize = true;
-            rbtVencenHoy.Location = new Point(25, 67);
+            rbtVencenHoy.Location = new Point(22, 50);
+            rbtVencenHoy.Margin = new Padding(3, 2, 3, 2);
             rbtVencenHoy.Name = "rbtVencenHoy";
-            rbtVencenHoy.Size = new Size(180, 24);
+            rbtVencenHoy.Size = new Size(146, 19);
             rbtVencenHoy.TabIndex = 12;
             rbtVencenHoy.TabStop = true;
             rbtVencenHoy.Text = "Socios que vencen hoy";
@@ -266,16 +268,18 @@
             pnlListas.Controls.Add(rbtInactivos);
             pnlListas.Controls.Add(rbtVencenHoy);
             pnlListas.Controls.Add(rbtActivos);
-            pnlListas.Location = new Point(27, 650);
+            pnlListas.Location = new Point(24, 488);
+            pnlListas.Margin = new Padding(3, 2, 3, 2);
             pnlListas.Name = "pnlListas";
-            pnlListas.Size = new Size(276, 94);
+            pnlListas.Size = new Size(242, 71);
             pnlListas.TabIndex = 13;
             // 
             // btnMostrar
             // 
-            btnMostrar.Location = new Point(309, 650);
+            btnMostrar.Location = new Point(270, 488);
+            btnMostrar.Margin = new Padding(3, 2, 3, 2);
             btnMostrar.Name = "btnMostrar";
-            btnMostrar.Size = new Size(144, 49);
+            btnMostrar.Size = new Size(126, 37);
             btnMostrar.TabIndex = 14;
             btnMostrar.Text = "Mostrar";
             btnMostrar.UseVisualStyleBackColor = true;
@@ -283,9 +287,9 @@
             // 
             // frmListadoSocios
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1476, 760);
+            ClientSize = new Size(1292, 570);
             Controls.Add(btnMostrar);
             Controls.Add(pnlListas);
             Controls.Add(btnImprimir);
@@ -294,7 +298,6 @@
             Controls.Add(lblListadoSocios);
             Controls.Add(dtgvSocios);
             Controls.Add(btnVolver);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmListadoSocios";
             Text = "Listado -> Socios";
             Load += frmListadoSocios_Load;

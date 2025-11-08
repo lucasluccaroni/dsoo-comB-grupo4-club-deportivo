@@ -37,7 +37,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             pdf.PrintPage += new PrintPageEventHandler(ImprimirFactura);
             pdf.Print();
 
-            // cuando temrmina la impresion visualisamos nuevamente los botones que escondimos
+            // cuando temrmina la impresion visualizamos nuevamente los botones que escondimos
             btnImprimir.Visible = true;
 
             // regresamos al form principal despues de dar aviso

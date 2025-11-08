@@ -74,10 +74,10 @@ CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
 
 -- Insercion de Socios "viejos" para demostracion de código
 INSERT INTO Socio VALUES
-(150, "Felipe", "Urrea", "felipeurrea@gmail.com", "38123951", "Malaver 1478, Flores", "1989-05-06", 110778998, 1, "2025-10-07", "2025-11-07", 1),
-(151, "Mercedes", "Sarloni", "mersarloni90@hotmail.com", "39885663", "España 1001, Caballito", "1990-01-15", 1151515693, 1, "2025-10-07", "2025-11-07", 1),
-(152, "Gabriel", "Treman", "gabotreman@gmail.com", "39666325", "Feliu 3602, Flores", "1991-12-29", 1147893003, 1, "2025-10-07", "2025-11-07", 1),
-(153, "Marlen", "Pelazo", "pelazom99@yahoo.com", "41998996", "Ugarte 3981, San Isidro", "1999-07-12", 1133302133, 1, "2025-08-07", "2025-11-07", 1);
+(150, "Felipe", "Urrea", "felipeurrea@gmail.com", "38123951", "Malaver 1478, Flores", "1989-05-06", 110778998, 1, "2025-10-08", "2025-11-08", 1),
+(151, "Mercedes", "Sarloni", "mersarloni90@hotmail.com", "39885663", "España 1001, Caballito", "1990-01-15", 1151515693, 1, "2025-10-08", "2025-11-08", 1),
+(152, "Gabriel", "Treman", "gabotreman@gmail.com", "39666325", "Feliu 3602, Flores", "1991-12-29", 1147893003, 1, "2025-10-08", "2025-11-08", 1),
+(153, "Marlen", "Pelazo", "pelazom99@yahoo.com", "41998996", "Ugarte 3981, San Isidro", "1999-07-12", 1133302133, 1, "2025-08-08", "2025-11-08", 1);
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~ NO SOCIOS ~~~~~~~~~~~~~~~~~~~~~~~~

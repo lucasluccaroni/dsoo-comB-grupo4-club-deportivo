@@ -78,12 +78,12 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 
                 if (reader.HasRows)
                 {
-                    // Si es true, significa que la consulta devolvió una fila por lo que el usuario existe
+                    // Si es true, significa que la consulta devolvió una fila por lo que el NoSocio existe
                     salida = true; 
                 }
                 else
                 {
-                    // Si es false, significa que la consulta no devolvió una fila por lo que el socio no existe
+                    // Si es false, significa que la consulta no devolvió una fila por lo que el NoSocio no existe o no está activo
                     salida = false;
                 }
             }

@@ -123,6 +123,16 @@ namespace dsoo_comB_grupo4_club_deportivo
             }
         }
 
+        // Boton para emitir carnet de Socio
+        private void btnEmitirCarnet_Click(object sender, EventArgs e)
+        {
+            frmCarnet carnet = new frmCarnet();
+            carnet.usuario = usuario;
+            carnet.rol = rol;
+            carnet.Show();
+            this.Hide();
+        }
+
 
         // boton para "cerrar sesion" o salir del sistema
         private void btnSalir_Click(object sender, EventArgs e)

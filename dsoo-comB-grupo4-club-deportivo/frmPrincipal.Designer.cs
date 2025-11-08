@@ -57,10 +57,9 @@
             // 
             btnCobrarCuota.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnCobrarCuota.ForeColor = SystemColors.AppWorkspace;
-            btnCobrarCuota.Location = new Point(148, 291);
-            btnCobrarCuota.Margin = new Padding(3, 4, 3, 4);
+            btnCobrarCuota.Location = new Point(130, 218);
             btnCobrarCuota.Name = "btnCobrarCuota";
-            btnCobrarCuota.Size = new Size(152, 93);
+            btnCobrarCuota.Size = new Size(133, 70);
             btnCobrarCuota.TabIndex = 1;
             btnCobrarCuota.Text = "Cobrar Cuota";
             btnCobrarCuota.UseVisualStyleBackColor = true;
@@ -70,10 +69,9 @@
             btnInscribirActividadNoSocio.BackColor = Color.FromArgb(255, 224, 192);
             btnInscribirActividadNoSocio.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnInscribirActividadNoSocio.ForeColor = SystemColors.ControlText;
-            btnInscribirActividadNoSocio.Location = new Point(666, 136);
-            btnInscribirActividadNoSocio.Margin = new Padding(3, 4, 3, 4);
+            btnInscribirActividadNoSocio.Location = new Point(583, 102);
             btnInscribirActividadNoSocio.Name = "btnInscribirActividadNoSocio";
-            btnInscribirActividadNoSocio.Size = new Size(152, 93);
+            btnInscribirActividadNoSocio.Size = new Size(133, 70);
             btnInscribirActividadNoSocio.TabIndex = 2;
             btnInscribirActividadNoSocio.Text = "Inscribir a Actividad";
             btnInscribirActividadNoSocio.UseVisualStyleBackColor = false;
@@ -84,10 +82,9 @@
             btnListadoVencimiento.BackColor = Color.FromArgb(255, 224, 192);
             btnListadoVencimiento.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnListadoVencimiento.ForeColor = SystemColors.ControlText;
-            btnListadoVencimiento.Location = new Point(1047, 230);
-            btnListadoVencimiento.Margin = new Padding(3, 4, 3, 4);
+            btnListadoVencimiento.Location = new Point(916, 172);
             btnListadoVencimiento.Name = "btnListadoVencimiento";
-            btnListadoVencimiento.Size = new Size(152, 127);
+            btnListadoVencimiento.Size = new Size(133, 95);
             btnListadoVencimiento.TabIndex = 7;
             btnListadoVencimiento.Text = "Listado Socios vencen hoy";
             btnListadoVencimiento.UseVisualStyleBackColor = false;
@@ -97,10 +94,9 @@
             // 
             btnSalir.BackColor = Color.FromArgb(255, 192, 192);
             btnSalir.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(1214, 12);
-            btnSalir.Margin = new Padding(3, 4, 3, 4);
+            btnSalir.Location = new Point(1062, 9);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(123, 67);
+            btnSalir.Size = new Size(108, 50);
             btnSalir.TabIndex = 10;
             btnSalir.Text = "Cerrar sesión";
             btnSalir.UseVisualStyleBackColor = false;
@@ -116,9 +112,9 @@
             // 
             lblDate.AutoSize = true;
             lblDate.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic);
-            lblDate.Location = new Point(14, 12);
+            lblDate.Location = new Point(12, 9);
             lblDate.Name = "lblDate";
-            lblDate.Size = new Size(17, 23);
+            lblDate.Size = new Size(13, 17);
             lblDate.TabIndex = 11;
             lblDate.Text = "-";
             // 
@@ -126,9 +122,9 @@
             // 
             lblUsuario.AutoSize = true;
             lblUsuario.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic);
-            lblUsuario.Location = new Point(14, 53);
+            lblUsuario.Location = new Point(12, 40);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(20, 23);
+            lblUsuario.Size = new Size(15, 17);
             lblUsuario.TabIndex = 8;
             lblUsuario.Text = "a";
             // 
@@ -136,9 +132,9 @@
             // 
             lblRol.AutoSize = true;
             lblRol.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic);
-            lblRol.Location = new Point(14, 100);
+            lblRol.Location = new Point(12, 75);
             lblRol.Name = "lblRol";
-            lblRol.Size = new Size(20, 23);
+            lblRol.Size = new Size(15, 17);
             lblRol.TabIndex = 9;
             lblRol.Text = "a";
             // 
@@ -146,9 +142,9 @@
             // 
             lblSocio.AutoSize = true;
             lblSocio.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblSocio.Location = new Point(240, 181);
+            lblSocio.Location = new Point(210, 136);
             lblSocio.Name = "lblSocio";
-            lblSocio.Size = new Size(122, 46);
+            lblSocio.Size = new Size(99, 37);
             lblSocio.TabIndex = 6;
             lblSocio.Text = "Socios";
             // 
@@ -156,10 +152,9 @@
             // 
             btnRegistrarSocio.BackColor = Color.FromArgb(255, 224, 192);
             btnRegistrarSocio.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnRegistrarSocio.Location = new Point(37, 69);
-            btnRegistrarSocio.Margin = new Padding(3, 4, 3, 4);
+            btnRegistrarSocio.Location = new Point(32, 52);
             btnRegistrarSocio.Name = "btnRegistrarSocio";
-            btnRegistrarSocio.Size = new Size(152, 93);
+            btnRegistrarSocio.Size = new Size(133, 70);
             btnRegistrarSocio.TabIndex = 0;
             btnRegistrarSocio.Text = "Registrar Socio";
             btnRegistrarSocio.UseVisualStyleBackColor = false;
@@ -167,25 +162,25 @@
             // 
             // btnEmitirCarnet
             // 
+            btnEmitirCarnet.BackColor = Color.FromArgb(255, 224, 192);
             btnEmitirCarnet.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnEmitirCarnet.ForeColor = SystemColors.AppWorkspace;
-            btnEmitirCarnet.Location = new Point(1047, 43);
-            btnEmitirCarnet.Margin = new Padding(3, 4, 3, 4);
+            btnEmitirCarnet.ForeColor = SystemColors.ControlText;
+            btnEmitirCarnet.Location = new Point(916, 32);
             btnEmitirCarnet.Name = "btnEmitirCarnet";
-            btnEmitirCarnet.Size = new Size(152, 93);
+            btnEmitirCarnet.Size = new Size(133, 70);
             btnEmitirCarnet.TabIndex = 6;
             btnEmitirCarnet.Text = "Emitir Carnet";
-            btnEmitirCarnet.UseVisualStyleBackColor = true;
+            btnEmitirCarnet.UseVisualStyleBackColor = false;
+            btnEmitirCarnet.Click += btnEmitirCarnet_Click;
             // 
             // btnRegistrarNoSocio
             // 
             btnRegistrarNoSocio.BackColor = Color.FromArgb(255, 224, 192);
             btnRegistrarNoSocio.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
             btnRegistrarNoSocio.ForeColor = SystemColors.ControlText;
-            btnRegistrarNoSocio.Location = new Point(542, 23);
-            btnRegistrarNoSocio.Margin = new Padding(3, 4, 3, 4);
+            btnRegistrarNoSocio.Location = new Point(474, 17);
             btnRegistrarNoSocio.Name = "btnRegistrarNoSocio";
-            btnRegistrarNoSocio.Size = new Size(152, 93);
+            btnRegistrarNoSocio.Size = new Size(133, 70);
             btnRegistrarNoSocio.TabIndex = 5;
             btnRegistrarNoSocio.Text = "Registrar \r\nNo Socio";
             btnRegistrarNoSocio.UseVisualStyleBackColor = false;
@@ -195,20 +190,18 @@
             // 
             pnlDivisor.BackColor = Color.Black;
             pnlDivisor.ForeColor = SystemColors.ActiveCaptionText;
-            pnlDivisor.Location = new Point(485, 0);
-            pnlDivisor.Margin = new Padding(3, 4, 3, 4);
+            pnlDivisor.Location = new Point(424, 0);
             pnlDivisor.Name = "pnlDivisor";
-            pnlDivisor.Size = new Size(2, 431);
+            pnlDivisor.Size = new Size(2, 323);
             pnlDivisor.TabIndex = 13;
             // 
             // btnListarSocios
             // 
             btnListarSocios.BackColor = Color.FromArgb(255, 224, 192);
             btnListarSocios.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnListarSocios.Location = new Point(265, 69);
-            btnListarSocios.Margin = new Padding(3, 4, 3, 4);
+            btnListarSocios.Location = new Point(232, 52);
             btnListarSocios.Name = "btnListarSocios";
-            btnListarSocios.Size = new Size(152, 93);
+            btnListarSocios.Size = new Size(133, 70);
             btnListarSocios.TabIndex = 14;
             btnListarSocios.Text = "Listar Socios";
             btnListarSocios.UseVisualStyleBackColor = false;
@@ -218,10 +211,9 @@
             // 
             btnListarNoSocios.BackColor = Color.FromArgb(255, 224, 192);
             btnListarNoSocios.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnListarNoSocios.Location = new Point(799, 23);
-            btnListarNoSocios.Margin = new Padding(3, 4, 3, 4);
+            btnListarNoSocios.Location = new Point(699, 17);
             btnListarNoSocios.Name = "btnListarNoSocios";
-            btnListarNoSocios.Size = new Size(152, 93);
+            btnListarNoSocios.Size = new Size(133, 70);
             btnListarNoSocios.TabIndex = 15;
             btnListarNoSocios.Text = "Listar No Socios";
             btnListarNoSocios.UseVisualStyleBackColor = false;
@@ -231,10 +223,9 @@
             // 
             panel1.BackColor = Color.Black;
             panel1.ForeColor = SystemColors.ActiveCaptionText;
-            panel1.Location = new Point(1015, 3);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(888, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(2, 431);
+            panel1.Size = new Size(2, 323);
             panel1.TabIndex = 16;
             // 
             // pnlSocios
@@ -253,19 +244,19 @@
             pnlSocios.Controls.Add(btnRegistrarNoSocio);
             pnlSocios.Controls.Add(btnEmitirCarnet);
             pnlSocios.Controls.Add(btnRegistrarSocio);
-            pnlSocios.Location = new Point(62, 251);
-            pnlSocios.Margin = new Padding(3, 4, 3, 4);
+            pnlSocios.Location = new Point(54, 188);
             pnlSocios.Name = "pnlSocios";
-            pnlSocios.Size = new Size(1230, 429);
+            pnlSocios.Size = new Size(1076, 322);
             pnlSocios.TabIndex = 12;
             // 
             // btnPagarActividad
             // 
             btnPagarActividad.BackColor = Color.FromArgb(255, 224, 192);
             btnPagarActividad.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPagarActividad.Location = new Point(666, 291);
+            btnPagarActividad.Location = new Point(583, 218);
+            btnPagarActividad.Margin = new Padding(3, 2, 3, 2);
             btnPagarActividad.Name = "btnPagarActividad";
-            btnPagarActividad.Size = new Size(152, 93);
+            btnPagarActividad.Size = new Size(133, 70);
             btnPagarActividad.TabIndex = 18;
             btnPagarActividad.Text = "Pagar Actividad";
             btnPagarActividad.UseVisualStyleBackColor = false;
@@ -275,19 +266,18 @@
             // 
             panel2.BackColor = Color.Black;
             panel2.ForeColor = SystemColors.ActiveCaptionText;
-            panel2.Location = new Point(0, 258);
-            panel2.Margin = new Padding(3, 4, 3, 4);
+            panel2.Location = new Point(0, 194);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1017, 2);
+            panel2.Size = new Size(890, 2);
             panel2.TabIndex = 17;
             // 
             // lblFacturacion
             // 
             lblFacturacion.AutoSize = true;
             lblFacturacion.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblFacturacion.Location = new Point(404, 258);
+            lblFacturacion.Location = new Point(354, 194);
             lblFacturacion.Name = "lblFacturacion";
-            lblFacturacion.Size = new Size(165, 37);
+            lblFacturacion.Size = new Size(126, 30);
             lblFacturacion.TabIndex = 14;
             lblFacturacion.Text = "Facturación";
             // 
@@ -295,18 +285,18 @@
             // 
             lblNoSocio.AutoSize = true;
             lblNoSocio.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblNoSocio.Location = new Point(741, 181);
+            lblNoSocio.Location = new Point(648, 136);
             lblNoSocio.Name = "lblNoSocio";
-            lblNoSocio.Size = new Size(179, 46);
+            lblNoSocio.Size = new Size(144, 37);
             lblNoSocio.TabIndex = 17;
             lblNoSocio.Text = "No Socios";
             // 
             // frmPrincipal
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1385, 785);
+            ClientSize = new Size(1212, 589);
             Controls.Add(lblNoSocio);
             Controls.Add(pnlSocios);
             Controls.Add(lblDate);
@@ -314,7 +304,6 @@
             Controls.Add(lblRol);
             Controls.Add(lblSocio);
             Controls.Add(lblUsuario);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmPrincipal";
             Text = "Club deportivo - Home";
             Load += frmPrincipal_Load;

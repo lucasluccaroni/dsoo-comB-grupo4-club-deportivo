@@ -50,10 +50,9 @@
             // btnVolver
             // 
             btnVolver.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVolver.Location = new Point(14, 16);
-            btnVolver.Margin = new Padding(3, 4, 3, 4);
+            btnVolver.Location = new Point(12, 12);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(95, 43);
+            btnVolver.Size = new Size(83, 32);
             btnVolver.TabIndex = 0;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = true;
@@ -63,9 +62,9 @@
             // 
             lblListadoNoSocios.AutoSize = true;
             lblListadoNoSocios.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblListadoNoSocios.Location = new Point(440, 61);
+            lblListadoNoSocios.Location = new Point(385, 46);
             lblListadoNoSocios.Name = "lblListadoNoSocios";
-            lblListadoNoSocios.Size = new Size(456, 60);
+            lblListadoNoSocios.Size = new Size(364, 47);
             lblListadoNoSocios.TabIndex = 4;
             lblListadoNoSocios.Text = "Listado de NO socios";
             // 
@@ -75,12 +74,11 @@
             dtgvNoSocios.AllowUserToDeleteRows = false;
             dtgvNoSocios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvNoSocios.Columns.AddRange(new DataGridViewColumn[] { IdNoSocio, NombreNoSocio, ApellidoNoSocio, EmailNoSocio, DniNoSocio, DireccionNoSocio, FechaNacNoSocio, TelefonoNoSocio, FichaMedNoSocio, ActivoNoSocio });
-            dtgvNoSocios.Location = new Point(36, 191);
-            dtgvNoSocios.Margin = new Padding(3, 4, 3, 4);
+            dtgvNoSocios.Location = new Point(32, 143);
             dtgvNoSocios.Name = "dtgvNoSocios";
             dtgvNoSocios.ReadOnly = true;
             dtgvNoSocios.RowHeadersWidth = 51;
-            dtgvNoSocios.Size = new Size(1314, 444);
+            dtgvNoSocios.Size = new Size(1150, 333);
             dtgvNoSocios.TabIndex = 5;
             dtgvNoSocios.CellClick += dtgvNoSocios_CellClick;
             // 
@@ -169,21 +167,21 @@
             btnInactivarNoSocio.BackColor = Color.FromArgb(255, 128, 128);
             btnInactivarNoSocio.BackgroundImageLayout = ImageLayout.Zoom;
             btnInactivarNoSocio.Font = new Font("Segoe UI", 11.25F);
-            btnInactivarNoSocio.Location = new Point(1131, 667);
-            btnInactivarNoSocio.Margin = new Padding(3, 4, 3, 4);
+            btnInactivarNoSocio.Location = new Point(990, 500);
             btnInactivarNoSocio.Name = "btnInactivarNoSocio";
-            btnInactivarNoSocio.Size = new Size(160, 68);
+            btnInactivarNoSocio.Size = new Size(140, 51);
             btnInactivarNoSocio.TabIndex = 7;
-            btnInactivarNoSocio.Text = "Inactivar NoSocio";
+            btnInactivarNoSocio.Text = "Inactivar";
             btnInactivarNoSocio.UseVisualStyleBackColor = false;
             btnInactivarNoSocio.Click += btnInactivarNoSocio_Click;
             // 
             // chkMostrarInactivos
             // 
             chkMostrarInactivos.AutoSize = true;
-            chkMostrarInactivos.Location = new Point(36, 667);
+            chkMostrarInactivos.Location = new Point(32, 500);
+            chkMostrarInactivos.Margin = new Padding(3, 2, 3, 2);
             chkMostrarInactivos.Name = "chkMostrarInactivos";
-            chkMostrarInactivos.Size = new Size(144, 24);
+            chkMostrarInactivos.Size = new Size(117, 19);
             chkMostrarInactivos.TabIndex = 8;
             chkMostrarInactivos.Text = "Mostrar Inactivos";
             chkMostrarInactivos.UseVisualStyleBackColor = true;
@@ -192,28 +190,28 @@
             // btnReactivarNoSocio
             // 
             btnReactivarNoSocio.BackColor = Color.FromArgb(192, 255, 192);
-            btnReactivarNoSocio.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnReactivarNoSocio.Location = new Point(965, 669);
-            btnReactivarNoSocio.Name = "btnReactivarNoSocio";
-            btnReactivarNoSocio.Size = new Size(160, 68);
-            btnReactivarNoSocio.TabIndex = 9;
-            btnReactivarNoSocio.Text = "Reactivar NoSocio";
-            btnReactivarNoSocio.UseVisualStyleBackColor = false;
             btnReactivarNoSocio.Enabled = false;
+            btnReactivarNoSocio.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnReactivarNoSocio.Location = new Point(844, 502);
+            btnReactivarNoSocio.Margin = new Padding(3, 2, 3, 2);
+            btnReactivarNoSocio.Name = "btnReactivarNoSocio";
+            btnReactivarNoSocio.Size = new Size(140, 51);
+            btnReactivarNoSocio.TabIndex = 9;
+            btnReactivarNoSocio.Text = "Reactivar";
+            btnReactivarNoSocio.UseVisualStyleBackColor = false;
             btnReactivarNoSocio.Click += btnReactivarSocio_Click;
             // 
             // frmListadoNoSocios
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1362, 760);
+            ClientSize = new Size(1192, 570);
             Controls.Add(btnReactivarNoSocio);
             Controls.Add(chkMostrarInactivos);
             Controls.Add(btnInactivarNoSocio);
             Controls.Add(dtgvNoSocios);
             Controls.Add(lblListadoNoSocios);
             Controls.Add(btnVolver);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmListadoNoSocios";
             Text = "Listado -> No Socios";
             Load += frmListadoNoSocios_Load;
