@@ -38,7 +38,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Entidades.Personas
             Id_Socio = id_Socio;
             FechaInscripcion = DateTime.Today;
             FechaVencimiento = FechaInscripcion.AddDays(30);
-            Activo = true;
+            Activo = false;
         }
 
         // Método para modificar la fecha de vencimeinto cada vez que se paga

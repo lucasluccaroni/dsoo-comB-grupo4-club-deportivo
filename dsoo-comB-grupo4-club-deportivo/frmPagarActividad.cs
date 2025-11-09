@@ -50,7 +50,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                 return;
             }
 
-            var comprobante = resultado.Comprobante;
+            var comprobante = resultado.ComprobanteAct;
             MessageBox.Show("Pago exitoso!", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
             docFactura.nroInscrip_f = comprobante.IdInscripcion;

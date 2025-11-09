@@ -47,6 +47,7 @@
             lblTelefono = new Label();
             lblMail = new Label();
             lblDireccion = new Label();
+            btnCobrarCuota = new Button();
             SuspendLayout();
             // 
             // btnVolver
@@ -242,11 +243,24 @@
             lblDireccion.TabIndex = 18;
             lblDireccion.Text = "Dirección";
             // 
+            // btnCobrarCuota
+            // 
+            btnCobrarCuota.BackColor = Color.FromArgb(128, 255, 255);
+            btnCobrarCuota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCobrarCuota.Location = new Point(675, 312);
+            btnCobrarCuota.Name = "btnCobrarCuota";
+            btnCobrarCuota.Size = new Size(96, 71);
+            btnCobrarCuota.TabIndex = 19;
+            btnCobrarCuota.Text = "Cobrar cuota";
+            btnCobrarCuota.UseVisualStyleBackColor = false;
+            btnCobrarCuota.Click += btnCobrarCuota_Click;
+            // 
             // frmInscripcionSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 483);
+            Controls.Add(btnCobrarCuota);
             Controls.Add(lblDireccion);
             Controls.Add(lblMail);
             Controls.Add(lblTelefono);
@@ -270,6 +284,7 @@
             Text = "Inscripcion -> Socio";
             ResumeLayout(false);
             PerformLayout();
+            Load += frmInscripcionSocio_Load;
         }
 
         #endregion
@@ -293,5 +308,6 @@
         private Label lblTelefono;
         private Label lblMail;
         private Label lblDireccion;
+        private Button btnCobrarCuota;
     }
 }

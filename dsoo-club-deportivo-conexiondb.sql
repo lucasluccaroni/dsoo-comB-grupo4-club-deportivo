@@ -71,13 +71,17 @@ CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
 );
 
 -- SELECT * FROM Socio;
+-- SHOW COLUMNS FROM Socio;
 
 -- Insercion de Socios "viejos" para demostracion de código
 INSERT INTO Socio VALUES
-(150, "Felipe", "Urrea", "felipeurrea@gmail.com", "38123951", "Malaver 1478, Flores", "1989-05-06", 110778998, 1, "2025-10-08", "2025-11-08", 1),
-(151, "Mercedes", "Sarloni", "mersarloni90@hotmail.com", "39885663", "España 1001, Caballito", "1990-01-15", 1151515693, 1, "2025-10-08", "2025-11-08", 1),
-(152, "Gabriel", "Treman", "gabotreman@gmail.com", "39666325", "Feliu 3602, Flores", "1991-12-29", 1147893003, 1, "2025-10-08", "2025-11-08", 1),
-(153, "Marlen", "Pelazo", "pelazom99@yahoo.com", "41998996", "Ugarte 3981, San Isidro", "1999-07-12", 1133302133, 1, "2025-08-08", "2025-11-08", 1);
+(150, "Felipe", "Urrea", "felipeurrea@gmail.com", "38123951", "Malaver 1478, Flores", "1989-05-06", 110778998, 1, "2025-10-08", "2025-11-09", 1),
+(151, "Mercedes", "Sarloni", "mersarloni90@hotmail.com", "39885663", "España 1001, Caballito", "1990-01-15", 1151515693, 1, "2025-10-08", "2025-11-09", 1),
+(152, "Gabriel", "Treman", "gabotreman@gmail.com", "39666325", "Feliu 3602, Flores", "1991-12-29", 1147893003, 1, "2025-10-08", "2025-11-09", 1),
+(153, "Marlen", "Pelazo", "pelazom99@yahoo.com", "41998996", "Ugarte 3981, San Isidro", "1999-07-12", 1133302133, 1, "2025-08-08", "2025-11-09", 1);
+
+INSERT INTO Socio VALUES
+(154, "Jose", "Zampi", "josezapmi@gmail.com", "39888777", "Gardel 1597, San Martin", "1985-06-19", 1107896522, 1, "2025-10-05", "2025-11-05", 0);
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~ NO SOCIOS ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -224,6 +228,25 @@ CONSTRAINT fk_pago_actividad_act FOREIGN KEY (IdEdicion) REFERENCES EdicionActiv
 CONSTRAINT fk_pago_actividad_soc FOREIGN KEY (IdNoSocio) REFERENCES NoSocio (IdNoSocio)
 );
 
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~ PAGOS DE CUOTAS ~~~~~~~~~~~~~~~~~~~~~~~~
+-- Pagos de cuotas (para Socios)
+-- DROP TABLE IF EXISTS PagoCuota;
+CREATE TABLE PagoCuota(
+    IdPago INT AUTO_INCREMENT PRIMARY KEY,
+    IdSocio INT,
+    NroCuota INT,
+    Monto FLOAT,
+    EstadoCuota ENUM('PENDIENTE', 'PAGA', 'VENCIDA'),
+    FechaVencimiento DATE,
+    FechaPago DATE,
+    TipoPago ENUM('EFECTIVO', 'TARJETA_1', 'TARJETA_3', 'TARJETA_6'),
+    FOREIGN KEY (IdSocio) REFERENCES Socio(IdSocio)
+);
+
+-- SELECT * FROM PagoCuota;
+-- SHOW COLUMNS FROM PagoCuota;
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~ STORE PROCEDURES ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -400,15 +423,15 @@ BEGIN
                 
 	-- Si no existe una inscripcion con ese ID, salir
     IF v_idEdicion IS NULL THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'La inscripción no existe';
+        SIGNAL SQLSTATE "45000"
+        SET MESSAGE_TEXT = "La inscripción no existe";
     END IF;
     
     
      -- 2) Validar si ya la inscripcion ya está pagada
     IF v_pagado = TRUE THEN
         SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'La inscripción ya fue pagada';
+        SET MESSAGE_TEXT = "La inscripción ya fue pagada";
     END IF;
     
     
@@ -451,9 +474,106 @@ DELIMITER //
 
 
 
+-- Stored procedure para Pagar la cuota de un socio
+-- DROP PROCEDURE IF EXISTS PagarCuota;
+DELIMITER //
+CREATE PROCEDURE PagarCuota(
+	IN p_idSocio INT,
+    IN p_tipoPago ENUM("EFECTIVO", "TARJETA_1", "TARJETA_3", "TARJETA_6")
+)
+BEGIN
+	DECLARE cuotaBase FLOAT DEFAULT 50000;
+    DECLARE montoFinal FLOAT;
+    DECLARE nroCuota INT;
+    DECLARE fechaHoy DATE;
+    DECLARE fechaVencUltima DATE;
+    DECLARE nuevaFechaVenc DATE;
+    DECLARE idPagoGenerado INT;
+    DECLARE existeSocio INT;
+    DECLARE yaPagada INT;
+    
+    -- 1) Establecemos la fecha de hoy
+    SET fechaHoy = CURDATE();
+    
+    
+    -- 2) Verificamos que el socio existe
+    SET existeSocio = (SELECT COUNT(*) FROM Socio WHERE IdSocio = p_idSocio);
+    IF existeSocio = 0 THEN
+		SIGNAL SQLSTATE "45000"
+        SET MESSAGE_TEXT = "El socio no existe.";
+	END IF;
+    
+        
+     -- 3) Obtenemos el vencimiento anterior
+    SET fechaVencUltima = (
+        SELECT MAX(FechaVencimiento)
+        FROM PagoCuota
+        WHERE IdSocio = p_idSocio AND EstadoCuota = "PAGA"
+    );
+    
+    
+      -- 4) Si ya hay una cuota paga que cubre el período actual, no permitir pagar
+    IF fechaVencUltima IS NOT NULL AND fechaVencUltima >= fechaHoy THEN
+        SIGNAL SQLSTATE "45000"
+        SET MESSAGE_TEXT = "Ya existe una cuota paga que cubre el período actual.";
+    END IF;
+    
+     -- 5) Calcular nueva fecha de vencimiento
+    SET nuevaFechaVenc = IFNULL(DATE_ADD(fechaVencUltima, INTERVAL 30 DAY), DATE_ADD(fechaHoy, INTERVAL 30 DAY));
+                            
+	/*                   
+    -- 5) Verificamos si ya se pago una cuota con este vencimiento
+    SET yaPagada = (
+		SELECT COUNT(*) FROM PagoCuota
+        WHERE IdSocio = p_idSocio AND FechaVencimiento = nuevaFechaVenc AND EstadoCuota = "PAGA"
+	);
+    IF yaPagada > 0 THEN
+		SIGNAL SQLSTATE "45000"
+		SET MESSAGE_TEXT = "La cuota ya fue pagada.";
+	END IF;
+    */
+    
+    -- 6) Calculamos el monto segun el tipo de pago elegido
+    SET montoFinal = CASE
+		WHEN p_tipoPago = "EFECTIVO" THEN cuotaBase * 0.9
+        WHEN p_tipoPago = "TARJETA_3" THEN ROUND(cuotaBase / 3, 2)
+        WHEN p_tipoPago = "TARJETA_6" THEN ROUND(cuotaBase / 6, 2)
+        ELSE cuotaBase
+	END;
+    
+        	    
+    -- 7) Calculamos el numero de cuota
+    SET nroCuota = (SELECT IFNULL(MAX(NroCuota), 0) + 1 FROM PagoCuota WHERE IdSocio = p_IdSocio);
+    
+    
+    -- 8) Insertamos el pago
+    INSERT INTO PagoCuota(IdSocio, NroCuota, Monto, EstadoCuota, FechaVencimiento, FechaPago, TipoPago)
+    VALUES (p_idSocio, nroCuota, montoFinal, "PAGA", nuevaFechaVenc, fechaHoy, p_tipoPago);
+    
+    SET idPagoGenerado = LAST_INSERT_ID();
+    
+    
+    -- 9) Actualizamos el socio
+    UPDATE Socio
+    SET FechaVencimiento = nuevaFechaVenc,
+		Activo = TRUE
+	WHERE IdSocio = p_idSocio;
+    
+    
+    -- 10) Devolvemos los datos para el comprobante
+    SELECT
+		p_idSocio AS IdSocio,
+        idPagoGenerado AS IdPago,
+        nroCuota AS NroCuota,
+        montoFinal AS Monto,
+        nuevaFechaVenc AS FechaVencimiento,
+        fechaHoy AS FechaPago,
+        p_tipoPago AS TipoPago;
+END//
+DELIMITER //
 
 
-
+-- SELECT * FROM PagoCuota;
 
 
 

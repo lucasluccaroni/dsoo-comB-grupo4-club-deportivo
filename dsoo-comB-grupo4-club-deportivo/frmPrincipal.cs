@@ -134,6 +134,17 @@ namespace dsoo_comB_grupo4_club_deportivo
         }
 
 
+        // Boton para cobrar cuota a Socio
+        private void btnCobrarCuota_Click(object sender, EventArgs e)
+        {
+            frmPagarCuota pagoCuota = new frmPagarCuota();
+            pagoCuota.rol = rol;
+            pagoCuota.usuario = usuario;
+            this.Hide();
+            pagoCuota.Show();
+        }
+
+
         // boton para "cerrar sesion" o salir del sistema
         private void btnSalir_Click(object sender, EventArgs e)
         {

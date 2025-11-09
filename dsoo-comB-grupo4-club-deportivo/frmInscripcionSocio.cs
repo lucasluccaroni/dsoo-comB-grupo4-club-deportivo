@@ -20,6 +20,10 @@ namespace dsoo_comB_grupo4_club_deportivo
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private void frmInscripcionSocio_Load(object sender, EventArgs e)
+        {
+            btnCobrarCuota.Enabled = false;
+        }
 
         // Boton para volver al  formulario principal
         private void btnVolver_Click(object sender ,EventArgs e)
@@ -65,6 +69,9 @@ namespace dsoo_comB_grupo4_club_deportivo
                     else
                     {
                         MessageBox.Show("Socio N°" + respuesta + " registrado con éxito.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show($"Ahora debe cobrarle la cuota inicial al socio N°{respuesta}.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnCobrarCuota.Enabled = true;
+                        btnVolver.Enabled = false;
                     }
                 }
                 else
@@ -72,6 +79,17 @@ namespace dsoo_comB_grupo4_club_deportivo
                     System.Diagnostics.Debug.WriteLine("");
                 }
             }
+        }
+
+
+        private void btnCobrarCuota_Click(object sender, EventArgs e)
+        {
+            frmPagarCuota pagar = new frmPagarCuota();
+            pagar.usuario = usuario;
+            pagar.rol = rol;
+            pagar.Show();
+            this.Hide();
+
         }
 
         // Boton para limpiar todos los campos del formulario

@@ -55,14 +55,16 @@
             // 
             // btnCobrarCuota
             // 
+            btnCobrarCuota.BackColor = Color.FromArgb(255, 224, 192);
             btnCobrarCuota.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-            btnCobrarCuota.ForeColor = SystemColors.AppWorkspace;
+            btnCobrarCuota.ForeColor = SystemColors.ControlText;
             btnCobrarCuota.Location = new Point(130, 218);
             btnCobrarCuota.Name = "btnCobrarCuota";
             btnCobrarCuota.Size = new Size(133, 70);
             btnCobrarCuota.TabIndex = 1;
             btnCobrarCuota.Text = "Cobrar Cuota";
-            btnCobrarCuota.UseVisualStyleBackColor = true;
+            btnCobrarCuota.UseVisualStyleBackColor = false;
+            btnCobrarCuota.Click += btnCobrarCuota_Click;
             // 
             // btnInscribirActividadNoSocio
             // 

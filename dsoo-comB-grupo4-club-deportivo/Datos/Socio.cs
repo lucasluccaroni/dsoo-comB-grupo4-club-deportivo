@@ -158,8 +158,6 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
         }
 
 
-
-
         // Metodo para inactivar un socio
         public bool InactivarSocio(int idSocio)
         {
@@ -198,6 +196,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 }
             }
         }
+
 
         // Método para reactivar un NoSocio
         public bool ReactivarSocio(int idSocio)
