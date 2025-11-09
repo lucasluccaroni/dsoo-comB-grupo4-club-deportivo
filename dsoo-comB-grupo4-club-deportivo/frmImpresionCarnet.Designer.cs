@@ -51,7 +51,7 @@
             // 
             // pnlDatos
             // 
-            pnlDatos.BackColor = Color.White;
+            pnlDatos.BackColor = Color.OldLace;
             pnlDatos.BorderStyle = BorderStyle.FixedSingle;
             pnlDatos.Controls.Add(lblFechaVenc);
             pnlDatos.Controls.Add(lblFechaInscrip);
@@ -63,16 +63,16 @@
             pnlDatos.Controls.Add(lblDniRef);
             pnlDatos.Controls.Add(lblNombreRef);
             pnlDatos.Controls.Add(lblIdRef);
-            pnlDatos.Location = new Point(183, 21);
+            pnlDatos.Location = new Point(168, 22);
             pnlDatos.Name = "pnlDatos";
-            pnlDatos.Size = new Size(456, 266);
+            pnlDatos.Size = new Size(456, 238);
             pnlDatos.TabIndex = 0;
             // 
             // lblFechaVenc
             // 
             lblFechaVenc.AutoSize = true;
             lblFechaVenc.Font = new Font("Segoe UI", 11.25F);
-            lblFechaVenc.Location = new Point(251, 206);
+            lblFechaVenc.Location = new Point(259, 187);
             lblFechaVenc.Name = "lblFechaVenc";
             lblFechaVenc.Size = new Size(78, 20);
             lblFechaVenc.TabIndex = 9;
@@ -82,7 +82,7 @@
             // 
             lblFechaInscrip.AutoSize = true;
             lblFechaInscrip.Font = new Font("Segoe UI", 11.25F);
-            lblFechaInscrip.Location = new Point(251, 166);
+            lblFechaInscrip.Location = new Point(259, 147);
             lblFechaInscrip.Name = "lblFechaInscrip";
             lblFechaInscrip.Size = new Size(90, 20);
             lblFechaInscrip.TabIndex = 8;
@@ -92,7 +92,7 @@
             // 
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 11.25F);
-            lblDni.Location = new Point(251, 126);
+            lblDni.Location = new Point(259, 107);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(35, 20);
             lblDni.TabIndex = 7;
@@ -102,7 +102,7 @@
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 11.25F);
-            lblNombre.Location = new Point(251, 86);
+            lblNombre.Location = new Point(259, 67);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(77, 20);
             lblNombre.TabIndex = 6;
@@ -112,7 +112,7 @@
             // 
             lblId.AutoSize = true;
             lblId.Font = new Font("Segoe UI", 11.25F);
-            lblId.Location = new Point(251, 46);
+            lblId.Location = new Point(259, 27);
             lblId.Name = "lblId";
             lblId.Size = new Size(24, 20);
             lblId.TabIndex = 5;
@@ -122,7 +122,7 @@
             // 
             lblFechaVencRef.AutoSize = true;
             lblFechaVencRef.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic);
-            lblFechaVencRef.Location = new Point(38, 206);
+            lblFechaVencRef.Location = new Point(46, 187);
             lblFechaVencRef.Name = "lblFechaVencRef";
             lblFechaVencRef.Size = new Size(164, 20);
             lblFechaVencRef.TabIndex = 4;
@@ -132,7 +132,7 @@
             // 
             lblFechaInscripRef.AutoSize = true;
             lblFechaInscripRef.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic);
-            lblFechaInscripRef.Location = new Point(49, 166);
+            lblFechaInscripRef.Location = new Point(57, 147);
             lblFechaInscripRef.Name = "lblFechaInscripRef";
             lblFechaInscripRef.Size = new Size(152, 20);
             lblFechaInscripRef.TabIndex = 3;
@@ -142,7 +142,7 @@
             // 
             lblDniRef.AutoSize = true;
             lblDniRef.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic);
-            lblDniRef.Location = new Point(157, 126);
+            lblDniRef.Location = new Point(165, 107);
             lblDniRef.Name = "lblDniRef";
             lblDniRef.Size = new Size(40, 20);
             lblDniRef.TabIndex = 2;
@@ -152,7 +152,7 @@
             // 
             lblNombreRef.AutoSize = true;
             lblNombreRef.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic);
-            lblNombreRef.Location = new Point(58, 86);
+            lblNombreRef.Location = new Point(66, 67);
             lblNombreRef.Name = "lblNombreRef";
             lblNombreRef.Size = new Size(140, 20);
             lblNombreRef.TabIndex = 1;
@@ -162,7 +162,7 @@
             // 
             lblIdRef.AutoSize = true;
             lblIdRef.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold | FontStyle.Italic);
-            lblIdRef.Location = new Point(125, 46);
+            lblIdRef.Location = new Point(133, 27);
             lblIdRef.Name = "lblIdRef";
             lblIdRef.Size = new Size(70, 20);
             lblIdRef.TabIndex = 0;
@@ -172,9 +172,9 @@
             // 
             picFoto.BorderStyle = BorderStyle.FixedSingle;
             picFoto.Image = (Image)resources.GetObject("picFoto.Image");
-            picFoto.Location = new Point(13, 140);
+            picFoto.Location = new Point(46, 141);
             picFoto.Name = "picFoto";
-            picFoto.Size = new Size(164, 147);
+            picFoto.Size = new Size(116, 119);
             picFoto.SizeMode = PictureBoxSizeMode.Zoom;
             picFoto.TabIndex = 1;
             picFoto.TabStop = false;
@@ -183,16 +183,16 @@
             // 
             picLogo.BorderStyle = BorderStyle.FixedSingle;
             picLogo.Image = (Image)resources.GetObject("picLogo.Image");
-            picLogo.Location = new Point(13, 21);
+            picLogo.Location = new Point(46, 22);
             picLogo.Name = "picLogo";
-            picLogo.Size = new Size(164, 113);
+            picLogo.Size = new Size(116, 113);
             picLogo.SizeMode = PictureBoxSizeMode.Zoom;
             picLogo.TabIndex = 2;
             picLogo.TabStop = false;
             // 
             // btnImprimir
             // 
-            btnImprimir.Location = new Point(558, 303);
+            btnImprimir.Location = new Point(543, 279);
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new Size(81, 32);
             btnImprimir.TabIndex = 3;
@@ -202,7 +202,7 @@
             // 
             // btnVolver
             // 
-            btnVolver.Location = new Point(461, 303);
+            btnVolver.Location = new Point(446, 279);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(81, 32);
             btnVolver.TabIndex = 4;
@@ -214,7 +214,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(679, 345);
+            ClientSize = new Size(679, 321);
             Controls.Add(btnVolver);
             Controls.Add(btnImprimir);
             Controls.Add(picLogo);

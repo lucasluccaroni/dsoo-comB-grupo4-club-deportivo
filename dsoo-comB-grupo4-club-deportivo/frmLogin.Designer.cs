@@ -43,10 +43,9 @@
             picLogo.BackgroundImageLayout = ImageLayout.Zoom;
             picLogo.BorderStyle = BorderStyle.FixedSingle;
             picLogo.Image = (Image)resources.GetObject("picLogo.Image");
-            picLogo.Location = new Point(69, 116);
-            picLogo.Margin = new Padding(3, 4, 3, 4);
+            picLogo.Location = new Point(91, 92);
             picLogo.Name = "picLogo";
-            picLogo.Size = new Size(189, 189);
+            picLogo.Size = new Size(135, 137);
             picLogo.SizeMode = PictureBoxSizeMode.Zoom;
             picLogo.TabIndex = 0;
             picLogo.TabStop = false;
@@ -55,19 +54,18 @@
             // 
             lblLogin.AutoSize = true;
             lblLogin.Font = new Font("Segoe UI Black", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblLogin.Location = new Point(335, 73);
+            lblLogin.Location = new Point(293, 55);
             lblLogin.Name = "lblLogin";
-            lblLogin.Size = new Size(210, 41);
+            lblLogin.Size = new Size(167, 32);
             lblLogin.TabIndex = 1;
             lblLogin.Text = "Iniciar sesión";
             // 
             // txtUsuario
             // 
             txtUsuario.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsuario.Location = new Point(303, 172);
-            txtUsuario.Margin = new Padding(3, 4, 3, 4);
+            txtUsuario.Location = new Point(265, 129);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(244, 32);
+            txtUsuario.Size = new Size(214, 27);
             txtUsuario.TabIndex = 2;
             txtUsuario.Text = "Usuario";
             txtUsuario.Enter += txtUsuario_Enter;
@@ -76,10 +74,9 @@
             // txtPass
             // 
             txtPass.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPass.Location = new Point(303, 247);
-            txtPass.Margin = new Padding(3, 4, 3, 4);
+            txtPass.Location = new Point(265, 185);
             txtPass.Name = "txtPass";
-            txtPass.Size = new Size(244, 32);
+            txtPass.Size = new Size(214, 27);
             txtPass.TabIndex = 3;
             txtPass.Text = "Contraseña";
             txtPass.Enter += txtPass_Enter;
@@ -89,10 +86,9 @@
             // 
             btnHashPass.BackgroundImage = (Image)resources.GetObject("btnHashPass.BackgroundImage");
             btnHashPass.BackgroundImageLayout = ImageLayout.Zoom;
-            btnHashPass.Location = new Point(553, 247);
-            btnHashPass.Margin = new Padding(3, 4, 3, 4);
+            btnHashPass.Location = new Point(484, 185);
             btnHashPass.Name = "btnHashPass";
-            btnHashPass.Size = new Size(37, 32);
+            btnHashPass.Size = new Size(32, 24);
             btnHashPass.TabIndex = 4;
             btnHashPass.UseVisualStyleBackColor = true;
             btnHashPass.Click += btnHashPass_Click;
@@ -100,10 +96,9 @@
             // btnIngresar
             // 
             btnIngresar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnIngresar.Location = new Point(462, 340);
-            btnIngresar.Margin = new Padding(3, 4, 3, 4);
+            btnIngresar.Location = new Point(404, 255);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(99, 43);
+            btnIngresar.Size = new Size(87, 32);
             btnIngresar.TabIndex = 5;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = true;
@@ -111,16 +106,15 @@
             // 
             // frmLogin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(696, 492);
+            ClientSize = new Size(609, 369);
             Controls.Add(btnIngresar);
             Controls.Add(btnHashPass);
             Controls.Add(txtPass);
             Controls.Add(txtUsuario);
             Controls.Add(lblLogin);
             Controls.Add(picLogo);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmLogin";
             Text = "Login";
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();

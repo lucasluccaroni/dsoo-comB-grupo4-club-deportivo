@@ -28,7 +28,7 @@ namespace dsoo_comB_grupo4_club_deportivo
         public string? tipoPago_c;
         public string? nombreCompleto_c;
 
-     private void btnImprimir_Click(object sender, EventArgs e)
+        private void btnImprimir_Click(object sender, EventArgs e)
         {
             // Ocultamos los botones que no van a salir en la impresion
             btnImprimir.Visible = false;
@@ -68,7 +68,7 @@ namespace dsoo_comB_grupo4_club_deportivo
 
             string fechaPagoParse = fechaPago_c.Value.ToString("dd/MM/yyyy");
             string fechaVencParse = fechaVenc_c.Value.ToString("dd/MM/yyyy");
-            
+
             lblSocioId.Text = Convert.ToString(idSocio_c);
             lblPagoId.Text = Convert.ToString(idPago_c);
             lblNroCuota.Text = Convert.ToString(nroCuota_c);
@@ -77,6 +77,11 @@ namespace dsoo_comB_grupo4_club_deportivo
             lblMonto.Text = Convert.ToString(monto_c);
             lblTipoPago.Text = tipoPago_c;
             lblNombreCompleto.Text = nombreCompleto_c;
+        }
+
+        private void lblNombreCompleto_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

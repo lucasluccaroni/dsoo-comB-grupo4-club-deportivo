@@ -40,6 +40,8 @@
             lblFechaHoy = new Label();
             lblFechaPagoRef = new Label();
             panel1 = new Panel();
+            lblNombreCompleto = new Label();
+            lblNombreCompletoRef = new Label();
             lblTipoPago = new Label();
             lblMonto = new Label();
             lblTipoPagoRef = new Label();
@@ -51,8 +53,6 @@
             lblSocioId = new Label();
             lblSocioIdRef = new Label();
             btnImprimir = new Button();
-            lblNombreCompletoRef = new Label();
-            lblNombreCompleto = new Label();
             pnlComprobante.SuspendLayout();
             pnlClub.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
@@ -66,7 +66,7 @@
             pnlComprobante.Controls.Add(lblComprobante);
             pnlComprobante.Location = new Point(12, 12);
             pnlComprobante.Name = "pnlComprobante";
-            pnlComprobante.Size = new Size(692, 62);
+            pnlComprobante.Size = new Size(681, 62);
             pnlComprobante.TabIndex = 0;
             // 
             // lblComprobante
@@ -86,25 +86,26 @@
             pnlClub.Controls.Add(picLogo);
             pnlClub.Location = new Point(12, 80);
             pnlClub.Name = "pnlClub";
-            pnlClub.Size = new Size(321, 124);
+            pnlClub.Size = new Size(321, 113);
             pnlClub.TabIndex = 1;
             // 
             // lblClub
             // 
             lblClub.AutoSize = true;
+            lblClub.Font = new Font("Segoe UI", 11.25F);
             lblClub.Location = new Point(178, 51);
             lblClub.Name = "lblClub";
-            lblClub.Size = new Size(110, 15);
+            lblClub.Size = new Size(105, 20);
             lblClub.TabIndex = 1;
-            lblClub.Text = "Club Deportivo S.A.";
+            lblClub.Text = "Titan GYM S.A.";
             // 
             // picLogo
             // 
             picLogo.BorderStyle = BorderStyle.FixedSingle;
             picLogo.Image = (Image)resources.GetObject("picLogo.Image");
-            picLogo.Location = new Point(18, 12);
+            picLogo.Location = new Point(61, 4);
             picLogo.Name = "picLogo";
-            picLogo.Size = new Size(142, 95);
+            picLogo.Size = new Size(95, 95);
             picLogo.SizeMode = PictureBoxSizeMode.Zoom;
             picLogo.TabIndex = 0;
             picLogo.TabStop = false;
@@ -116,44 +117,48 @@
             panel2.Controls.Add(lblPagoIDRef);
             panel2.Controls.Add(lblFechaHoy);
             panel2.Controls.Add(lblFechaPagoRef);
-            panel2.Location = new Point(350, 80);
+            panel2.Location = new Point(339, 80);
             panel2.Name = "panel2";
-            panel2.Size = new Size(354, 124);
+            panel2.Size = new Size(354, 113);
             panel2.TabIndex = 2;
             // 
             // lblPagoId
             // 
             lblPagoId.AutoSize = true;
-            lblPagoId.Location = new Point(202, 79);
+            lblPagoId.Font = new Font("Segoe UI", 11.25F);
+            lblPagoId.Location = new Point(199, 65);
             lblPagoId.Name = "lblPagoId";
-            lblPagoId.Size = new Size(18, 15);
+            lblPagoId.Size = new Size(24, 20);
             lblPagoId.TabIndex = 2;
             lblPagoId.Text = "ID";
             // 
             // lblPagoIDRef
             // 
             lblPagoIDRef.AutoSize = true;
-            lblPagoIDRef.Location = new Point(65, 79);
+            lblPagoIDRef.Font = new Font("Segoe UI", 11.25F);
+            lblPagoIDRef.Location = new Point(62, 65);
             lblPagoIDRef.Name = "lblPagoIDRef";
-            lblPagoIDRef.Size = new Size(57, 15);
+            lblPagoIDRef.Size = new Size(70, 20);
             lblPagoIDRef.TabIndex = 0;
             lblPagoIDRef.Text = "Pago N°: ";
             // 
             // lblFechaHoy
             // 
             lblFechaHoy.AutoSize = true;
-            lblFechaHoy.Location = new Point(202, 37);
+            lblFechaHoy.Font = new Font("Segoe UI", 11.25F);
+            lblFechaHoy.Location = new Point(199, 23);
             lblFechaHoy.Name = "lblFechaHoy";
-            lblFechaHoy.Size = new Size(65, 15);
+            lblFechaHoy.Size = new Size(80, 20);
             lblFechaHoy.TabIndex = 1;
             lblFechaHoy.Text = "FechaPago";
             // 
             // lblFechaPagoRef
             // 
             lblFechaPagoRef.AutoSize = true;
-            lblFechaPagoRef.Location = new Point(78, 37);
+            lblFechaPagoRef.Font = new Font("Segoe UI", 11.25F);
+            lblFechaPagoRef.Location = new Point(75, 23);
             lblFechaPagoRef.Name = "lblFechaPagoRef";
-            lblFechaPagoRef.Size = new Size(38, 15);
+            lblFechaPagoRef.Size = new Size(47, 20);
             lblFechaPagoRef.TabIndex = 0;
             lblFechaPagoRef.Text = "Fecha";
             // 
@@ -173,96 +178,126 @@
             panel1.Controls.Add(lblSocioIdRef);
             panel1.Location = new Point(12, 210);
             panel1.Name = "panel1";
-            panel1.Size = new Size(692, 205);
+            panel1.Size = new Size(681, 205);
             panel1.TabIndex = 3;
+            // 
+            // lblNombreCompleto
+            // 
+            lblNombreCompleto.AutoSize = true;
+            lblNombreCompleto.Font = new Font("Segoe UI", 11.25F);
+            lblNombreCompleto.Location = new Point(283, 57);
+            lblNombreCompleto.Name = "lblNombreCompleto";
+            lblNombreCompleto.Size = new Size(39, 20);
+            lblNombreCompleto.TabIndex = 12;
+            lblNombreCompleto.Text = "nom";
+            // 
+            // lblNombreCompletoRef
+            // 
+            lblNombreCompletoRef.AutoSize = true;
+            lblNombreCompletoRef.Font = new Font("Segoe UI", 11.25F);
+            lblNombreCompletoRef.Location = new Point(101, 57);
+            lblNombreCompletoRef.Name = "lblNombreCompletoRef";
+            lblNombreCompletoRef.Size = new Size(135, 20);
+            lblNombreCompletoRef.TabIndex = 11;
+            lblNombreCompletoRef.Text = "Nombre completo:";
             // 
             // lblTipoPago
             // 
             lblTipoPago.AutoSize = true;
+            lblTipoPago.Font = new Font("Segoe UI", 11.25F);
             lblTipoPago.Location = new Point(578, 169);
             lblTipoPago.Name = "lblTipoPago";
-            lblTipoPago.Size = new Size(28, 15);
+            lblTipoPago.Size = new Size(36, 20);
             lblTipoPago.TabIndex = 10;
             lblTipoPago.Text = "tipo";
             // 
             // lblMonto
             // 
             lblMonto.AutoSize = true;
+            lblMonto.Font = new Font("Segoe UI", 11.25F);
             lblMonto.Location = new Point(575, 127);
             lblMonto.Name = "lblMonto";
-            lblMonto.Size = new Size(43, 15);
+            lblMonto.Size = new Size(53, 20);
             lblMonto.TabIndex = 9;
             lblMonto.Text = "monto";
             // 
             // lblTipoPagoRef
             // 
             lblTipoPagoRef.AutoSize = true;
+            lblTipoPagoRef.Font = new Font("Segoe UI", 11.25F);
             lblTipoPagoRef.Location = new Point(457, 169);
             lblTipoPagoRef.Name = "lblTipoPagoRef";
-            lblTipoPagoRef.Size = new Size(79, 15);
+            lblTipoPagoRef.Size = new Size(100, 20);
             lblTipoPagoRef.TabIndex = 8;
             lblTipoPagoRef.Text = "Tipo de Pago:";
             // 
             // lblMontoRef
             // 
             lblMontoRef.AutoSize = true;
+            lblMontoRef.Font = new Font("Segoe UI", 11.25F);
             lblMontoRef.Location = new Point(490, 127);
             lblMontoRef.Name = "lblMontoRef";
-            lblMontoRef.Size = new Size(46, 15);
+            lblMontoRef.Size = new Size(56, 20);
             lblMontoRef.TabIndex = 7;
             lblMontoRef.Text = "Monto:";
             // 
             // lblNroCuota
             // 
             lblNroCuota.AutoSize = true;
+            lblNroCuota.Font = new Font("Segoe UI", 11.25F);
             lblNroCuota.Location = new Point(278, 86);
             lblNroCuota.Name = "lblNroCuota";
-            lblNroCuota.Size = new Size(37, 15);
+            lblNroCuota.Size = new Size(46, 20);
             lblNroCuota.TabIndex = 5;
             lblNroCuota.Text = "cuota";
             // 
             // lblNroCuotaRef
             // 
             lblNroCuotaRef.AutoSize = true;
+            lblNroCuotaRef.Font = new Font("Segoe UI", 11.25F);
             lblNroCuotaRef.Location = new Point(150, 86);
             lblNroCuotaRef.Name = "lblNroCuotaRef";
-            lblNroCuotaRef.Size = new Size(59, 15);
+            lblNroCuotaRef.Size = new Size(72, 20);
             lblNroCuotaRef.TabIndex = 4;
             lblNroCuotaRef.Text = "Cuota N°:";
             // 
             // lblFechaVenc
             // 
             lblFechaVenc.AutoSize = true;
+            lblFechaVenc.Font = new Font("Segoe UI", 11.25F);
             lblFechaVenc.Location = new Point(283, 114);
             lblFechaVenc.Name = "lblFechaVenc";
-            lblFechaVenc.Size = new Size(64, 15);
+            lblFechaVenc.Size = new Size(79, 20);
             lblFechaVenc.TabIndex = 3;
             lblFechaVenc.Text = "fecha venc";
             // 
             // lblFechaVencRef
             // 
             lblFechaVencRef.AutoSize = true;
+            lblFechaVencRef.Font = new Font("Segoe UI", 11.25F);
             lblFechaVencRef.Location = new Point(92, 114);
             lblFechaVencRef.Name = "lblFechaVencRef";
-            lblFechaVencRef.Size = new Size(126, 15);
+            lblFechaVencRef.Size = new Size(156, 20);
             lblFechaVencRef.TabIndex = 2;
             lblFechaVencRef.Text = "Fecha de vencimiento:";
             // 
             // lblSocioId
             // 
             lblSocioId.AutoSize = true;
+            lblSocioId.Font = new Font("Segoe UI", 11.25F);
             lblSocioId.Location = new Point(278, 32);
             lblSocioId.Name = "lblSocioId";
-            lblSocioId.Size = new Size(18, 15);
+            lblSocioId.Size = new Size(24, 20);
             lblSocioId.TabIndex = 1;
             lblSocioId.Text = "ID";
             // 
             // lblSocioIdRef
             // 
             lblSocioIdRef.AutoSize = true;
+            lblSocioIdRef.Font = new Font("Segoe UI", 11.25F);
             lblSocioIdRef.Location = new Point(156, 32);
             lblSocioIdRef.Name = "lblSocioIdRef";
-            lblSocioIdRef.Size = new Size(53, 15);
+            lblSocioIdRef.Size = new Size(68, 20);
             lblSocioIdRef.TabIndex = 0;
             lblSocioIdRef.Text = "Socio ID:";
             // 
@@ -275,24 +310,6 @@
             btnImprimir.Text = "Imprimir";
             btnImprimir.UseVisualStyleBackColor = true;
             btnImprimir.Click += btnImprimir_Click;
-            // 
-            // lblNombreCompletoRef
-            // 
-            lblNombreCompletoRef.AutoSize = true;
-            lblNombreCompletoRef.Location = new Point(101, 57);
-            lblNombreCompletoRef.Name = "lblNombreCompletoRef";
-            lblNombreCompletoRef.Size = new Size(108, 15);
-            lblNombreCompletoRef.TabIndex = 11;
-            lblNombreCompletoRef.Text = "Nombre completo:";
-            // 
-            // lblNombreCompleto
-            // 
-            lblNombreCompleto.AutoSize = true;
-            lblNombreCompleto.Location = new Point(283, 57);
-            lblNombreCompleto.Name = "lblNombreCompleto";
-            lblNombreCompleto.Size = new Size(32, 15);
-            lblNombreCompleto.TabIndex = 12;
-            lblNombreCompleto.Text = "nom";
             // 
             // frmFacturaCuota
             // 
