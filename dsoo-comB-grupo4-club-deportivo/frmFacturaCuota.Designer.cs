@@ -322,7 +322,7 @@
             Controls.Add(pnlClub);
             Controls.Add(pnlComprobante);
             Name = "frmFacturaCuota";
-            Text = "frmFacturaCuota";
+            Text = "Factura de la cuota";
             Load += frmFacturaCuota_Load;
             pnlComprobante.ResumeLayout(false);
             pnlComprobante.PerformLayout();

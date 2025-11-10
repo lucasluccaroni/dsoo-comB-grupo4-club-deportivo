@@ -214,9 +214,9 @@
             lblTituloInscripcion.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblTituloInscripcion.Location = new Point(263, 6);
             lblTituloInscripcion.Name = "lblTituloInscripcion";
-            lblTituloInscripcion.Size = new Size(306, 32);
+            lblTituloInscripcion.Size = new Size(308, 32);
             lblTituloInscripcion.TabIndex = 21;
-            lblTituloInscripcion.Text = "Registrar nuevo NO socio";
+            lblTituloInscripcion.Text = "Registrar nuevo NO Socio";
             // 
             // btnIngresar
             // 
@@ -267,7 +267,7 @@
             Controls.Add(btnIngresar);
             Controls.Add(btnVolver);
             Name = "frmInscripcionNoSocio";
-            Text = "frmInscripcionNoSocio";
+            Text = "Inscripción -> NoSocio";
             ResumeLayout(false);
             PerformLayout();
         }

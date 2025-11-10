@@ -166,12 +166,12 @@
             Controls.Add(lblSocio);
             Controls.Add(btnVolver);
             Name = "frmPagarCuota";
-            Text = "frmPagarCuota";
+            Text = "Pagar una cuota";
+            Load += frmPagarCuota_Load;
             grpTipoPago.ResumeLayout(false);
             grpTipoPago.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
-            Load += frmPagarCuota_Load;
         }
 
         #endregion
