@@ -42,7 +42,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 T_clave = Microsoft.VisualBasic.Interaction.InputBox("Ingrese clave:", "Datos de instalación MySQL");
 
                 // controlamos que los datos ingresados para acceder a MySQL sean correctos
-                mensaje = (int)MessageBox.Show("Su ingreso: SERVIDIR = " + T_servidor + " PUERTO = " + T_puerto + " USUARIO = " + T_usuario + " CLAVE = " + T_clave, "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                mensaje = (int)MessageBox.Show("Su ingreso: SERVIDOR = " + T_servidor + " PUERTO = " + T_puerto + " USUARIO = " + T_usuario + " CLAVE = " + T_clave, "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (mensaje != 6) // el valor 6 corresponde al SI
                 {
