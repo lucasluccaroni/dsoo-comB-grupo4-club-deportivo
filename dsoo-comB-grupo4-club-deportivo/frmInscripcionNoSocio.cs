@@ -69,7 +69,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("");
+                    //System.Diagnostics.Debug.WriteLine("");
                 }
             }
         }

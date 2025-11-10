@@ -79,7 +79,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
 
                 MySqlDataReader reader;
                 reader = comando.ExecuteReader();
-                System.Diagnostics.Debug.WriteLine("READER => " + reader.HasRows);
+                //System.Diagnostics.Debug.WriteLine("READER => " + reader.HasRows);
 
                 if (reader.HasRows)
                 {
@@ -94,7 +94,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                //System.Diagnostics.Debug.WriteLine(ex.Message);
                 salida = false;
             }
             finally
@@ -145,7 +145,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             catch(Exception ex)
             {
                 MessageBox.Show("Error al obtener los datos del socio: " + ex.Message);
-                System.Diagnostics.Debug.WriteLine(ex.Message + " - " + ex.Source);
+                //System.Diagnostics.Debug.WriteLine(ex.Message + " - " + ex.Source);
             }
             finally
             {

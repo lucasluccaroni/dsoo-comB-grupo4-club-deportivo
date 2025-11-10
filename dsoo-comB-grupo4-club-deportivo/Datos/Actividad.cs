@@ -68,7 +68,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             }
             catch(Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Error en VerificarActividad: " + ex.Message);
+                //System.Diagnostics.Debug.WriteLine("Error en VerificarActividad: " + ex.Message);
                 salida = false;
             }
             finally
@@ -103,14 +103,14 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 sqlCon.Open();
                 comando.ExecuteNonQuery();
                 salida = Convert.ToString(ParCodigo.Value);
-                System.Diagnostics.Debug.WriteLine("Respuesta del StoreProcedure ↓");
-                System.Diagnostics.Debug.WriteLine(salida);
+                //System.Diagnostics.Debug.WriteLine("Respuesta del StoreProcedure ↓");
+                //System.Diagnostics.Debug.WriteLine(salida);
             }
             catch (Exception ex)
             {
                 salida = ex.Message;
-                System.Diagnostics.Debug.WriteLine(ex.Source);
-                System.Diagnostics.Debug.WriteLine("Respuesta del StoreProcedure => " + salida);
+                //System.Diagnostics.Debug.WriteLine(ex.Source);
+                //System.Diagnostics.Debug.WriteLine("Respuesta del StoreProcedure => " + salida);
             }
             finally
             {

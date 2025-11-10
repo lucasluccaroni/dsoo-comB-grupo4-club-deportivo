@@ -57,8 +57,8 @@ namespace dsoo_comB_grupo4_club_deportivo
         // Boton para generar el carnet con la informacion del socio
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(idSocio);
-            if(idSocio != 0)
+            //System.Diagnostics.Debug.WriteLine(idSocio);
+            if (idSocio != 0)
             {
                 Socio herramientasSocio = new Socio();
                 E_Socio socio = herramientasSocio.DatosDelSocio(idSocio);

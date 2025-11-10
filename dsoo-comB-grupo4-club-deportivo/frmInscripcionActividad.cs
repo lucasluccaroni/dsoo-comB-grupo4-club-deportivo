@@ -60,7 +60,7 @@ namespace dsoo_comB_grupo4_club_deportivo
         // Boton para confirmar la inscripcion y efectuarla
         private void btnConfirmarInscripcion_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(idNoSocio);
+            //System.Diagnostics.Debug.WriteLine(idNoSocio);
             if (idNoSocio != 0)
             {
                 Actividad actividad = new Actividad();

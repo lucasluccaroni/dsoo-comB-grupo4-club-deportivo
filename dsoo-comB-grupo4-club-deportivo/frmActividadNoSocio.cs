@@ -77,7 +77,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                System.Diagnostics.Debug.WriteLine(ex.Source);
+                //System.Diagnostics.Debug.WriteLine(ex.Source);
             }
             finally
             {

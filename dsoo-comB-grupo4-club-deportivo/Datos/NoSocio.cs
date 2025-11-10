@@ -40,7 +40,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
                 sqlCon.Open();
                 comando.ExecuteNonQuery();
                 salida = Convert.ToString(ParCodigo.Value);
-                System.Diagnostics.Debug.WriteLine("PAR CODIGO QUE ES => " + salida);
+                //System.Diagnostics.Debug.WriteLine("PAR CODIGO QUE ES => " + salida);
 
             }
             catch (Exception ex)
@@ -74,7 +74,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
 
                 MySqlDataReader reader;
                 reader = comando.ExecuteReader();
-                System.Diagnostics.Debug.WriteLine("READER => " + reader.HasRows);
+                //System.Diagnostics.Debug.WriteLine("READER => " + reader.HasRows);
                 
                 if (reader.HasRows)
                 {
@@ -89,7 +89,7 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                //System.Diagnostics.Debug.WriteLine(ex.Message);
                 salida = false;
             }
             finally

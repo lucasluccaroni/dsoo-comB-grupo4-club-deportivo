@@ -42,11 +42,21 @@ namespace dsoo_comB_grupo4_club_deportivo
         public void CargarGrilla(FiltroSocios filtro)
         {
             MySqlConnection sqlCon = new MySqlConnection();
+
+            
             try
             {
                 // La query incialmente no tiene ninfun filtro mas que buscar los registros de Socios
                 string query = "SELECT * FROM Socio ";
+
+                // creamos la instancia de conexion
                 sqlCon = Conexion.getInstancia().CrearConexion();
+
+                // Antes de filtrar los socios que hayamos elegido con el radioButton
+                // actualizamos el listado de socios para pasar de Activos a Inactivos a quienes no hayan pagado la cuota a tiempo
+                MySqlCommand actualizarEstadoSocios = new MySqlCommand("ActualizarEstadoSocios", sqlCon);
+                actualizarEstadoSocios.CommandType = CommandType.StoredProcedure;
+
                 switch (filtro)
                 {
                     case FiltroSocios.Activos:
@@ -65,6 +75,7 @@ namespace dsoo_comB_grupo4_club_deportivo
                 comando.CommandType = CommandType.Text;
                 sqlCon.Open();
 
+                actualizarEstadoSocios.ExecuteNonQuery();
                 MySqlDataReader reader;
                 reader = comando.ExecuteReader();
                 if (reader.HasRows)
@@ -169,7 +180,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             {
                 Socio herramientasSocio = new Socio();
                 int idSocio = (int)dtgvSocios.SelectedRows[0].Cells["idSocio"].Value;
-                System.Diagnostics.Debug.WriteLine("id a inactivar => " + idSocio);
+                //System.Diagnostics.Debug.WriteLine("id a inactivar => " + idSocio);
                 DialogResult confirmacion = MessageBox.Show($"¿Está seguro que desea inactivar al Socio {idSocio}?", "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmacion == DialogResult.Yes)
                 {
@@ -200,7 +211,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             {
                 Socio herramientasSocio = new Socio();
                 int idSocio = (int)dtgvSocios.SelectedRows[0].Cells["idSocio"].Value;
-                System.Diagnostics.Debug.WriteLine("id a activar => " + idSocio);
+                //System.Diagnostics.Debug.WriteLine("id a activar => " + idSocio);
                 DialogResult confirmacion = MessageBox.Show($"¿Está seguro que desea activar al Socio {idSocio}?", "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmacion == DialogResult.Yes)
                 {

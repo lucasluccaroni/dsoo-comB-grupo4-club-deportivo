@@ -77,7 +77,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             {
                 //System.Diagnostics.Debug.WriteLine("frmListadoNoSocio.CS -> Catch");
                 MessageBox.Show(ex.Message);
-                System.Diagnostics.Debug.WriteLine(ex.Source);
+                //System.Diagnostics.Debug.WriteLine(ex.Source);
             }
             finally
             {
@@ -114,7 +114,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             {
                 NoSocio herramientasNoSocio = new NoSocio();
                 int idNoSocio = (int)dtgvNoSocios.SelectedRows[0].Cells["idNoSocio"].Value;
-                System.Diagnostics.Debug.WriteLine("id a inactivar => "+ idNoSocio);
+                //System.Diagnostics.Debug.WriteLine("id a inactivar => "+ idNoSocio);
                 DialogResult confirmacion = MessageBox.Show($"¿Está seguro que desea inactivar al No Socio {idNoSocio}?", "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmacion == DialogResult.Yes)
                 {
@@ -163,7 +163,7 @@ namespace dsoo_comB_grupo4_club_deportivo
             {
                 NoSocio herramientasNoSocio = new NoSocio();
                 int idNoSocio = (int)dtgvNoSocios.SelectedRows[0].Cells["idNoSocio"].Value;
-                System.Diagnostics.Debug.WriteLine("id a activar => " + idNoSocio);
+                //System.Diagnostics.Debug.WriteLine("id a activar => " + idNoSocio);
                 DialogResult confirmacion = MessageBox.Show($"¿Está seguro que desea activar al No Socio {idNoSocio}?", "Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirmacion == DialogResult.Yes)
                 {

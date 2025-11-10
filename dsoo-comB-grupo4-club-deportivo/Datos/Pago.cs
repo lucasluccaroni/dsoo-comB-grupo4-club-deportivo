@@ -76,8 +76,8 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             }
             catch(Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                System.Diagnostics.Debug.WriteLine(ex.Source);
+                //System.Diagnostics.Debug.WriteLine(ex.Message);
+                //System.Diagnostics.Debug.WriteLine(ex.Source);
                 resultado.Mensaje = "Error al procesar el pago: " + ex.Message;
                 return resultado; // Exito = false; Comprobante = null
             }
@@ -157,8 +157,8 @@ namespace dsoo_comB_grupo4_club_deportivo.Datos
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                System.Diagnostics.Debug.WriteLine(ex.Source);
+                //System.Diagnostics.Debug.WriteLine(ex.Message);
+                //System.Diagnostics.Debug.WriteLine(ex.Source);
                 resultado.Mensaje = "Error al procesar el pago: " + ex.Message;
                 return resultado; // Exito = false; Comprobante = null
             }

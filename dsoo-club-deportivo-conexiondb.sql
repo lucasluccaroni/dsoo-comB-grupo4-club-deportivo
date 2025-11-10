@@ -75,10 +75,10 @@ CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
 
 -- Insercion de Socios "viejos" para demostracion de código
 INSERT INTO Socio VALUES
-(150, "Felipe", "Urrea", "felipeurrea@gmail.com", "38123951", "Malaver 1478, Flores", "1989-05-06", 110778998, 1, "2025-10-08", "2025-11-09", 1),
-(151, "Mercedes", "Sarloni", "mersarloni90@hotmail.com", "39885663", "España 1001, Caballito", "1990-01-15", 1151515693, 1, "2025-10-08", "2025-11-09", 1),
-(152, "Gabriel", "Treman", "gabotreman@gmail.com", "39666325", "Feliu 3602, Flores", "1991-12-29", 1147893003, 1, "2025-10-08", "2025-11-09", 1),
-(153, "Marlen", "Pelazo", "pelazom99@yahoo.com", "41998996", "Ugarte 3981, San Isidro", "1999-07-12", 1133302133, 1, "2025-08-08", "2025-11-09", 1);
+(150, "Felipe", "Urrea", "felipeurrea@gmail.com", "38123951", "Malaver 1478, Flores", "1989-05-06", 110778998, 1, "2025-10-10", "2025-11-10", 1),
+(151, "Mercedes", "Sarloni", "mersarloni90@hotmail.com", "39885663", "España 1001, Caballito", "1990-01-15", 1151515693, 1, "2025-10-10", "2025-11-10", 1),
+(152, "Gabriel", "Treman", "gabotreman@gmail.com", "39666325", "Feliu 3602, Flores", "1991-12-29", 1147893003, 1, "2025-10-09", "2025-11-09", 1),
+(153, "Marlen", "Pelazo", "pelazom99@yahoo.com", "41998996", "Ugarte 3981, San Isidro", "1999-07-12", 1133302133, 1, "2025-08-08", "2025-11-08", 1);
 
 INSERT INTO Socio VALUES
 (154, "Jose", "Zampi", "josezapmi@gmail.com", "39888777", "Gardel 1597, San Martin", "1985-06-19", 1107896522, 1, "2025-10-05", "2025-11-05", 0);
@@ -509,7 +509,7 @@ BEGIN
         SELECT MAX(FechaVencimiento)
         FROM PagoCuota
         WHERE IdSocio = p_idSocio AND EstadoCuota = "PAGA"
-    );
+		);
     
     
       -- 4) Si ya hay una cuota paga que cubre el período actual, no permitir pagar
@@ -521,18 +521,7 @@ BEGIN
      -- 5) Calcular nueva fecha de vencimiento
     SET nuevaFechaVenc = IFNULL(DATE_ADD(fechaVencUltima, INTERVAL 30 DAY), DATE_ADD(fechaHoy, INTERVAL 30 DAY));
                             
-	/*                   
-    -- 5) Verificamos si ya se pago una cuota con este vencimiento
-    SET yaPagada = (
-		SELECT COUNT(*) FROM PagoCuota
-        WHERE IdSocio = p_idSocio AND FechaVencimiento = nuevaFechaVenc AND EstadoCuota = "PAGA"
-	);
-    IF yaPagada > 0 THEN
-		SIGNAL SQLSTATE "45000"
-		SET MESSAGE_TEXT = "La cuota ya fue pagada.";
-	END IF;
-    */
-    
+	    
     -- 6) Calculamos el monto segun el tipo de pago elegido
     SET montoFinal = CASE
 		WHEN p_tipoPago = "EFECTIVO" THEN cuotaBase * 0.9
@@ -572,11 +561,19 @@ BEGIN
 END//
 DELIMITER //
 
-
 -- SELECT * FROM PagoCuota;
 
 
 
+-- Actualizar el estado de los Socios que no pagaron la cuota
+DELIMITER //
+CREATE PROCEDURE ActualizarEstadoSocios()
+BEGIN
+	UPDATE Socio
+    SET Activo = FALSE
+    WHERE Activo = TRUE AND FechaVencimiento < CURDATE();
+END//
+DELIMITER //
 
 
 

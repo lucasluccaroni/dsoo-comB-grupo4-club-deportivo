@@ -72,11 +72,13 @@ namespace dsoo_comB_grupo4_club_deportivo
                         MessageBox.Show($"Ahora debe cobrarle la cuota inicial al socio N°{respuesta}.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnCobrarCuota.Enabled = true;
                         btnVolver.Enabled = false;
+                        btnLimpiar.Enabled = false;
+                        btnIngresar.Enabled = false;
                     }
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("");
+                    MessageBox.Show("Error en el sistema. Intente nuevamente.", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
