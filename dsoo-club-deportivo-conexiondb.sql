@@ -73,16 +73,19 @@ CONSTRAINT pk_socio PRIMARY KEY (IdSocio)
 -- SELECT * FROM Socio;
 -- SHOW COLUMNS FROM Socio;
 
--- Insercion de Socios "viejos" para demostracion de código
+-- Insercion de Socios "viejos" activos para demostracion de código
 INSERT INTO Socio VALUES
-(150, "Felipe", "Urrea", "felipeurrea@gmail.com", "38123951", "Malaver 1478, Flores", "1989-05-06", 110778998, 1, "2025-10-10", "2025-11-10", 1),
-(151, "Mercedes", "Sarloni", "mersarloni90@hotmail.com", "39885663", "España 1001, Caballito", "1990-01-15", 1151515693, 1, "2025-10-10", "2025-11-10", 1),
-(152, "Gabriel", "Treman", "gabotreman@gmail.com", "39666325", "Feliu 3602, Flores", "1991-12-29", 1147893003, 1, "2025-10-09", "2025-11-09", 1),
-(153, "Marlen", "Pelazo", "pelazom99@yahoo.com", "41998996", "Ugarte 3981, San Isidro", "1999-07-12", 1133302133, 1, "2025-08-08", "2025-11-08", 1);
+(150, "Felipe", "Urrea", "felipeurrea@gmail.com", "38123951", "Malaver 1478, Flores", "1989-05-06", 110778998, 1, "2025-10-15", "2025-11-15", 1),
+(151, "Mercedes", "Sarloni", "mersarloni90@hotmail.com", "39885663", "España 1001, Caballito", "1990-01-15", 1151515693, 1, "2025-10-15", "2025-11-15", 1),
+(152, "Gabriel", "Treman", "gabotreman@gmail.com", "39666325", "Feliu 3602, Flores", "1991-12-29", 1147893003, 1, "2025-10-15", "2025-11-15", 1),
+(153, "Marlen", "Pelazo", "pelazom99@yahoo.com", "41998996", "Ugarte 3981, San Isidro", "1999-07-12", 1133302133, 1, "2025-08-28", "2025-11-28", 1),
+(154, "Omar", "Larente", "omarlarente@gmail.com", "30280033", "Guemes 2002, San Martin", "1985-11-01", 1198903302, 1, "2025-08-27", "2025-11-27", 1),
+(155, "Valentina", "Butro", "valenbutro@gmail.com", "40122774", "Cramer 4154, Belgrano", "1998-09-25", 1144897414, 1, "2025-08-29", "2025-11-29", 1);
 
+-- Insercion de Socios "viejos" inactivos para demostracion de código
 INSERT INTO Socio VALUES
-(154, "Jose", "Zampi", "josezapmi@gmail.com", "39888777", "Gardel 1597, San Martin", "1985-06-19", 1107896522, 1, "2025-10-05", "2025-11-05", 0);
-
+(156, "Jose", "Zampi", "josezapmi@gmail.com", "39888777", "Gardel 1597, San Martin", "1991-06-19", 1107896522, 1, "2025-10-05", "2025-11-05", 0),
+(157, "Nahuel", "Escone", "esconenahuel87@gmail.com", "32111580", "Villate 1212, San Miguel", "1986-02-02", 1125852630, 1, "2025-10-02", "2025-11-02", 0);
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~ NO SOCIOS ~~~~~~~~~~~~~~~~~~~~~~~~
 -- DROP TABLE NoSocio;
@@ -172,24 +175,24 @@ CONSTRAINT fk_edicion_profesor FOREIGN KEY (IdProfesor) REFERENCES Profesor (IdP
 
 
 INSERT INTO EdicionActividad (IdEdicion, IdActividad, IdProfesor, FechaActividad) VALUES
-(2500, 8900, 1803, "2025-11-03"),
-(2501, 8901, 1802, "2025-11-03"),
-(2502, 8902, 1801, "2025-11-04"),
-(2503, 8903, 1805, "2025-11-04"),
-(2504, 8904, 1804, "2025-11-05"),
-(2505, 8905, 1800, "2025-11-05"),
-(2506, 8900, 1803, "2025-11-10"),
-(2507, 8901, 1802, "2025-11-10"),
-(2508, 8902, 1801, "2025-11-11"),
-(2509, 8903, 1805, "2025-11-11"),
-(2510, 8904, 1804, "2025-11-12"),
-(2511, 8905, 1800, "2025-11-12");
+(2500, 8900, 1803, "2025-12-03"),
+(2501, 8901, 1802, "2025-12-03"),
+(2502, 8902, 1801, "2025-12-04"),
+(2503, 8903, 1805, "2025-12-04"),
+(2504, 8904, 1804, "2025-12-05"),
+(2505, 8905, 1800, "2025-12-05"),
+(2506, 8900, 1803, "2025-12-10"),
+(2507, 8901, 1802, "2025-12-10"),
+(2508, 8902, 1801, "2025-12-11"),
+(2509, 8903, 1805, "2025-12-11"),
+(2510, 8904, 1804, "2025-12-12"),
+(2511, 8905, 1800, "2025-12-12");
 
 -- SELECT * FROM EdicionActividad;
 -- DROP TABLE EdicionActividad;
 
 --  Inserción de edición con cupo lleno para demostración de que no se podrá inscribir nadie a esta actividad por estar completa en cupo.
-INSERT INTO EdicionActividad(IdEdicion, IdActividad, IdProfesor, FechaActividad, CupoEdicion) VALUES (2512, 8902, 1801, "2025-11-14", 10);
+INSERT INTO EdicionActividad(IdEdicion, IdActividad, IdProfesor, FechaActividad, CupoEdicion) VALUES (2512, 8902, 1801, "2025-12-14", 10);
 
 
 --  ------------ Consultas de prueba ------------
